@@ -198,7 +198,7 @@ export default function Header() {
                     transition: "opacity 0.5s ease",
                   }}
                 >
-                  DANI VUITTON
+                  voyage
                 </Typography>
               </Link>
 

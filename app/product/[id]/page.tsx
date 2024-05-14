@@ -174,7 +174,7 @@ export default function ProductPage({ params }: PageProps) {
                     data-cy="product-price"
                     sx={{ fontSize: "1rem", fontWeight: "200" }}
                   >
-                    Kr {product.price}
+                    Kr {product.price} per night
                   </Typography>
                 </Box>
                 <Box

@@ -68,7 +68,7 @@ export default function VideoContainer() {
         <CardMedia
           ref={videoRef}
           component="video"
-          src="https://lv-vod.fl.freecaster.net/vod/louisvuitton/MjgRnsb1qL_HD.mp4"
+          src="https://videos.pexels.com/video-files/4069480/4069480-uhd_3840_2160_25fps.mp4"
           style={{
             width: "100vw",
             height: "100%",
@@ -129,7 +129,7 @@ export default function VideoContainer() {
             }}
             color="#ffffff"
           >
-            Timeless Design
+            Luxury Destinations
           </Typography>
           <Typography
             variant="body2"
@@ -139,9 +139,7 @@ export default function VideoContainer() {
               fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
             }}
           >
-            A seasonless approach to sophistication, the timeless creations from
-            the Men's New Formal Collection embody a sartorial elegance,
-            enhanced with the Maison's signature details and refined styles.
+            A trip to remember forever, memories to share with your loved ones.
           </Typography>
         </Box>
       </Box>
