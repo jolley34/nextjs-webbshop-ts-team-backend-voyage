@@ -32,3 +32,8 @@ Daniela Byström ([danibystrom](https://github.com/danibystrom))
 Linus Nilsson ([linusnilssson](https://github.com/linusnilssson))
 Joel Erlandsson ([jolley34](https://github.com/jolley34))
 Elin Vahlberg ([mypinkworld](https://github.com/mypinkworld))
+
+
+
+### KravLista
+
