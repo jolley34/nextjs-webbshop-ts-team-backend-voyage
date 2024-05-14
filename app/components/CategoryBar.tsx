@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, List, ListItem } from "@mui/material";
+import { Box, IconButton, List, ListItem } from "@mui/material";
 
 export default function CategoryBar() {
   return (
@@ -17,16 +17,41 @@ export default function CategoryBar() {
             width: "100%",
             color: "black",
             display: "flex",
+            justifyContent: "center",
             fontSize: "0.75rem",
             alignItems: "center",
           }}
         >
-          <ListItem sx={{ cursor: "pointer" }}>Mac</ListItem>
-          <ListItem sx={{ cursor: "pointer" }}>Ipad</ListItem>
-          <ListItem sx={{ cursor: "pointer" }}>iPhone</ListItem>
-          <ListItem sx={{ cursor: "pointer" }}>Watch</ListItem>
-          <ListItem sx={{ cursor: "pointer" }}>Airpods</ListItem>
-          <ListItem sx={{ cursor: "pointer" }}>Tv och hem</ListItem>
+          <IconButton>
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              Mac
+            </ListItem>
+          </IconButton>
+          <IconButton>
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              iPad
+            </ListItem>
+          </IconButton>
+          <IconButton size="small">
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              iPhone
+            </ListItem>
+          </IconButton>
+          <IconButton>
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              Watch
+            </ListItem>
+          </IconButton>
+          <IconButton>
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              Airpods
+            </ListItem>
+          </IconButton>
+          <IconButton>
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              Tv och hem
+            </ListItem>
+          </IconButton>
         </List>
       </Box>
     </>
