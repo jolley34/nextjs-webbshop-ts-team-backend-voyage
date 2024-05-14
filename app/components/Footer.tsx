@@ -95,7 +95,7 @@ export default function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    ABOUT DANI VUITTON
+                    ABOUT voyage
                   </Typography>
                   <StyledLink text="Collections" href="/about" />
                   <StyledLink text="Admin" href="/admin" datacy="admin-link" />
@@ -124,7 +124,7 @@ export default function Footer() {
                       color: pathname === "/about" ? "#ffffff" : "black",
                     }}
                   >
-                    ABOUT DANI VUITTON
+                    ABOUT voyage
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -403,7 +403,7 @@ export default function Footer() {
           variant="body1"
           align="center"
         >
-          © 2024 DANI VUITTON
+          © 2024 voyage
         </Typography>
       </Container>
     </Box>

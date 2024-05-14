@@ -174,7 +174,7 @@ export default function ProductPage({ params }: PageProps) {
                     data-cy="product-price"
                     sx={{ fontSize: "1rem", fontWeight: "200" }}
                   >
-                    Kr {product.price} per night
+                    Kr {product.price} per natt
                   </Typography>
                 </Box>
                 <Box
@@ -246,9 +246,9 @@ export default function ProductPage({ params }: PageProps) {
                     >
                       {isXsScreen
                         ? size
-                          ? `Vald storlek: ${size}`
-                          : "Välj storlek"
-                        : "Välj storlek"}
+                          ? `Antal Valda personer: ${size}`
+                          : "Välj antal personer"
+                        : "Välj antal personer"}
                     </Typography>
                     {isXsScreen ? (
                       <Button
@@ -256,7 +256,7 @@ export default function ProductPage({ params }: PageProps) {
                         variant="outlined"
                         onClick={toggleDrawer}
                       >
-                        {size ? size : "Välj storlek"}
+                        {size ? size : "Välj antal personer"}
                       </Button>
                     ) : (
                       <Box

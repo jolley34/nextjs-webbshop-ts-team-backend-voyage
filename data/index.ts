@@ -39,27 +39,26 @@ export const products: Product[] = [
     description: "From The Runaway",
     price: 45200,
     slug: "produkt-1",
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/R80wOPlgxp_HD.mp4",
   },
   {
     id: "2",
-    image: "https://i.ytimg.com/vi/zumJJUL_ruM/maxresdefault.jpg",
+    image: "/manchester-house.png",
     images: [
       "https://reappdata.global.ssl.fastly.net/site_data/buckheadhomesandcondos/editor_assets/Brookhaven%20(3).png",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Cropped%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Ambiance%20view.png?wid=1440&hei=1440",
+      "https://i.ytimg.com/vi/zumJJUL_ruM/maxresdefault.jpg",
+      "https://bestinamericanliving.com/wp-content/uploads/2023/09/220630-MV-KSIMoceri171-1-2048x1413.jpg",
     ],
     title: "Luxury Home in Manchester",
     color: "#000000",
     subColor: "#000000",
 
-    description: "From The Runaway",
+    description: "Lovely house located in Manchester",
     price: 57200,
     slug: "produkt-2",
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://videos.pexels.com/video-files/2887459/2887459-hd_1920_1080_25fps.mp4",
   },
@@ -79,7 +78,7 @@ export const products: Product[] = [
     description: "New Formal",
     price: 95500,
     slug: "produkt-3",
-    sizes: [],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/w1Xu2uV2cW_HD.mp4",
   },
@@ -99,7 +98,7 @@ export const products: Product[] = [
     description: "New Formal",
     price: 25000,
     slug: "produkt-4",
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/uvv6uSuwoE_HD.mp4",
   },
@@ -119,7 +118,7 @@ export const products: Product[] = [
     description: "New York GALA",
     price: 67800,
     slug: "produkt-5",
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/8Xrc1e7iAn_HD.mp4",
   },
@@ -139,7 +138,7 @@ export const products: Product[] = [
     description: "New Formal",
     price: 135000,
     slug: "produkt-6",
-    sizes: [],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/r0Gdlw7f7M_HD.mp4",
   },
@@ -158,7 +157,7 @@ export const products: Product[] = [
     description: "Venice Dreams",
     price: 13500,
     slug: "produkt-7",
-    sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/RvNMi3yNZZ_HD.mp4",
   },
@@ -178,7 +177,7 @@ export const products: Product[] = [
     description: "Venice Dreams",
     price: 42000,
     slug: "produkt-8",
-    sizes: [],
+    sizes: ["1", "2", "3", "4", "5", "6"],
     video:
       "https://lv-vod.fl.freecaster.net/vod/louisvuitton/i0un7IjXl6_HD.mp4",
   },
