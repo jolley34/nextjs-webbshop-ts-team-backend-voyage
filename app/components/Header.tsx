@@ -164,10 +164,12 @@ export default function Header() {
               display: "flex",
               alignItems: "center",
               borderBottom:
-                pathnames() || open || scrolling || hovering
+                pathnames() || pathname === "/about"
+                  ? "none"
+                  : open || scrolling || hovering
                   ? "1px solid lightgray"
-                  : 0,
-              paddingBottom: "1rem",
+                  : "none",
+              paddingBottom: pathnames() || pathname === "/about" ? 0 : "1rem",
             }}
           >
             <IconButton
@@ -234,7 +236,9 @@ export default function Header() {
               <ShopCartWithBadge />
             </IconButton>
           </Toolbar>
-          {(isHeaderHovered || scrolling) && <CategoryBar />}
+          {(isHeaderHovered || scrolling) &&
+            !pathnames() &&
+            pathname !== "/about" && <CategoryBar />}
         </AppBar>
 
         <Box>
