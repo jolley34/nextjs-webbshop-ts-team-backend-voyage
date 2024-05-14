@@ -166,7 +166,8 @@ export default function Header() {
               borderBottom:
                 pathnames() ||
                 pathname === "/about" ||
-                pathname.startsWith("/product/")
+                pathname.startsWith("/product/") ||
+                open
                   ? "none"
                   : open || scrolling || hovering
                   ? "1px solid lightgray"
@@ -246,7 +247,8 @@ export default function Header() {
           {(isHeaderHovered || scrolling) &&
             !pathnames() &&
             pathname !== "/about" &&
-            !pathname.startsWith("/product/") && <CategoryBar />}
+            !pathname.startsWith("/product/") &&
+            !open && <CategoryBar />}
         </AppBar>
 
         <Box>
