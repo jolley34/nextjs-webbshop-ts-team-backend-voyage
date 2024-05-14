@@ -45,15 +45,14 @@ export const products: Product[] = [
   },
   {
     id: "2",
-    image:
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM2_Front%20view.png?wid=1440&hei=1440",
+    image: "https://i.ytimg.com/vi/zumJJUL_ruM/maxresdefault.jpg",
     images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Worn%20view.png?wid=1440&hei=1440",
+      "https://reappdata.global.ssl.fastly.net/site_data/buckheadhomesandcondos/editor_assets/Brookhaven%20(3).png",
       "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Cropped%20view.png?wid=1440&hei=1440",
       "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
       "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embroidered-leather-signature-overshirt-ready-to-wear--HQL74WTV8900_PM1_Ambiance%20view.png?wid=1440&hei=1440",
     ],
-    title: "Leather Signature Overshirt",
+    title: "Luxury Home in Manchester",
     color: "#000000",
     subColor: "#000000",
 
@@ -62,7 +61,7 @@ export const products: Product[] = [
     slug: "produkt-2",
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
     video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/SwcDehgriF_HD.mp4",
+      "https://videos.pexels.com/video-files/2887459/2887459-hd_1920_1080_25fps.mp4",
   },
   {
     id: "3",
