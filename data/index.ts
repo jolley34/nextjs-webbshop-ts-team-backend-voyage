@@ -32,7 +32,7 @@ export const products: Product[] = [
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-model-unselect-gallery-3-202405?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1713559205366",
       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-model-unselect-gallery-4-202405?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1713559203998",
     ],
-    title: "IPad Air",
+    title: "iPad Air",
     color: "#050A30",
     subColor: "#050A30",
     description: "Nyhet",
@@ -50,7 +50,7 @@ export const products: Product[] = [
       "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue_AV1_GEO_EMEA?wid=5120&hei=2880&fmt=webp&qlt=70&.v=cHJOTXEwTU92OEtKVDV2cVB1R2FTSjlERndlRTljaUdZeHJGM3dlLzR2KzBHVVRRT3NJZzAweS9QUkhWS0tlYldnRHVRVjU3QkdNYWVENDFRVkdOcmprMCtUNWwzYWR0UVU3TWVsbEdUeXRjODhrWk5XcFl2eGdtMU93TW5UemNBeXlhSmI0TDljSzRWK2doVytLREFnPT0=&traceId=1",
       "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue_AV2?wid=5120&hei=2880&fmt=webp&qlt=70&.v=cHJOTXEwTU92OEtKVDV2cVB1R2FTSjlERndlRTljaUdZeHJGM3dlLzR2OEdYUFBWVGZFajdpclFpYWR4UnR1TVpGQnBBWVp4a3ZSd0Y4NzlDUVE4dUJUU08xVXZOQlVmeWYva2RCcG9vcVZ4eEM4Q0cwN0tXQzIvc1c2ZUN6NWg1SmdseVdkemNCYWFjKzF3OGpkUDFBPT0=&traceId=1",
     ],
-    title: "IPhone",
+    title: "iPhone 15",
     color: "#000000",
     subColor: "#000000",
 
@@ -67,6 +67,9 @@ export const products: Product[] = [
       "https://www.mstore.se/thumb/32781/1160x928/MacBook_Air_13_in_M3_Midnight_PDP_Image_Position_1__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
     images: [
       "https://www.mstore.se/thumb/32782/1160x928/MacBook_Air_13_in_M3_Midnight_PDP_Image_Position_2__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-m3-midnight-gallery5-202402?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=1707262730525",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-m3-midnight-gallery6-202402?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=1707769481400",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-m3-gallery7-202402?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=1707262733796",
     ],
     title: "MacBook Air 13",
     color: "#000000",
@@ -81,100 +84,19 @@ export const products: Product[] = [
   {
     id: "4",
     image:
-      "https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-long-sleeved-cotton-shirt-ready-to-wear--HRS8PWFRS60E_PM2_Front%20view.png?wid=1440&hei=1440",
+      "https://www.mstore.se/thumb/32307/1160x928/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
     images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-long-sleeved-cotton-shirt-ready-to-wear--HRS8PWFRS60E_PM1_Worn%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-long-sleeved-cotton-shirt-ready-to-wear--HRS8PWFRS60E_PM1_Closeup%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-long-sleeved-cotton-shirt-ready-to-wear--HRS8PWFRS60E_PM1_Back%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-long-sleeved-cotton-shirt-ready-to-wear--HRS8PWFRS60E_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
+      "https://www.mstore.se/thumb/32308/1160x928/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_2__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
+      "https://www.mstore.se/thumb/32309/1160x928/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_3__WWEN.jpg?min_w=400&min_h=320&fill=ffffffhttps://www.mstore.se/thumb/32309/1160x928/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_3__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
     ],
-    title: "Long-Sleeved Cotton Shirt",
+    title: "MacBook Pro",
     color: "#d5e5fc",
     subColor: "#d5e5fc",
-    description: "New Formal",
-    price: 25000,
+    description: "Pro",
+    price: 26450,
     slug: "produkt-4",
     sizes: ["1", "2", "3", "4", "5", "6"],
     video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/uvv6uSuwoE_HD.mp4",
-  },
-  {
-    id: "5",
-    image:
-      "https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-single-breasted-wool-tuxedo-jacket-ready-to-wear--HQFJ1WZC6900_PM2_Front%20view.png?wid=1440&hei=1440",
-    images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-single-breasted-wool-tuxedo-jacket-ready-to-wear--HQFJ1WZC6900_PM1_Worn%20view.png?wid=4096&hei=4096",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-single-breasted-wool-tuxedo-jacket-ready-to-wear--HQFJ1WZC6900_PM1_Closeup%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-single-breasted-wool-tuxedo-jacket-ready-to-wear--HQFJ1WZC6900_PM1_Side%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-single-breasted-wool-tuxedo-jacket-ready-to-wear--HQFJ1WZC6900_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
-    ],
-    title: "Single-Breasted Wool Tuxedo Jacket",
-    color: "#000000",
-    subColor: "#000000",
-    description: "New York GALA",
-    price: 67800,
-    slug: "produkt-5",
-    sizes: ["1", "2", "3", "4", "5", "6"],
-    video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/8Xrc1e7iAn_HD.mp4",
-  },
-  {
-    id: "6",
-    image:
-      "https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-georges-tote-mm-h30-bags--M23153_PM2_Front%20view.png?wid=1440&hei=1440",
-    images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-georges-tote-mm-h30-bags--M23153_PM1_Worn%20view.png?wid=4096&hei=4096",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-georges-tote-mm-h30-bags--M23153_PM1_Side%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-georges-tote-mm-h30-bags--M23153_PM1_Back%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-georges-tote-mm-h30-bags--M23153_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
-    ],
-    title: "Georges Tote",
-    color: "#000000",
-    subColor: "#000000",
-    description: "New Formal",
-    price: 135000,
-    slug: "produkt-6",
-    sizes: ["1", "2", "3", "4", "5", "6"],
-    video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/r0Gdlw7f7M_HD.mp4",
-  },
-  {
-    id: "7",
-    image:
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-open-collar-short-sleeved-cotton-shirt-ready-to-wear--HQS95WIKE900_PM2_Front%20view.png?wid=1440&hei=1440",
-    images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-open-collar-short-sleeved-cotton-shirt-ready-to-wear--HQS95WIKE900_PM1_Worn%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-open-collar-short-sleeved-cotton-shirt-ready-to-wear--HQS95WIKE900_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-open-collar-short-sleeved-cotton-shirt-ready-to-wear--HQS95WIKE900_PM1_Ambiance%20view.png?wid=1440&hei=1440",
-    ],
-    title: "Short-Sleeved Cotton Shirt",
-    color: "#000000",
-    subColor: "#f5d751",
-    description: "Venice Dreams",
-    price: 13500,
-    slug: "produkt-7",
-    sizes: ["1", "2", "3", "4", "5", "6"],
-    video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/RvNMi3yNZZ_HD.mp4",
-  },
-  {
-    id: "8",
-    image:
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-chess-messenger-damier-other-for-men--N40562_PM2_Front%20view.png?wid=1440&hei=1440",
-    images: [
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-chess-messenger-damier-other-for-men--N40562_PM1_Worn%20view.png?wid=4096&hei=4096",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-chess-messenger-damier-other-for-men--N40562_PM1_Side%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-chess-messenger-damier-other-for-men--N40562_PM1_Cropped%20worn%20view.png?wid=1440&hei=1440",
-      "https://eu.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-chess-messenger-damier-other-for-men--N40562_PM1_Interior2%20view.png?wid=1440&hei=1440",
-    ],
-    title: "Chess Messenger",
-    color: "#694232",
-    subColor: "#fec032",
-    description: "Venice Dreams",
-    price: 42000,
-    slug: "produkt-8",
-    sizes: ["1", "2", "3", "4", "5", "6"],
-    video:
-      "https://lv-vod.fl.freecaster.net/vod/louisvuitton/i0un7IjXl6_HD.mp4",
+      "https://www.apple.com/105/media/us/macbook-pro/2023/232a2dbf-5898-4fd1-a350-6a7c5c2e31c9/anim/themes/display/large_2x.mp4",
   },
 ];
