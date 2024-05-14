@@ -11,7 +11,13 @@ async function main() {
     },
   });
 
-  const category = await db.category.create({
+  const colorCategory = await db.colorCategory.create({
+    data: {
+      name: "#fffff",
+    },
+  });
+
+  const productCategory = await db.productCategory.create({
     data: {
       name: "MacBook",
     },
@@ -23,11 +29,13 @@ async function main() {
       description: "Titan styled computer with POWER",
       image: "url_jpg",
       video: "video_url.mp4",
-      color: "Titan",
       price: 15000,
       isArchived: false,
-      category: {
-        connect: { id: category.id },
+      productCategory: {
+        connect: { id: productCategory.id },
+      },
+      colorCategory: {
+        connect: { id: colorCategory.id },
       },
     },
   });
@@ -52,14 +60,13 @@ async function main() {
   });
 
   console.log("Created Order:", order);
-  console.log("Created Category:", category);
   console.log("Created User:", user);
   console.log("Created Product:", product);
 }
 
 main()
   .then(() => {
-    console.log("Success Created User, Category, Product, and Order");
+    console.log("Success Created User, Product, and Order");
   })
   .catch((err) => {
     console.error(err);

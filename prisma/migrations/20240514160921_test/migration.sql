@@ -26,19 +26,26 @@ CREATE TABLE "Order" (
 -- CreateTable
 CREATE TABLE "Product" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "categoryId" INTEGER NOT NULL,
+    "productCategoryId" INTEGER NOT NULL,
+    "colorCategoryId" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "color" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     "video" TEXT NOT NULL,
     "price" INTEGER NOT NULL,
     "isArchived" BOOLEAN NOT NULL,
-    CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Product_productCategoryId_fkey" FOREIGN KEY ("productCategoryId") REFERENCES "ProductCategory" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Product_colorCategoryId_fkey" FOREIGN KEY ("colorCategoryId") REFERENCES "ColorCategory" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
-CREATE TABLE "Category" (
+CREATE TABLE "ProductCategory" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "ColorCategory" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL
 );

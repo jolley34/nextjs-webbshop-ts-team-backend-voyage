@@ -35,20 +35,27 @@ model Order {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  Int
-  name        String
-  description String
-  color       String
-  image       String
-  video       String
-  price       Int
-  isArchived  Boolean
-  Order       Order[]
+  id                Int             @id @default(autoincrement())
+  productCategory   ProductCategory @relation(fields: [productCategoryId], references: [id])
+  productCategoryId Int
+  colorCategory     ColorCategory   @relation(fields: [colorCategoryId], references: [id])
+  colorCategoryId   Int
+  name              String
+  description       String
+  image             String
+  video             String
+  price             Int
+  isArchived        Boolean
+  Order             Order[]
 }
 
-model Category {
+model ProductCategory {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Product Product[]
+}
+
+model ColorCategory {
   id      Int       @id @default(autoincrement())
   name    String
   Product Product[]
