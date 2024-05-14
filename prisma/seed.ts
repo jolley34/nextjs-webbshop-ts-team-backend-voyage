@@ -59,9 +59,11 @@ async function main() {
     },
   });
 
-  console.log("Created Order:", order);
   console.log("Created User:", user);
   console.log("Created Product:", product);
+  console.log("Created Product Category:", productCategory);
+  console.log("Created Color Category:", colorCategory);
+  console.log("Created Order:", order);
 }
 
 main()
