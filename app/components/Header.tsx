@@ -198,7 +198,7 @@ export default function Header() {
                     transition: "opacity 0.5s ease",
                   }}
                 >
-                  voyage
+                  ananas
                 </Typography>
               </Link>
 
@@ -418,9 +418,11 @@ export default function Header() {
 const menuItems = [
   { label: "Hem", href: "/" },
   { label: "Nyheter", href: "/" },
-  { label: "Dam", href: "/" },
-  { label: "Herr", href: "/" },
-  { label: "Collections", href: "/about" },
+  { label: "MacBook", href: "/" },
+  { label: "iPad", href: "/" },
+  { label: "iPhone", href: "/" },
+  { label: "Watch", href: "/" },
+  { label: "Gallery", href: "/about" },
   { label: "Vår story", href: "/" },
 ];
 

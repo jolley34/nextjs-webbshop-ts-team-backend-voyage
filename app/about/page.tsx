@@ -96,39 +96,39 @@ export default function AboutPage() {
 
 const campaigns = [
   {
-    title: "SS24 SUMMER COLLECTION",
-    date: "SUMMER 2024",
+    title: "GALLERY 01",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_AOL_2023_CAMPAIGN_290_LVCOM_1600x2000_DII.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-ipad-air-202405?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=1713308272877",
   },
   {
-    title: "SS24 SPRING COLLECTION",
-    date: "SPRING 2024",
+    title: "GALLERY 02",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_AOL_2023_CAMPAIGN_318_LVCOM_2048x1152_DI3.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-iphone-15-pro-202309?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1692910040844",
   },
   {
-    title: "SS24 WINTER COLLECTION",
-    date: "WINTER 2024",
+    title: "GALLERY 03",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_LV_SKI_00070_LVCOM_1600x2000_DII.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-watch-s9-202309?wid=800&hei=1000&fmt=jpeg&qlt=90&.v=1692720183508",
   },
   {
-    title: "SS23 FALL COLLECTION",
-    date: "FALL 2023",
+    title: "GALLERY 04",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_AOL_2023_CAMPAIGN_325_LVCOM_1600x2000_DII.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-ipad-202310?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1696875297972",
   },
   {
-    title: "SS23 SUMMER COLLECTION",
-    date: "SUMMER 2023",
+    title: "GALLERY 05",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_AOL_2023_CAMPAIGN_287_LVCOM_2048x1152_DI3.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-iphone-15-202309?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1692719973220",
   },
   {
-    title: "SS23 SPRING COLLECTION",
-    date: "SPRING 2023",
+    title: "GALLERY 06",
+    date: "ananas",
     image:
-      "https://www.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--BC_COMMERCIAL_HOLIDAY2023_IMG015_LVCOM_2048x1152_DI3.jpg?wid=4096",
+      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/store-card-40-macbook-pro-202310?wid=800&hei=1000&fmt=p-jpg&qlt=95&.v=1696964122967",
   },
 ];

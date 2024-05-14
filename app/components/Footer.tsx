@@ -95,11 +95,11 @@ export default function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    ABOUT DANI VUITTON
+                    ABOUT ananas
                   </Typography>
-                  <StyledLink text="Collections" href="/about" />
+                  <StyledLink text="Gallery" href="/about" />
                   <StyledLink text="Admin" href="/admin" datacy="admin-link" />
-                  <StyledLink text="Fashion Shows" href="/about" />
+                  <StyledLink text="Tech Lifestyle" href="/about" />
                 </Box>
               </Hidden>
             </Box>
@@ -124,7 +124,7 @@ export default function Footer() {
                       color: pathname === "/about" ? "#ffffff" : "black",
                     }}
                   >
-                    ABOUT DANI VUITTON
+                    ABOUT ananas
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -136,9 +136,9 @@ export default function Footer() {
                       pathname === "/about" ? "#202020" : "white",
                   }}
                 >
-                  <StyledLink text="Collections" href="/about" />
+                  <StyledLink text="Gallery" href="/about" />
                   <StyledLink text="Admin" href="/admin" datacy="admin-link" />
-                  <StyledLink text="Fashion Shows" href="/about" />
+                  <StyledLink text="History" href="/about" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -164,7 +164,7 @@ export default function Footer() {
                   <StyledLink text="Follow Us" href="/about" />
 
                   <StyledLink
-                    text="Sign up for first access to latest collections & campaigns"
+                    text="Sign up for first access to latest drops & campaigns"
                     href="/about"
                   />
                 </Box>
@@ -205,7 +205,7 @@ export default function Footer() {
                 >
                   <StyledLink text="Follow Us" href="/about" />
                   <StyledLink
-                    text="Sign up for first access to latest collections, campaigns and videos"
+                    text="Sign up for first access to latest drops, campaigns and videos"
                     href="/about"
                   />
                 </AccordionDetails>
@@ -403,7 +403,7 @@ export default function Footer() {
           variant="body1"
           align="center"
         >
-          © 2024 DANI VUITTON
+          © 2024 ananas
         </Typography>
       </Container>
     </Box>

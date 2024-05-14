@@ -68,7 +68,7 @@ export default function VideoContainer() {
         <CardMedia
           ref={videoRef}
           component="video"
-          src="https://videos.pexels.com/video-files/4069480/4069480-uhd_3840_2160_25fps.mp4"
+          src="https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4"
           style={{
             width: "100vw",
             height: "100%",
@@ -129,7 +129,7 @@ export default function VideoContainer() {
             }}
             color="#ffffff"
           >
-            Luxury Destinations
+            ananas
           </Typography>
           <Typography
             variant="body2"
@@ -139,7 +139,7 @@ export default function VideoContainer() {
               fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
             }}
           >
-            A trip to remember forever, memories to share with your loved ones.
+            Explore the power of ananas
           </Typography>
         </Box>
       </Box>
