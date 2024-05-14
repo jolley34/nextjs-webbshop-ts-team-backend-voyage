@@ -147,7 +147,7 @@ function CartPage() {
                                 "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                             }}
                           >
-                            Storlek: {item.size}
+                            Färg: {item.size}
                           </Typography>
                           <Typography
                             data-cy="product-price"
