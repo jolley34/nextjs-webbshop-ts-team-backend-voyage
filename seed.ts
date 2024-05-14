@@ -23,6 +23,7 @@ async function main() {
       description: "Titan styled computer with POWER",
       image: "url_jpg",
       video: "video_url.mp4",
+      color: "Titan",
       price: 15000,
       isArchived: false,
       category: {
@@ -34,7 +35,6 @@ async function main() {
   const order = await db.order.create({
     data: {
       date: new Date(),
-      color: "Titan",
       firstName: "Vem",
       lastName: "Vet",
       phoneNumber: "123456789",
