@@ -11,6 +11,52 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  id       Int     @id @default(autoincrement())
+  username String
+  password String
+  isAdmin  Boolean
+  Order    Order[]
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   Int
+  userId      Int
+  date        DateTime
+  firstName   String
+  lastName    String
+  phoneNumber String
+  address     String
+  zipcode     String
+  city        String
+  email       String
+}
+
+model Product {
+  id                Int             @id @default(autoincrement())
+  productCategory   ProductCategory @relation(fields: [productCategoryId], references: [id])
+  productCategoryId Int
+  colorCategory     ColorCategory   @relation(fields: [colorCategoryId], references: [id])
+  colorCategoryId   Int
+  name              String
+  description       String
+  image             String
+  video             String
+  price             Int
+  isArchived        Boolean
+  Order             Order[]
+}
+
+model ProductCategory {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Product Product[]
+}
+
+model ColorCategory {
+  id      Int       @id @default(autoincrement())
+  name    String
+  Product Product[]
 }
