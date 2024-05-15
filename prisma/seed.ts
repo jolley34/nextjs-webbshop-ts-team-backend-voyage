@@ -11,13 +11,7 @@ async function main() {
     },
   });
 
-  const colorCategory = await db.colorCategory.create({
-    data: {
-      name: "#fffff",
-    },
-  });
-
-  const productCategory = await db.productCategory.create({
+  const category = await db.category.create({
     data: {
       name: "MacBook",
     },
@@ -31,11 +25,8 @@ async function main() {
       video: "video_url.mp4",
       price: 15000,
       isArchived: false,
-      productCategory: {
-        connect: { id: productCategory.id },
-      },
-      colorCategory: {
-        connect: { id: colorCategory.id },
+      categories: {
+        connect: { id: category.id },
       },
     },
   });
@@ -61,8 +52,7 @@ async function main() {
 
   console.log("Created User:", user);
   console.log("Created Product:", product);
-  console.log("Created Product Category:", productCategory);
-  console.log("Created Color Category:", colorCategory);
+  console.log("Created Category:", category);
   console.log("Created Order:", order);
 }
 

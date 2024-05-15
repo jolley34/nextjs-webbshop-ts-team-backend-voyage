@@ -33,10 +33,6 @@ model Order {
 
 model Product {
   id                Int             @id @default(autoincrement())
-  productCategory   ProductCategory @relation(fields: [productCategoryId], references: [id])
-  productCategoryId Int
-  colorCategory     ColorCategory   @relation(fields: [colorCategoryId], references: [id])
-  colorCategoryId   Int
   name              String
   description       String
   image             String
@@ -44,16 +40,13 @@ model Product {
   price             Int
   isArchived        Boolean
   Order             Order[]
+  categories        Category[]
 }
 
-model ProductCategory {
+model Category {
   id      Int       @id @default(autoincrement())
   name    String
-  Product Product[]
+  products Product[]
 }
 
-model ColorCategory {
-  id      Int       @id @default(autoincrement())
-  name    String
-  Product Product[]
-}
+
