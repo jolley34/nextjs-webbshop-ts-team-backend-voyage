@@ -12,68 +12,61 @@ model User {
   username String  @unique
   password String
   isAdmin  Boolean
-  Order    Order[]
+
+  Order Order[]
 }
 
 model Order {
-  id                Int            @id @default(autoincrement())
-  user              User           @relation(fields: [userId], references: [id])
-  product           Product        @relation(fields: [productId], references: [id])
-  shippingAdress    Address        @relation(fields: [shippingAddressId], references: [id])
-  productId         Int
+  id                Int      @id @default(autoincrement())
   userId            Int
   shippingAddressId Int
-  createdAt         DateTime       @default(now())
+  createdAt         DateTime @default(now())
   totalPrice        Decimal
-  OrderProduct      OrderProduct[]
+  number            Int
+
+  user           User           @relation(fields: [userId], references: [id])
+  shippingAdress Address        @relation(fields: [shippingAddressId], references: [id])
+  products       OrderProduct[]
 }
 
 model Address {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   firstName   String
   lastName    String
   phoneNumber String
-  address     String
+  street      String
   zipcode     String
   city        String
-  Order       Order[]
+
+  orders Order[]
 }
 
 model Product {
-  id              Int               @id @default(autoincrement())
-  name            String            @unique
-  description     String
-  image           String
-  video           String
-  price           Decimal
-  isArchived      Boolean
-  Order           Order[]
-  categories      Category[]
-  OrderProduct    OrderProduct[]
-  CategoryProduct CategoryProduct[]
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String
+  image       String
+  video       String
+  price       Decimal
+  isArchived  Boolean
+
+  categories Category[]
+  orders     OrderProduct[]
 }
 
 model OrderProduct {
   id            Int     @id @default(autoincrement())
-  order         Order   @relation(fields: [orderId], references: [id])
-  product       Product @relation(fields: [productId], references: [id])
   productId     Int
   orderId       Int
   quantity      Int
-  SubTotalPrice Decimal
+  subTotalPrice Decimal
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 }
 
 model Category {
-  id              Int               @id @default(autoincrement())
-  name            String            @unique
-  products        Product[]
-  CategoryProduct CategoryProduct[]
-}
-
-model CategoryProduct {
-  id         Int      @id @default(autoincrement())
-  categoryId Int
-  productId  Int
-  category   Category @relation(fields: [categoryId], references: [id])
-  products   Product  @relation(fields: [productId], references: [id])
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[]
 }

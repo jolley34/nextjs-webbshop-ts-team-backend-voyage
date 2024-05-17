@@ -49,7 +49,7 @@ async function main() {
     }
 
     const order = await db.order.upsert({
-      where: { email: orderData.email },
+      where: { id: orderData.number },
       update: {},
       create: {
         createdAt: orderData.createdAt,

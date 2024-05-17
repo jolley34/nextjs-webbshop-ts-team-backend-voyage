@@ -1,4 +1,6 @@
-const mockedData = {
+import { Prisma } from "@prisma/client";
+
+const mockedData: { users: Prisma.UserCreateInput[], categories: Prisma.CategoryCreateInput[], products: Prisma.ProductCreateInput[], orders: Prisma.OrderCreateInput[] } = {
   users: [
     {
       username: "Joel",
@@ -39,26 +41,50 @@ const mockedData = {
   ],
   orders: [
     {
+      totalPrice: 5000,
+      user: { connect: { id: 2 } },
       createdAt: new Date(),
-      firstName: "Vem",
-      lastName: "Vet",
-      phoneNumber: "123456789",
-      address: "123 Fejk Gatan",
-      zipcode: "12345",
-      city: "Tranemo",
-      email: "joel@tranemo.com",
-      productName: "MacBook Pro 16", // Lägg till detta fält
+      shippingAdress: {
+        create: {
+          firstName: "Vem",
+          lastName: "Vet",
+          phoneNumber: "123456789",
+          street: "123 Fejk Gatan",
+          zipcode: "12345",
+          city: "Tranemo",
+
+        }
+      },
+      products: {
+        create: {
+          productId: 2,
+          quantity: 2,
+          subTotalPrice: 5000
+        }
+      }
     },
     {
+      totalPrice: 5000,
+      user: { connect: { id: 1 } },
       createdAt: new Date(),
-      firstName: "Anna",
-      lastName: "Anka",
-      phoneNumber: "987654321",
-      address: "456 Fejk Gatan",
-      zipcode: "54321",
-      city: "Göteborg",
-      email: "anna@gothenburg.com",
-      productName: "iPhone 14", // Lägg till detta fält
+      shippingAdress: {
+        create: {
+          firstName: "Anna",
+          lastName: "Anka",
+          phoneNumber: "987654321",
+          street: "456 Fejk Gatan",
+          zipcode: "54321",
+          city: "Göteborg",
+        }
+      },
+      products: {
+        create: {
+          productId: 1,
+          quantity: 2,
+          subTotalPrice: 5000
+
+        }
+      }
     },
   ],
 };
