@@ -21,7 +21,7 @@ model Order {
   product     Product  @relation(fields: [productId], references: [id])
   productId   Int
   userId      Int
-  createdAt   DateTime @default(now())
+  createdAt   DateTime @default(now()) 
   firstName   String
   lastName    String
   phoneNumber String

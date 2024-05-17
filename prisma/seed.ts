@@ -1,64 +1,97 @@
-import { PrismaClient } from "@prisma/client";
 import console from "console";
+import { db } from "./db";
 import mockedData from "./mocked";
 
-const db = new PrismaClient();
-
 async function main() {
-  try {
-    for (const userData of mockedData.users) {
-      await db.user.upsert({
-        where: { username: userData.username },
-        update: {},
-        create: userData,
-      });
+  for (const userData of mockedData.users) {
+    const user = await db.user.upsert({
+      where: {
+        username: userData.username,
+      },
+      update: {},
+      create: userData
+    });
+    console.log("Skapad/Uppdaterad användare:", user);
+  }
+  for (const productData of mockedData.products) {
+    const product = await db.product.upsert({
+      where: {
+        name: productData.name,
+      },
+      update: {},
+      create: productData
+    });
+    console.log("Skapad/Uppdaterad användare:", product);
+  }
+
+
+ 
+
+
+
+  for (const orderData of mockedData.orders) {
+    const user = await db.user.findFirst({
+      where: {
+        AND: [{ username: orderData.firstName }],
+      },
+    });
+
+    if (!user) {
+      console.error(
+        `Användaren med e-postadress '${orderData.email}' hittades inte.`
+      );
+      continue;
     }
 
-    for (const productData of mockedData.products) {
-      await db.product.upsert({
-        where: { name: productData.name },
-        update: {},
-        create: productData,
-      });
+    //Hitta produktens id baserat på dess namn
+    const product = await db.product.findFirst({
+      where: { name: orderData.email }, // Använd namnet från orderData för att söka efter produkten
+    });
+
+    if (!product) {
+      console.error(`Produkten med namnet '${orderData.email}' hittades inte.`);
+      continue;
     }
 
-    for (const orderData of mockedData.orders) {
-      const user = await db.user.findUnique({
-        where: { username: orderData.username },
-      });
+    const order = await db.order.upsert({
+      where: { email: orderData.email },
+      update: {},
+      create: {
+        createdAt: orderData.createdAt,
+        firstName: orderData.firstName,
+        lastName: orderData.lastName,
+        phoneNumber: orderData.phoneNumber,
+        address: orderData.address,
+        zipcode: orderData.zipcode,
+        city: orderData.city,
+        email: orderData.email,
+        user: { connect: { id: user.id } },
+        product: { connect: { id: product.id } }, 
+      },
+    });
 
-      if (!user) {
-        throw new Error(
-          `User not found for order with email ${orderData.email}`
-        );
-      }
+    console.log("Skapad/Uppdaterad order:", order);
+  }
 
-      await db.order.upsert({
-        where: { email: orderData.email },
-        update: {},
-        create: {
-          ...orderData,
-          user: {
-            connect: { id: user.id },
-          },
-        },
-      });
-    }
-
-    for (const categoryData of mockedData.categories) {
-      await db.category.upsert({
-        where: { name: categoryData.name },
-        update: {},
-        create: categoryData,
-      });
-    }
-
-    console.log("Mockad data har skapats/uppdaterats.");
-  } catch (error) {
-    console.error("Ett fel uppstod:", error);
-  } finally {
-    await db.$disconnect();
+  for (const categoryData of mockedData.category) {
+    const category = await db.category.upsert({
+      where: {
+        name: categoryData.name,
+      },
+      update: {},
+      create: {
+        name: categoryData.name,
+        
+      },
+    });
+    console.log("Skapad/Uppdaterad kategori:", category);
   }
 }
 
-main();
+main()
+  .then(async () => {
+    console.log("Success Created/Updated Users, Products, and Orders");
+  })
+  .catch((err) => {
+    console.error(err);
+  });

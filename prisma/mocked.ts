@@ -47,6 +47,7 @@ const mockedData = {
       zipcode: "12345",
       city: "Tranemo",
       email: "joel@tranemo.com",
+      productName: "MacBook Pro 16", // Lägg till detta fält
     },
     {
       createdAt: new Date(),
@@ -57,6 +58,7 @@ const mockedData = {
       zipcode: "54321",
       city: "Göteborg",
       email: "anna@gothenburg.com",
+      productName: "iPhone 14", // Lägg till detta fält
     },
   ],
 };
