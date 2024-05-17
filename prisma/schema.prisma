@@ -40,7 +40,7 @@ model Product {
   price       Int
   isArchived  Boolean
   Order       Order[]
-  category    Category[]
+  categories  Category[]
 }
 
 model Category {

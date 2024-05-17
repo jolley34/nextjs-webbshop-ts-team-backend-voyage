@@ -11,7 +11,7 @@ const mockedData = {
       isAdmin: false,
     },
   ],
-  category: [
+  categories: [
     {
       name: "MacBook",
     },
