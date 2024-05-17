@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import console from "console";
+import { db } from "./db";
 import mockedData from "./mocked";
-
-const db = new PrismaClient();
 
 async function main() {
   for (const userData of mockedData.users) {
@@ -10,39 +8,55 @@ async function main() {
       where: {
         username: userData.username,
       },
-      include: { Order: true },
       update: {},
-      create: {
-        username: userData.username,
-        password: userData.password,
-        isAdmin: userData.isAdmin,
-      },
+      create: userData
     });
     console.log("Skapad/Uppdaterad användare:", user);
   }
-
   for (const productData of mockedData.products) {
     const product = await db.product.upsert({
       where: {
         name: productData.name,
       },
-      include: { category: true, Order: true },
       update: {},
-      create: {
-        name: productData.name,
-        description: productData.description,
-        image: productData.image,
-        video: productData.video,
-        price: productData.price,
-        isArchived: productData.isArchived,
-      },
+      create: productData
     });
-    console.log("Skapad/Uppdaterad produkt:", product);
+    console.log("Skapad/Uppdaterad användare:", product);
   }
 
+
+ 
+
+
+
   for (const orderData of mockedData.orders) {
+    const user = await db.user.findFirst({
+      where: {
+        AND: [{ username: orderData.firstName }],
+      },
+    });
+
+    if (!user) {
+      console.error(
+        `Användaren med e-postadress '${orderData.email}' hittades inte.`
+      );
+      continue;
+    }
+
+    //Hitta produktens id baserat på dess namn
+    const product = await db.product.findFirst({
+      where: { name: orderData.email }, // Använd namnet från orderData för att söka efter produkten
+    });
+
+    if (!product) {
+      console.error(`Produkten med namnet '${orderData.email}' hittades inte.`);
+      continue;
+    }
+
     const order = await db.order.upsert({
-      data: {
+      where: { email: orderData.email },
+      update: {},
+      create: {
         createdAt: orderData.createdAt,
         firstName: orderData.firstName,
         lastName: orderData.lastName,
@@ -51,14 +65,11 @@ async function main() {
         zipcode: orderData.zipcode,
         city: orderData.city,
         email: orderData.email,
-
-        categories: {
-          create: [{ name: "MacBook" }, { name: "IPhone" }],
-        },
+        user: { connect: { id: user.id } },
+        product: { connect: { id: product.id } }, 
       },
-      include: { user: true, product: true },
-      update: {},
     });
+
     console.log("Skapad/Uppdaterad order:", order);
   }
 
@@ -67,10 +78,10 @@ async function main() {
       where: {
         name: categoryData.name,
       },
-      include: { products: true },
       update: {},
       create: {
         name: categoryData.name,
+        
       },
     });
     console.log("Skapad/Uppdaterad kategori:", category);
@@ -79,12 +90,8 @@ async function main() {
 
 main()
   .then(async () => {
-    await db.$connect();
     console.log("Success Created/Updated Users, Products, and Orders");
   })
   .catch((err) => {
     console.error(err);
-  })
-  .finally(async () => {
-    await db.$disconnect();
   });
