@@ -12,35 +12,57 @@ model User {
   username String  @unique
   password String
   isAdmin  Boolean
-  Order    Order[]
+
+  Order Order[]
 }
 
 model Order {
-  id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userId], references: [id])
-  product     Product  @relation(fields: [productId], references: [id])
-  productId   Int
-  userId      Int
-  createdAt   DateTime @default(now()) 
+  id                Int      @id @default(autoincrement())
+  userId            Int
+  shippingAddressId Int
+  createdAt         DateTime @default(now())
+  totalPrice        Decimal
+  number            Int
+
+  user           User           @relation(fields: [userId], references: [id])
+  shippingAdress Address        @relation(fields: [shippingAddressId], references: [id])
+  products       OrderProduct[]
+}
+
+model Address {
+  id          Int    @id @default(autoincrement())
   firstName   String
   lastName    String
   phoneNumber String
-  address     String
+  street      String
   zipcode     String
   city        String
-  email       String   @unique
+
+  orders Order[]
 }
 
 model Product {
-  id          Int        @id @default(autoincrement())
-  name        String     @unique
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
   description String
   image       String
   video       String
-  price       Int
+  price       Decimal
   isArchived  Boolean
-  Order       Order[]
-  categories  Category[]
+
+  categories Category[]
+  orders     OrderProduct[]
+}
+
+model OrderProduct {
+  id            Int     @id @default(autoincrement())
+  productId     Int
+  orderId       Int
+  quantity      Int
+  subTotalPrice Decimal
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 }
 
 model Category {

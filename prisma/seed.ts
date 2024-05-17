@@ -9,7 +9,7 @@ async function main() {
         username: userData.username,
       },
       update: {},
-      create: userData
+      create: userData,
     });
     console.log("Skapad/Uppdaterad användare:", user);
   }
@@ -19,15 +19,10 @@ async function main() {
         name: productData.name,
       },
       update: {},
-      create: productData
+      create: productData,
     });
     console.log("Skapad/Uppdaterad användare:", product);
   }
-
-
- 
-
-
 
   for (const orderData of mockedData.orders) {
     const user = await db.user.findFirst({
@@ -54,7 +49,7 @@ async function main() {
     }
 
     const order = await db.order.upsert({
-      where: { email: orderData.email },
+      where: { id: orderData.number },
       update: {},
       create: {
         createdAt: orderData.createdAt,
@@ -66,14 +61,14 @@ async function main() {
         city: orderData.city,
         email: orderData.email,
         user: { connect: { id: user.id } },
-        product: { connect: { id: product.id } }, 
+        product: { connect: { id: product.id } },
       },
     });
 
     console.log("Skapad/Uppdaterad order:", order);
   }
 
-  for (const categoryData of mockedData.category) {
+  for (const categoryData of mockedData.categories) {
     const category = await db.category.upsert({
       where: {
         name: categoryData.name,
@@ -81,7 +76,6 @@ async function main() {
       update: {},
       create: {
         name: categoryData.name,
-        
       },
     });
     console.log("Skapad/Uppdaterad kategori:", category);
