@@ -10,14 +10,7 @@ export async function saveOrder(incomingData: OrderCreate) {
 
     const order = await db.order.create({
       data: {
-        createdAt: orderData.createdAt,
-        firstName: orderData.firstName,
-        lastName: orderData.lastName,
-        phoneNumber: orderData.phoneNumber,
-        address: orderData.address,
-        zipcode: orderData.zipcode,
-        city: orderData.city,
-        email: orderData.email,
+        orderData,
       },
     });
 

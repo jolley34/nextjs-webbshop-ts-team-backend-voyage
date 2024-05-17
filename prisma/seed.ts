@@ -30,7 +30,7 @@ async function main() {
       });
     }
 
-    for (const categoryData of mockedData.category) {
+    for (const categoryData of mockedData.categories) {
       await db.category.upsert({
         where: { name: categoryData.name },
         update: {},
