@@ -23,10 +23,25 @@ async function main() {
     }
 
     for (const orderData of mockedData.orders) {
+      const user = await db.user.findUnique({
+        where: { username: orderData.username },
+      });
+
+      if (!user) {
+        throw new Error(
+          `User not found for order with email ${orderData.email}`
+        );
+      }
+
       await db.order.upsert({
         where: { email: orderData.email },
         update: {},
-        create: orderData,
+        create: {
+          ...orderData,
+          user: {
+            connect: { id: user.id },
+          },
+        },
       });
     }
 
