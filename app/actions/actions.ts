@@ -20,9 +20,3 @@ export async function saveOrder(incomingData: OrderCreate) {
     console.error("Validation error:", error);
   }
 }
-
-export async function showAllProducts() {
-  const products = await db.product.findMany();
-  console.log(products);
-  revalidatePath("/");
-}
