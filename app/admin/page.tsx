@@ -10,12 +10,11 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import RemoveProductButton from "../components/RemoveProductButton";
-import { useProducts } from "../context/ProductContext";
+import { showAllProducts } from "../actions/productAction";
 import theme from "../themes/themes";
 
-export default function AdminPage() {
-  const { products } = useProducts();
+export default async function AdminPage() {
+  const { products } = await showAllProducts();
 
   return (
     <>
@@ -116,7 +115,7 @@ export default function AdminPage() {
                   >
                     <img
                       src={product.image}
-                      alt={product.title}
+                      alt={product.name}
                       style={{
                         objectPosition: "top",
                         objectFit: "cover",
@@ -144,7 +143,7 @@ export default function AdminPage() {
                         }}
                         data-cy="product-title"
                       >
-                        {product.title}
+                        {product.name}
                       </Typography>
 
                       <Typography
@@ -208,7 +207,7 @@ export default function AdminPage() {
                         {product.price} kr
                       </Typography>
                     </CardContent>
-                    <RemoveProductButton productId={product.id} />
+                    {/*      <RemoveProductButton productId={product.id} /> */}
                     <Button
                       href={`/admin/product/${product.id}` as any}
                       data-cy="admin-edit-product"
