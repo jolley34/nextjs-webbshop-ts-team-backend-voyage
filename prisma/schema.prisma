@@ -16,35 +16,64 @@ model User {
 }
 
 model Order {
-  id          Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userId], references: [id])
-  product     Product  @relation(fields: [productId], references: [id])
-  productId   Int
-  userId      Int
-  createdAt   DateTime @default(now()) 
+  id                Int            @id @default(autoincrement())
+  user              User           @relation(fields: [userId], references: [id])
+  product           Product        @relation(fields: [productId], references: [id])
+  shippingAdress    Address        @relation(fields: [shippingAddressId], references: [id])
+  productId         Int
+  userId            Int
+  shippingAddressId Int
+  createdAt         DateTime       @default(now())
+  totalPrice        Decimal
+  OrderProduct      OrderProduct[]
+}
+
+model Address {
+  id          Int     @id @default(autoincrement())
   firstName   String
   lastName    String
   phoneNumber String
   address     String
   zipcode     String
   city        String
-  email       String   @unique
+  Order       Order[]
 }
 
 model Product {
-  id          Int        @id @default(autoincrement())
-  name        String     @unique
-  description String
-  image       String
-  video       String
-  price       Int
-  isArchived  Boolean
-  Order       Order[]
-  categories  Category[]
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  description     String
+  image           String
+  video           String
+  price           Decimal
+  isArchived      Boolean
+  Order           Order[]
+  categories      Category[]
+  OrderProduct    OrderProduct[]
+  CategoryProduct CategoryProduct[]
+}
+
+model OrderProduct {
+  id            Int     @id @default(autoincrement())
+  order         Order   @relation(fields: [orderId], references: [id])
+  product       Product @relation(fields: [productId], references: [id])
+  productId     Int
+  orderId       Int
+  quantity      Int
+  SubTotalPrice Decimal
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
-  name     String    @unique
-  products Product[]
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  products        Product[]
+  CategoryProduct CategoryProduct[]
+}
+
+model CategoryProduct {
+  id         Int      @id @default(autoincrement())
+  categoryId Int
+  productId  Int
+  category   Category @relation(fields: [categoryId], references: [id])
+  products   Product  @relation(fields: [productId], references: [id])
 }

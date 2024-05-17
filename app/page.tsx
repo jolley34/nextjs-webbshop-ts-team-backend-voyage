@@ -10,16 +10,17 @@ export default async function Home() {
     <>
       <Box>
         <VideoContainer />
-
-        {products.map((product, index) => (
-          <ProductGrid
-            key={index}
-            name={product.name}
-            image={product.image}
-            description={product.description}
-            price={product.price}
-          />
-        ))}
+        <Box sx={{ display: "flex" }}>
+          {products.map((product, index) => (
+            <ProductGrid
+              key={index}
+              name={product.name}
+              image={product.image}
+              description={product.description}
+              price={product.price}
+            />
+          ))}
+        </Box>
       </Box>
     </>
   );
