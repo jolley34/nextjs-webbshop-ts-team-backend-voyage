@@ -16,9 +16,7 @@ import theme from "../themes/themes";
 import { UserCreate, UserCreateSchema } from "../validation/validation";
 
 export default function SignUp() {
-  const form = useForm<UserCreate>({
-    resolver: zodResolver(UserCreateSchema),
-  });
+  const form = useForm<UserCreate>({ resolver: zodResolver(UserCreateSchema) });
 
   const router = useRouter();
 
@@ -30,7 +28,7 @@ export default function SignUp() {
       console.error(error);
     }
   };
-  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
