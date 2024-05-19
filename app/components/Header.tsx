@@ -1,5 +1,6 @@
 "use client";
 
+import { LoginOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -232,17 +233,31 @@ export default function Header() {
               </Typography>
             </Box>
 
-            <IconButton
-              size="small"
-              sx={{
-                opacity: open ? 0 : loaded ? 1 : 0,
-                transition: "opacity 0.5s ease",
-                cursor: open ? "default" : "pointer",
-                pointerEvents: open ? "none" : "auto",
-              }}
-            >
-              <ShopCartWithBadge />
-            </IconButton>
+            <Box>
+              <IconButton
+                size="small"
+                sx={{
+                  color: "black",
+                  opacity: open ? 0 : loaded ? 1 : 0,
+                  transition: "opacity 0.5s ease",
+                  cursor: open ? "default" : "pointer",
+                  pointerEvents: open ? "none" : "auto",
+                }}
+              >
+                <LoginOutlined />
+              </IconButton>
+              <IconButton
+                size="small"
+                sx={{
+                  opacity: open ? 0 : loaded ? 1 : 0,
+                  transition: "opacity 0.5s ease",
+                  cursor: open ? "default" : "pointer",
+                  pointerEvents: open ? "none" : "auto",
+                }}
+              >
+                <ShopCartWithBadge />
+              </IconButton>
+            </Box>
           </Toolbar>
           {(isHeaderHovered || scrolling) &&
             !pathnames() &&
