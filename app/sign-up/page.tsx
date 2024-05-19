@@ -95,7 +95,7 @@ export default function SignUp() {
               <Grid item>
                 <Link
                   href="/sign-in"
-                  variant="body2"
+                  // variant="body2"
                   style={{ color: "black" }}
                 >
                   {" Already have an account? Sign in"}

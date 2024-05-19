@@ -1,6 +1,5 @@
 "use client";
 
-import { LoginOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -22,6 +21,7 @@ import { useEffect, useState } from "react";
 import theme from "../themes/themes";
 import CategoryBar from "./CategoryBar";
 import ShopCartWithBadge from "./ShopCartWithBadge";
+import SignInIcon from "./SignInIcon";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -90,6 +90,8 @@ export default function Header() {
       pathname === "/admin" ||
       pathname === "/confirmation" ||
       pathname === "/contact" ||
+      pathname === "/sign-in" ||
+      pathname === "/sign-up" ||
       pathname.startsWith("/admin/product/")
     );
   };
@@ -244,7 +246,7 @@ export default function Header() {
                   pointerEvents: open ? "none" : "auto",
                 }}
               >
-                <LoginOutlined />
+                <SignInIcon />
               </IconButton>
               <IconButton
                 size="small"

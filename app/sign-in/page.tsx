@@ -1,9 +1,7 @@
 import {
   Box,
   Button,
-  Checkbox,
   CssBaseline,
-  FormControlLabel,
   Grid,
   TextField,
   Typography,
@@ -61,10 +59,7 @@ export default function SignIn() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
@@ -77,7 +72,7 @@ export default function SignIn() {
               <Grid item>
                 <Link
                   href="/sign-up"
-                  variant="body2"
+                  // variant="body2"
                   style={{ color: "black" }}
                 >
                   {"Don't have an account? Sign Up"}
