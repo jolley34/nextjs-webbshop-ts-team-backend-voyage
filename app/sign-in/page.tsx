@@ -75,7 +75,11 @@ export default function SignIn() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2" style={{ color: "black" }}>
+                <Link
+                  href="/sign-up"
+                  variant="body2"
+                  style={{ color: "black" }}
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
