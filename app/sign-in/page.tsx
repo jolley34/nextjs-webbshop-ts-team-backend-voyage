@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
   Button,
@@ -8,9 +9,27 @@ import {
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { signInUser } from "../actions/userActions";
 import theme from "../themes/themes";
+import { UserSignIn, UserSignInSchema } from "../validation/validation";
 
 export default function SignIn() {
+  const form = useForm<UserSignIn>({
+    resolver: zodResolver(UserSignInSchema),
+  });
+  const router = useRouter();
+
+  const handleSubmit = async (data: UserSignIn) => {
+    try {
+      await signInUser(data);
+      router.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,22 +57,27 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={form.handleSubmit(handleSubmit)}
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              {...form.register("username")}
+              autoComplete="username"
               autoFocus
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
+              {...form.register("password")}
               label="Password"
               type="password"
               id="password"

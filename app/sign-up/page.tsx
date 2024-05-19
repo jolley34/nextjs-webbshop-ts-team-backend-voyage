@@ -30,6 +30,7 @@ export default function SignUp() {
       console.error(error);
     }
   };
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
