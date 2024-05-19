@@ -16,4 +16,17 @@ export const OrderCreateSchema = z.object({
   createdAt: z.string().optional(),
 });
 
+export const UserCreateSchema = z.object({
+  username: z.string().min(1),
+  password: z.string().min(1),
+  isAdmin: z.boolean().optional(),
+});
+
+export const UserSignInSchema = z.object({
+  username: z.string().min(1),
+  password: z.string().min(1),
+});
+
 export type OrderCreate = z.infer<typeof OrderCreateSchema>;
+export type UserCreate = z.infer<typeof UserCreateSchema>;
+export type UserSignIn = z.infer<typeof UserSignInSchema>;
