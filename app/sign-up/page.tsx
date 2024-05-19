@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
   Button,
@@ -8,9 +9,28 @@ import {
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
+import router from "next/router";
+import { useForm } from "react-hook-form";
+import { signUpUser } from "../actions/userActions";
 import theme from "../themes/themes";
+import { UserCreate, UserCreateSchema } from "../validation/validation";
 
 export default function SignUp() {
+  const form = useForm<UserCreate>({
+    resolver: zodResolver(UserCreateSchema),
+  });
+  const {
+    formState: { errors },
+  } = form;
+
+  const handleSubmit = async (data: UserCreate) => {
+    try {
+      await signUpUser(data);
+      router.push("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,7 +58,12 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={form.handleSubmit(handleSubmit)}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
