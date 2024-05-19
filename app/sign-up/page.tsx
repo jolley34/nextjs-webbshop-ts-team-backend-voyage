@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { signUpUser } from "../actions/userActions";
 import theme from "../themes/themes";
@@ -19,9 +19,8 @@ export default function SignUp() {
   const form = useForm<UserCreate>({
     resolver: zodResolver(UserCreateSchema),
   });
-  const {
-    formState: { errors },
-  } = form;
+
+  const router = useRouter();
 
   const handleSubmit = async (data: UserCreate) => {
     try {
@@ -68,7 +67,9 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  {...form.register("firstname")}
+                  // error={!!errors.firstName}
+                  // helperText={errors.firstName && errors.firstName.message}
                   required
                   fullWidth
                   id="firstName"
@@ -82,7 +83,9 @@ export default function SignUp() {
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  {...form.register("lastname")}
+                  // error={!!errors.lastName}
+                  // helperText={errors.lastName && errors.lastName.message}
                   autoComplete="family-name"
                 />
               </Grid>
@@ -90,9 +93,11 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
+                  id="username"
+                  label="Username"
+                  {...form.register("username")}
+                  // error={!!errors.email}
+                  // helperText={errors.email && errors.email.message}
                   autoComplete="email"
                 />
               </Grid>
@@ -100,7 +105,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  {...form.register("password")}
+                  // error={!!errors.password}
+                  // helperText={errors.password && errors.password.message}
                   label="Password"
                   type="password"
                   id="password"
