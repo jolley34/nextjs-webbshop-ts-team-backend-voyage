@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { showAllProducts } from "./actions/productAction";
+import { showAllProducts } from "./actions/products/handler";
 import ProductGrid from "./components/ProductGrid";
 import VideoContainer from "./components/VideoContainer";
 

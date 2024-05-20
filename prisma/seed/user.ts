@@ -41,7 +41,6 @@ export async function seedUsers() {
     },
   });
 
-  console.log({ user1 });
   const user2 = await db.user.upsert({
     where: { username: "noob" },
     update: {},
@@ -51,5 +50,7 @@ export async function seedUsers() {
       isAdmin: false,
     },
   });
+
+  console.log({ user1 });
   console.log({ user2 });
 }
