@@ -17,6 +17,7 @@ export default async function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          borderBottom: "1px solid lightgray",
         }}
       >
         {categories.map((category, index) => (
