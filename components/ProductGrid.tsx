@@ -1,18 +1,7 @@
 "use client";
-import { products } from "@/data";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import {
-  Box,
-  Card,
-  Grid,
-  IconButton,
-  Typography,
-  createTheme,
-} from "@mui/material";
+import { Box, Card, Grid, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import Link from "next/link";
-import { useState } from "react";
 
 interface CardProps {
   name: string;
@@ -21,55 +10,12 @@ interface CardProps {
   price: Prisma.Decimal;
 }
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#000000",
-      light: "#fdfdfd",
-    },
-    secondary: {
-      main: "#272727",
-      light: "#fffff",
-    },
-  },
-});
-
 export default function ProductGrid({
   name,
   description,
   image,
   price,
 }: CardProps) {
-  const [hovering, setHovering] = useState<number | null>(null);
-
-  const [productImageIndexes, setProductImageIndexes] = useState(
-    Array(products.length).fill(0)
-  );
-
-  const handleNextImage = (index: number) => {
-    setProductImageIndexes((prevIndexes) => {
-      const newIndexes = [...prevIndexes];
-      newIndexes[index] = (prevIndexes[index] + 1) % imagesToShow[index].length;
-      return newIndexes;
-    });
-  };
-
-  const handlePreviousImage = (index: number) => {
-    setProductImageIndexes((prevIndexes) => {
-      const newIndexes = [...prevIndexes];
-      newIndexes[index] =
-        prevIndexes[index] === 0
-          ? imagesToShow[index].length - 1
-          : prevIndexes[index] - 1;
-      return newIndexes;
-    });
-  };
-
-  const imagesToShow = products.map((product) => [
-    product.image,
-    ...product.images,
-  ]);
-
   return (
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
@@ -79,24 +25,15 @@ export default function ProductGrid({
               boxShadow: "none",
               cursor: "pointer",
             }}
-            /*       onMouseEnter={() => setHovering(index)} */
-            onMouseLeave={() => setHovering(null)}
           >
             <Box sx={{ position: "relative", overflow: "hidden" }}>
-              {/*                 <Link href={`/product`} style={{ textDecoration: "none" }}>
-               */}{" "}
               <Box
                 sx={{
                   display: "flex",
                   transition: "transform 1s ease",
-                  /*    transform: `translateX(-${
-                        productImageIndexes[index] * 100
-                      }%)`, */
                 }}
               >
-                {/*   {imagesToShow[index].map((image, i) => ( */}
                 <img
-                  /*          key={i} */
                   width={300}
                   height={300}
                   src={image}
@@ -111,44 +48,7 @@ export default function ProductGrid({
                     height: "100%",
                   }}
                 />
-                {/*       ))} */}
               </Box>
-              {/*                 </Link>
-               */}
-              <>
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: 0,
-                    transform: "translateY(-50%)",
-                    cursor: "pointer",
-                    color: "black",
-                    zIndex: 1,
-                    /*    opacity: hovering === index ? 1 : 0, */
-                    transition: "opacity 0.5s ease",
-                  }}
-                  /*     onClick={() => handlePreviousImage(index)} */
-                >
-                  <NavigateBeforeIcon fontSize="medium" />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    right: 0,
-                    transform: "translateY(-50%)",
-                    cursor: "pointer",
-                    color: "black",
-                    zIndex: 1,
-                    /*    opacity: hovering === index ? 1 : 0, */
-                    transition: "opacity 0.5s ease",
-                  }}
-                  /*   onClick={() => handleNextImage(index)} */
-                >
-                  <NavigateNextIcon fontSize="medium" />
-                </IconButton>
-              </>
             </Box>
 
             <Box
@@ -190,8 +90,6 @@ export default function ProductGrid({
                   </Typography>
                 </Box>
               </Link>
-              {/*                 <AddToCartButton product={product} size={"1"} />
-               */}{" "}
             </Box>
           </Card>
         </Grid>

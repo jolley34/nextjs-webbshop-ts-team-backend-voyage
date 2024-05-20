@@ -1,5 +1,4 @@
 import Footer from "@/components/shared/footer/Footer";
-import Header from "@/components/shared/header/Header";
 import { Box, CssBaseline, Grid } from "@mui/material";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";
@@ -14,9 +13,6 @@ export default function RootLayout({ children }: LayoutProps) {
           <ProductProvider>
             <CartProvider>
               <Grid container direction="column">
-                <Grid item>
-                  <Header />
-                </Grid>
                 <Grid item xs>
                   <Box component={"main"}>{children}</Box>
                 </Grid>

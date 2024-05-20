@@ -21,7 +21,11 @@ import { useEffect, useState } from "react";
 import theme from "../../../app/themes/themes";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
 
-export default function Header() {
+interface HeaderProps {
+  name: string;
+}
+
+export default function Header({ name }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -198,7 +202,7 @@ export default function Header() {
                     transition: "opacity 0.5s ease",
                   }}
                 >
-                  ananas
+                  {name}
                 </Typography>
               </Link>
 
