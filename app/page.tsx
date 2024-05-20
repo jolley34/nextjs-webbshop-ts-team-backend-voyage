@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { showAllCategories } from "./actions/categories/handler";
 import { showAllProducts } from "./actions/products/handler";
 import CategoryBar from "./components/CategoryBar";
@@ -10,34 +10,32 @@ export default async function Home() {
   const { categories } = await showAllCategories();
 
   return (
-    <>
-      <Box>
-        <VideoContainer />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            fontSize: "0.75rem",
-            alignItems: "center",
-          }}
-        >
-          {categories.map((category, index) => (
-            <CategoryBar key={index} name={category.name} />
-          ))}
-        </Box>
+    <Box>
+      <VideoContainer />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {categories.map((category, index) => (
+          <CategoryBar key={index} name={category.name} />
+        ))}
+      </Box>
 
-        <Box sx={{ display: "flex" }}>
-          {products.map((product, index) => (
+      <Grid container spacing={0}>
+        {products.map((product, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <ProductGrid
-              key={index}
               name={product.name}
               image={product.image}
               description={product.description}
               price={product.price}
             />
-          ))}
-        </Box>
-      </Box>
-    </>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }

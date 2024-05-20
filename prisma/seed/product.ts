@@ -41,7 +41,7 @@ export async function seedProducts() {
       name: "Macbook Pro",
       description: "M4",
       image:
-        "https://www.mstore.se/thumb/32307/1160x928/Macbook_Pro_M3_Space_Gray_PDP_Image_Position_1__WWEN.jpg?min_w=400&min_h=320&fill=ffffff",
+        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spacegray-gallery1-202310?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=1697311136703",
       video: "video_url.mp4",
       price: 15000,
       isArchived: false,
