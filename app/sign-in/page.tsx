@@ -1,34 +1,31 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
   Button,
   CssBaseline,
+  Divider,
   Grid,
   TextField,
   Typography,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { signInUser } from "../actions/userActions";
+import GitHubSignInButton from "../components/GitHubSignInButton";
 import theme from "../themes/themes";
-import { UserSignIn, UserSignInSchema } from "../validation/validation";
 
 export default function SignIn() {
-  const form = useForm<UserSignIn>({
-    resolver: zodResolver(UserSignInSchema),
-  });
-  const router = useRouter();
+  // const form = useForm<UserSignIn>({
+  //   resolver: zodResolver(UserSignInSchema),
+  // });
+  // const router = useRouter();
 
-  const handleSubmit = async (data: UserSignIn) => {
-    try {
-      await signInUser(data);
-      router.push("/");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleSubmit = async (data: UserSignIn) => {
+  //   try {
+  //     await signInUser(data);
+  //     router.push("/");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,7 +57,7 @@ export default function SignIn() {
           <Box
             component="form"
             noValidate
-            onSubmit={form.handleSubmit(handleSubmit)}
+            // onSubmit={form.handleSubmit(handleSubmit)}
             sx={{ mt: 1 }}
           >
             <TextField
@@ -69,7 +66,7 @@ export default function SignIn() {
               fullWidth
               id="username"
               label="Username"
-              {...form.register("username")}
+              // {...form.register("username")}
               autoComplete="username"
               autoFocus
             />
@@ -77,7 +74,7 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              {...form.register("password")}
+              // {...form.register("password")}
               label="Password"
               type="password"
               id="password"
@@ -92,6 +89,8 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            <Divider>Or</Divider>
+            <GitHubSignInButton />
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link
