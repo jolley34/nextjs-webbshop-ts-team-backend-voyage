@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { db } from "../../prisma/db";
+import { db } from "../../../prisma/db";
 import { OrderCreate, OrderCreateSchema } from "../validation/validation";
 
 export async function saveOrder(incomingData: OrderCreate) {

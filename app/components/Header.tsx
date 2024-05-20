@@ -19,7 +19,6 @@ import {
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import theme from "../themes/themes";
-import CategoryBar from "./CategoryBar";
 import ShopCartWithBadge from "./ShopCartWithBadge";
 
 export default function Header() {
@@ -29,7 +28,6 @@ export default function Header() {
   const [loaded, setLoaded] = useState(false);
   const pathname = usePathname();
   const [hoverItem, setHoverItem] = useState<number | null>(null);
-  const [isHeaderHovered, setIsHeaderHovered] = useState(false);
 
   useEffect(() => {
     function handleScroll() {
@@ -71,7 +69,6 @@ export default function Header() {
   const handleMouseEnter = () => {
     if (!open) {
       setHovering(true);
-      setIsHeaderHovered(true);
     }
   };
 
@@ -79,7 +76,6 @@ export default function Header() {
     if (!open) {
       setHovering(false);
       setHoverItem(null);
-      setIsHeaderHovered(false);
     }
   };
 
@@ -163,21 +159,6 @@ export default function Header() {
               justifyContent: "space-between",
               display: "flex",
               alignItems: "center",
-              borderBottom:
-                pathnames() ||
-                pathname === "/about" ||
-                pathname.startsWith("/product/") ||
-                open
-                  ? "none"
-                  : open || scrolling || hovering
-                  ? "1px solid lightgray"
-                  : "none",
-              paddingBottom:
-                pathnames() ||
-                pathname === "/about" ||
-                pathname.startsWith("/product/")
-                  ? 0
-                  : "1rem",
             }}
           >
             <IconButton
@@ -244,11 +225,6 @@ export default function Header() {
               <ShopCartWithBadge />
             </IconButton>
           </Toolbar>
-          {(isHeaderHovered || scrolling) &&
-            !pathnames() &&
-            pathname !== "/about" &&
-            !pathname.startsWith("/product/") &&
-            !open && <CategoryBar />}
         </AppBar>
 
         <Box>
@@ -442,11 +418,9 @@ export default function Header() {
 const menuItems = [
   { label: "Hem", href: "/" },
   { label: "Nyheter", href: "/" },
-  { label: "MacBook", href: "/" },
-  { label: "iPad", href: "/" },
-  { label: "iPhone", href: "/" },
-  { label: "Watch", href: "/" },
-  { label: "Gallery", href: "/about" },
+  { label: "Dam", href: "/" },
+  { label: "Herr", href: "/" },
+  { label: "Collections", href: "/about" },
   { label: "Vår story", href: "/" },
 ];
 
