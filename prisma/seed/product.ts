@@ -10,10 +10,10 @@ export async function seedProducts() {
   });
 
   const iphoneCategory = await db.category.upsert({
-    where: { name: "Mac" },
+    where: { name: "iPhone" },
     update: {},
     create: {
-      name: "Mac",
+      name: "iPhone",
     },
   });
 
