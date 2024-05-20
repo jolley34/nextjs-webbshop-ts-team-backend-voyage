@@ -8,18 +8,18 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
+  id       String  @id @default(cuid())
   username String  @unique
   password String
   isAdmin  Boolean
 
-  Order Order[]
+  orders Order[]
 }
 
 model Order {
-  id                Int      @id @default(autoincrement())
-  userId            Int
-  shippingAddressId Int
+  id                String   @id @default(cuid())
+  userId            String
+  shippingAddressId String
   createdAt         DateTime @default(now())
   totalPrice        Decimal
   number            Int
@@ -30,7 +30,7 @@ model Order {
 }
 
 model Address {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(cuid())
   firstName   String
   lastName    String
   phoneNumber String
@@ -42,7 +42,7 @@ model Address {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          String  @id @default(cuid())
   name        String  @unique
   description String
   image       String
@@ -55,9 +55,9 @@ model Product {
 }
 
 model OrderProduct {
-  id            Int     @id @default(autoincrement())
-  productId     Int
-  orderId       Int
+  id            String  @id @default(cuid())
+  productId     String
+  orderId       String
   quantity      Int
   subTotalPrice Decimal
 
@@ -66,7 +66,7 @@ model OrderProduct {
 }
 
 model Category {
-  id       Int       @id @default(autoincrement())
+  id       String    @id @default(cuid())
   name     String    @unique
   products Product[]
 }
