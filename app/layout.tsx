@@ -1,5 +1,5 @@
-import Footer from "@/app/components/Footer";
-import Header from "@/app/components/Header";
+import Footer from "@/components/shared/footer/Footer";
+import Header from "@/components/shared/header/Header";
 import { Box, CssBaseline, Grid } from "@mui/material";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";

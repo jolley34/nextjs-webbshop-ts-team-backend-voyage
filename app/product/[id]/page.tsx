@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import AddToCartButton from "@/app/components/AddToCartButton";
 import theme from "@/app/themes/themes";
+import AddToCartButton from "@/components/AddToCartButton";
 import { products } from "@/data";
 import {
   Box,

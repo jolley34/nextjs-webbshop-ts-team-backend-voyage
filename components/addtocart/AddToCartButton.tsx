@@ -4,9 +4,9 @@ import { Product } from "@/data";
 import { ThemeProvider, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState } from "react";
-import Toast from "../components/Toast";
-import { useCart } from "../context/CartContext";
-import { theme } from "../themes/themes";
+import { useCart } from "../../app/context/CartContext";
+import { theme } from "../../app/themes/themes";
+import Toast from "../Toast";
 
 function AddToCartButton({
   product,

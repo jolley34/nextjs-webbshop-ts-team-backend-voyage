@@ -18,8 +18,8 @@ import {
 } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import theme from "../themes/themes";
-import ShopCartWithBadge from "./ShopCartWithBadge";
+import theme from "../../../app/themes/themes";
+import ShopCartWithBadge from "../../ShopCartWithBadge";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

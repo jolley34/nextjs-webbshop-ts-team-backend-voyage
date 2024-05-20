@@ -10,7 +10,7 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { z } from "zod";
-import { theme } from "../themes/themes";
+import { theme } from "../app/themes/themes";
 
 const formSchema = z.object({
   name: z.string().nonempty(),

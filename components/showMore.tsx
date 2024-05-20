@@ -1,6 +1,6 @@
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Button, styled } from "@mui/material";
-import theme from "../themes/themes";
+import theme from "../app/themes/themes";
 
 const StyledButton = styled(Button)(() => ({
   padding: "0.75rem 5.25rem 0.75rem 5.25rem",
