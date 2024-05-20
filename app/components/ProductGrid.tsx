@@ -10,6 +10,7 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
+import { Prisma } from "@prisma/client";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -17,7 +18,7 @@ interface CardProps {
   name: string;
   description: string;
   image: string;
-  price: number;
+  price: Prisma.Decimal;
 }
 
 const theme = createTheme({
@@ -77,7 +78,7 @@ export default function ProductGrid({
             <Card
               sx={{
                 boxShadow: "none",
-                width: "100%",
+                width: "500px",
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -89,37 +90,38 @@ export default function ProductGrid({
               onMouseLeave={() => setHovering(null)}
             >
               <Box sx={{ position: "relative", overflow: "hidden" }}>
-                <Link href={`/product`} style={{ textDecoration: "none" }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      transition: "transform 1s ease",
-                      /*    transform: `translateX(-${
+                {/*                 <Link href={`/product`} style={{ textDecoration: "none" }}>
+                 */}{" "}
+                <Box
+                  sx={{
+                    display: "flex",
+                    transition: "transform 1s ease",
+                    /*    transform: `translateX(-${
                         productImageIndexes[index] * 100
                       }%)`, */
+                  }}
+                >
+                  {/*   {imagesToShow[index].map((image, i) => ( */}
+                  <img
+                    /*          key={i} */
+                    width={300}
+                    height={300}
+                    src={image}
+                    alt={name}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to bottom, #e2e0df, #ffffff)",
+                      objectPosition: "top",
+                      objectFit: "cover",
+                      aspectRatio: 1,
+                      width: "100%",
+                      height: "100%",
                     }}
-                  >
-                    {/*   {imagesToShow[index].map((image, i) => ( */}
-                    <img
-                      /*          key={i} */
-                      width={300}
-                      height={300}
-                      src={image}
-                      alt={name}
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(to bottom, #e2e0df, #ffffff)",
-                        objectPosition: "top",
-                        objectFit: "cover",
-                        aspectRatio: 1,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    />
-                    {/*       ))} */}
-                  </Box>
-                </Link>
-
+                  />
+                  {/*       ))} */}
+                </Box>
+                {/*                 </Link>
+                 */}
                 <>
                   <IconButton
                     sx={{
