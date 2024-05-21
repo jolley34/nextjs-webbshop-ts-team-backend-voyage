@@ -81,6 +81,17 @@ const CustomerForm = () => {
           spacing={0}
         >
           <Grid item xs={12}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "100",
+                marginTop: "1rem",
+                fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                fontSize: { xs: "1.5rem", md: "2rem" },
+              }}
+            >
+              Leveransuppgifter
+            </Typography>
             <FormControl
               sx={{
                 width: "100%",

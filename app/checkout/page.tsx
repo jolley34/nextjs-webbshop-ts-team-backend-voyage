@@ -9,6 +9,8 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+import { auth } from "@/auth";
+import CartSignInForm from "@/components/CartSignInForm";
 import {
   Box,
   CardContent,
@@ -22,10 +24,12 @@ import {
 } from "@mui/material";
 import CustomerForm from "../../components/CustomerForm";
 import { useCart } from "../context/CartContext";
+import { signOutUser } from "../server-actions/user/userActions";
 import theme from "../themes/themes";
 
 function CartPage() {
   const { cart, removeFromCart, changeQuantity } = useCart();
+  const session = await auth();
 
   const handleRemoveFromCart = (productId: string, size: string) => {
     removeFromCart(productId, size);
@@ -332,20 +336,17 @@ function CartPage() {
                   </Grid>
 
                   <Divider />
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "100",
-                      marginTop: "1rem",
-                      fontFamily:
-                        "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                      fontSize: { xs: "1.5rem", md: "2rem" },
-                    }}
-                  >
-                    Leveransuppgifter
-                  </Typography>
-
-                  <CustomerForm />
+                  {session?.user && (
+                    <header>
+                      <p>{session.user.name}</p>
+                      <p>{session.user.email}</p>
+                      <p>ADMIN: {session.user.isAdmin ? "YES" : "NO"}</p>
+                      <form action={signOutUser}>
+                        <button>Sign out</button>
+                      </form>
+                    </header>
+                  )}
+                  {session?.user ? <CustomerForm /> : <CartSignInForm />}
                 </CardContent>
                 <Divider />
                 <Box sx={{ marginTop: "1rem" }}>
