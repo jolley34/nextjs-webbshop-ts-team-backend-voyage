@@ -25,7 +25,7 @@ export default async function Dashboard() {
 
       <Grid container spacing={0}>
         {products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
+          <Grid item xs={12} sm={6} md={3} key={index}>
             <ProductGrid
               name={product.name}
               image={product.image}
