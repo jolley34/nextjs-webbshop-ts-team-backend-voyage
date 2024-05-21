@@ -19,7 +19,7 @@ import {
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import SignInIcon from "./SignInIcon";
+import LoginIcon from "@mui/icons-material/Login";
 
 import theme from "@/app/themes/themes";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
@@ -233,7 +233,7 @@ export default function Header({ name }: HeaderProps) {
                   pointerEvents: open ? "none" : "auto",
                 }}
               >
-                <SignInIcon />
+                <LoginIcon />
               </IconButton>
               <IconButton
                 size="small"
