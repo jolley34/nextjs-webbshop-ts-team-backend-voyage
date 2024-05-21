@@ -16,7 +16,7 @@ export default async function SignInPage() {
           </form>
         </header>
       )}
-      {!session?.user && <SignInButton />}
+      {!session && <SignInButton />}
     </>
   );
 }
