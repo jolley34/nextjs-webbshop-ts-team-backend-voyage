@@ -8,6 +8,9 @@ export async function seedUsers(db: PrismaClient) {
       id: "clwgbsd2g00049q81pzvugkn1",
       name: "Hello",
       email: "jolle@gmail.com",
+      isAdmin: true,
+      username: "jolle",
+      password: "secret",
       orders: {
         create: [
           {
@@ -47,6 +50,9 @@ export async function seedUsers(db: PrismaClient) {
       id: "clwgbsder00089q814t1jch2a",
       name: "Bye",
       email: "noob@gmail.com",
+      isAdmin: false,
+      username: "nooben",
+      password: "imnotnoob",
     },
   });
 

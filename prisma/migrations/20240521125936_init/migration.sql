@@ -1,6 +1,9 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
+    "username" TEXT,
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
+    "password" TEXT,
     "name" TEXT,
     "email" TEXT NOT NULL,
     "emailVerified" TIMESTAMP(3),
