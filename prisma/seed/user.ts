@@ -9,8 +9,6 @@ export async function seedUsers(db: PrismaClient) {
       password: "secret",
       isAdmin: false,
       email: "jolle@gmail.com",
-      name: "imshitface",
-      image: "avatar.jpg",
       orders: {
         create: [
           {
@@ -51,8 +49,6 @@ export async function seedUsers(db: PrismaClient) {
       password: "imnotnoob",
       isAdmin: false,
       email: "noob@gmail.com",
-      name: "whoknows",
-      image: "avatar.jpg",
     },
   });
 
