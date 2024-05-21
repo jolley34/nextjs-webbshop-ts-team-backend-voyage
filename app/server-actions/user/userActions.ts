@@ -1,8 +1,8 @@
 "use server";
 
+import { signOut } from "@/auth";
 import argon2 from "argon2";
 import { NextApiRequest, NextApiResponse } from "next";
-import { signOut } from "next-auth/react";
 import { revalidatePath } from "next/cache";
 import { db } from "../../../prisma/db";
 import {
