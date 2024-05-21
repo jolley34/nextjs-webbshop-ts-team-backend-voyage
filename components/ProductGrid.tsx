@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import Link from "next/link";
 
 interface CardProps {
+  productId: string;
   name: string;
   description: string;
   image: string;
@@ -15,6 +16,7 @@ export default function ProductGrid({
   description,
   image,
   price,
+  productId,
 }: CardProps) {
   return (
     <Box sx={{ backgroundColor: "#ffffff" }}>
@@ -59,7 +61,10 @@ export default function ProductGrid({
                 padding: "1rem",
               }}
             >
-              <Link href={`/product/}`} style={{ textDecoration: "none" }}>
+              <Link
+                href={`/product/${productId}}`}
+                style={{ textDecoration: "none" }}
+              >
                 <Box>
                   <Typography
                     fontWeight="400"

@@ -17,3 +17,19 @@ export async function showAllProducts() {
   });
   return { products };
 }
+export async function showOneProduct(productId: string) {
+  const product = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+    select: {
+      id: true,
+      name: true,
+      image: true,
+      description: true,
+      price: true,
+      video: true,
+    },
+  });
+  return { product };
+}

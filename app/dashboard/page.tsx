@@ -10,6 +10,7 @@ import { signOutUser } from "../server-actions/user/userActions";
 export default async function Dashboard() {
   const { products } = await showAllProducts();
   const { categories } = await showAllCategories();
+
   const session = await auth();
 
   return (
@@ -42,6 +43,7 @@ export default async function Dashboard() {
         {products.map((product, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <ProductGrid
+              productId={product.id}
               name={product.name}
               image={product.image}
               description={product.description}
