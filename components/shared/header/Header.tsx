@@ -18,7 +18,10 @@ import {
 } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import theme from "../../../app/themes/themes";
+
+import LoginIcon from "@mui/icons-material/Login";
+
+import theme from "@/app/themes/themes";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
 
 interface HeaderProps {
@@ -89,6 +92,8 @@ export default function Header({ name }: HeaderProps) {
       pathname === "/admin" ||
       pathname === "/confirmation" ||
       pathname === "/contact" ||
+      pathname === "/sign-in" ||
+      pathname === "/sign-up" ||
       pathname.startsWith("/admin/product/")
     );
   };
@@ -217,17 +222,31 @@ export default function Header({ name }: HeaderProps) {
               </Typography>
             </Box>
 
-            <IconButton
-              size="small"
-              sx={{
-                opacity: open ? 0 : loaded ? 1 : 0,
-                transition: "opacity 0.5s ease",
-                cursor: open ? "default" : "pointer",
-                pointerEvents: open ? "none" : "auto",
-              }}
-            >
-              <ShopCartWithBadge />
-            </IconButton>
+            <Box>
+              <IconButton
+                size="small"
+                sx={{
+                  color: "black",
+                  opacity: open ? 0 : loaded ? 1 : 0,
+                  transition: "opacity 0.5s ease",
+                  cursor: open ? "default" : "pointer",
+                  pointerEvents: open ? "none" : "auto",
+                }}
+              >
+                <LoginIcon />
+              </IconButton>
+              <IconButton
+                size="small"
+                sx={{
+                  opacity: open ? 0 : loaded ? 1 : 0,
+                  transition: "opacity 0.5s ease",
+                  cursor: open ? "default" : "pointer",
+                  pointerEvents: open ? "none" : "auto",
+                }}
+              >
+                <ShopCartWithBadge />
+              </IconButton>
+            </Box>
           </Toolbar>
         </AppBar>
 
