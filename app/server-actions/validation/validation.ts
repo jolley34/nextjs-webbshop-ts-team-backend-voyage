@@ -10,10 +10,6 @@ export const OrderCreateSchema = z.object({
   zipcode: z.string().min(1),
   city: z.string().min(1),
   email: z.string().min(1),
-  id: z.string().optional(),
-  productId: z.string().optional(),
-  userId: z.string().optional(),
-  createdAt: z.string().optional(),
 });
 
 export type OrderCreate = z.infer<typeof OrderCreateSchema>;

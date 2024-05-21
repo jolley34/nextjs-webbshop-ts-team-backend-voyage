@@ -9,8 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useProducts } from "../context/ProductContext";
-import theme from "../themes/themes";
+import { useProducts } from "../app/context/ProductContext";
+import theme from "../app/themes/themes";
 
 interface Props {
   productId: string;

@@ -10,7 +10,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { showAllProducts } from "../actions/products/handler";
+import { showAllProducts } from "../server-actions/products/handler";
 import theme from "../themes/themes";
 
 export default async function AdminPage() {

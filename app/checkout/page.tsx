@@ -20,7 +20,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import CustomerForm from "../components/CustomerForm";
+import CustomerForm from "../../components/CustomerForm";
 import { useCart } from "../context/CartContext";
 import theme from "../themes/themes";
 
