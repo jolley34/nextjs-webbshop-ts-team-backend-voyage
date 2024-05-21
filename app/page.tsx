@@ -1,25 +1,15 @@
-import { Box } from "@mui/material";
-import VideoContainer from "./components/VideoContainer";
+import VideoContainer from "@/components/VideoContainer";
+import Header from "@/components/shared/header/Header";
+import ShowMoreComponent from "@/components/showMore";
+import Dashboard from "./dashboard/page";
 
 export default async function Home() {
-  // const { products } = await showAllProducts();
-
   return (
     <>
-      <Box>
-        <VideoContainer />
-        <Box sx={{ display: "flex" }}>
-          {/* {products.map((product, index) => (
-            <ProductGrid
-              key={index}
-              name={product.name}
-              image={product.image}
-              description={product.description}
-              price={product.price}
-            />
-          ))} */}
-        </Box>
-      </Box>
+      <Header name="ananas" />
+      <VideoContainer />
+      <Dashboard />
+      <ShowMoreComponent />
     </>
   );
 }

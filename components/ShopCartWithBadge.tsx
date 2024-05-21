@@ -2,8 +2,8 @@
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Badge, Link, ThemeProvider } from "@mui/material";
 import { usePathname } from "next/navigation";
-import { useCart } from "../context/CartContext";
-import { theme } from "../themes/themes";
+import { useCart } from "../app/context/CartContext";
+import { theme } from "../app/themes/themes";
 
 export default function ShopCartWithBadge() {
   const { cart } = useCart();
