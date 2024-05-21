@@ -1,3 +1,4 @@
+"use client";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Button, styled } from "@mui/material";
 import theme from "../app/themes/themes";
@@ -15,7 +16,7 @@ const StyledButton = styled(Button)(() => ({
   },
 }));
 
-export default function showMoreComponent() {
+export default function ShowMoreComponent() {
   return (
     <>
       <Box
