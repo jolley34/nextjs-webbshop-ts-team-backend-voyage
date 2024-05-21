@@ -17,8 +17,9 @@ export async function showAllProducts() {
   });
   return { products };
 }
+
 export async function showOneProduct(productId: string) {
-  const product = await db.product.findUnique({
+  const product = await db.product.findFirst({
     where: {
       id: productId,
     },
