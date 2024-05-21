@@ -19,8 +19,6 @@ import {
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import LoginIcon from "@mui/icons-material/Login";
-
 import theme from "@/app/themes/themes";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
 
@@ -232,9 +230,7 @@ export default function Header({ name }: HeaderProps) {
                   cursor: open ? "default" : "pointer",
                   pointerEvents: open ? "none" : "auto",
                 }}
-              >
-                <LoginIcon />
-              </IconButton>
+              ></IconButton>
               <IconButton
                 size="small"
                 sx={{

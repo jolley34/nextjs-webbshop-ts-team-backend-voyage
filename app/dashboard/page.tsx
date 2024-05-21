@@ -1,3 +1,4 @@
+import NavigateToSignIn from "@/components/NavigateToSignIn";
 import { Box, Grid } from "@mui/material";
 import ProductGrid from "../../components/ProductGrid";
 import CategoryBar from "../../components/categorybar/CategoryBar";
@@ -10,6 +11,7 @@ export default async function Dashboard() {
 
   return (
     <Box>
+      <NavigateToSignIn />
       <Box
         sx={{
           display: "flex",

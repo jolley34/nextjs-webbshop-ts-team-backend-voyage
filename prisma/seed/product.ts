@@ -1,6 +1,6 @@
-import { db } from "../db";
+import { PrismaClient } from "@prisma/client";
 
-export async function seedProducts() {
+export async function seedProducts(db: PrismaClient) {
   const macbookCategory = await db.category.upsert({
     where: { name: "Mac" },
     update: {},

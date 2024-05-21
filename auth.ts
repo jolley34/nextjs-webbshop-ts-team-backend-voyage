@@ -5,7 +5,12 @@ import { db } from "./prisma/db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
-  providers: [github],
+  providers: [
+    github({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+  ],
 });
 
 declare module "next-auth" {
