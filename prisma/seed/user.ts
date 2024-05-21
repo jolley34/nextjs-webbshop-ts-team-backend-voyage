@@ -1,6 +1,6 @@
-import { db } from "../db";
+import { PrismaClient } from "@prisma/client";
 
-export async function seedUsers() {
+export async function seedUsers(db: PrismaClient) {
   const user1 = await db.user.upsert({
     where: { username: "shitface" },
     update: {},
@@ -8,6 +8,7 @@ export async function seedUsers() {
       username: "shitface",
       password: "secret",
       isAdmin: false,
+      email: "jolle@gmail.com",
 
       orders: {
         create: [
@@ -48,6 +49,7 @@ export async function seedUsers() {
       username: "noob",
       password: "imnotnoob",
       isAdmin: false,
+      email: "noob@gmail.com",
     },
   });
 

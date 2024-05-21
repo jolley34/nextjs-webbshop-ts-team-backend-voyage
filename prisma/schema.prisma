@@ -13,9 +13,12 @@ model User {
   username      String    @unique
   password      String
   isAdmin       Boolean
+  name          String?
+  email         String    @unique
   emailVerified DateTime?
-  updatedAt     DateTime  @updatedAt
+  image         String?
   createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
 
   accounts Account[]
   sessions Session[]

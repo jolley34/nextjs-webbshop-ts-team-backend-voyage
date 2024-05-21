@@ -1,16 +1,21 @@
+import { PrismaClient } from "@prisma/client";
 import console from "console";
 import { seedProducts } from "./seed/product";
 import { seedUsers } from "./seed/user";
 
+const db = new PrismaClient();
+
 async function main() {
-  await seedProducts();
-  await seedUsers();
+  await seedProducts(db);
+  await seedUsers(db);
 }
 
 main()
   .then(async () => {
-    console.log("Success Created/Updated Users, Products, and Orders");
+    await db.$disconnect();
   })
-  .catch((err) => {
-    console.error(err);
+  .catch(async (e) => {
+    console.error(e);
+    await db.$disconnect();
+    process.exit(1);
   });
