@@ -20,11 +20,38 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import CartSignInForm from "../../../components/CartSignInForm";
 import CustomerForm from "../../../components/CustomerForm";
 import { useCart } from "../../context/CartContext";
 import theme from "../../themes/themes";
 
-function CheckoutLayout() {
+export interface User {
+  id: string;
+  username?: string | null;
+  isAdmin: boolean;
+  password?: string | null;
+  name?: string | null;
+  email: string;
+  emailVerified?: Date | null;
+  image?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Session {
+  sessionToken: string;
+  userId: string;
+  expires: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  user: User;
+}
+
+export interface CheckoutLayoutProps {
+  session: Session;
+}
+
+function CheckoutLayout({ session }: CheckoutLayoutProps) {
   const { cart, removeFromCart, changeQuantity } = useCart();
 
   const handleRemoveFromCart = (productId: string, size: string) => {
@@ -332,7 +359,7 @@ function CheckoutLayout() {
                   </Grid>
 
                   <Divider />
-                  <CustomerForm />
+                  {session?.user ? <CustomerForm /> : <CartSignInForm />}
                 </CardContent>
                 <Divider />
                 <Box sx={{ marginTop: "1rem" }}>
