@@ -1,21 +1,22 @@
 "use client";
 
-import { IconButton, List, ListItem } from "@mui/material";
+import { Box } from "@mui/material";
+import React from "react";
 
 interface BarProps {
   name: string;
+  onClick: () => void;
 }
 
-export default function CategoryBar({ name }: BarProps) {
+const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
   return (
-    <>
-      <List>
-        <IconButton>
-          <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
-            {name}
-          </ListItem>
-        </IconButton>
-      </List>
-    </>
+    <Box
+      sx={{ cursor: "pointer", padding: "10px" }}
+      onClick={onClick}
+    >
+      {name}
+    </Box>
   );
-}
+};
+
+export default CategoryBar;
