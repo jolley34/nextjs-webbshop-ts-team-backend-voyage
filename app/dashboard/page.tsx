@@ -43,7 +43,7 @@ export default async function Dashboard() {
         {products.map((product, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <ProductGrid
-              slug={product.name}
+              slug={product.id}
               name={product.name}
               image={product.image}
               description={product.description}

@@ -22,7 +22,10 @@ export default function ProductGrid({
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
         <Grid component={"main"} container>
-          <Link href={`/product/${slug}}`} style={{ textDecoration: "none" }}>
+          <Link
+            href={`/product/${encodeURIComponent(slug)}`}
+            style={{ textDecoration: "none" }}
+          >
             <Card
               sx={{
                 boxShadow: "none",

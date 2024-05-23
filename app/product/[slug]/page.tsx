@@ -1,13 +1,14 @@
-import Header from "../../../components/shared/header/Header";
-import ProductLayout from "../../product/[slug]/components/layout";
-import { showOneProduct } from "../../server-actions/products/handler";
+import { showOneProduct } from "@/app/server-actions/products/handler";
+import Header from "@/components/shared/header/Header";
+import ProductLayout from "./components/layout";
 
 export default async function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: { slug: string };
 }) {
-  const productId = params.id;
+  console.log(params);
+  const productId = params.slug;
   const product = await showOneProduct(productId);
 
   if (!product) {
