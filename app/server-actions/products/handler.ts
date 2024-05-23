@@ -1,5 +1,4 @@
 "use server";
-
 import { db } from "@/prisma/db";
 
 export async function showAllProducts() {
@@ -19,18 +18,19 @@ export async function showAllProducts() {
 }
 
 export async function showOneProduct(productId: string) {
-  const product = await db.product.findFirst({
+  const product = await db.product.findUnique({
     where: {
       id: productId,
     },
     select: {
       id: true,
       name: true,
-      image: true,
       description: true,
+      image: true,
       price: true,
       video: true,
+      isArchived: true,
     },
   });
-  return { product };
+  return product;
 }

@@ -18,7 +18,7 @@ export async function seedProducts(db: PrismaClient) {
   });
 
   const iphone = await db.product.upsert({
-    where: { name: "Iphone 15" },
+    where: { id: "clwj7bhe3000108jzdby5gvy3" },
     update: {},
     create: {
       name: "Iphone 15",
@@ -36,7 +36,7 @@ export async function seedProducts(db: PrismaClient) {
   });
 
   const macbook = await db.product.upsert({
-    where: { name: "Macbook Pro" },
+    where: { id: "clwj7b9fi000008jz3mwd8xns" },
     update: {},
     create: {
       name: "Macbook Pro",

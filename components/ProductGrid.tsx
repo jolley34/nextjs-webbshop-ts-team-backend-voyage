@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import Link from "next/link";
 
 interface CardProps {
-  productId: string;
+  slug: string;
   name: string;
   description: string;
   image: string;
@@ -16,16 +16,13 @@ export default function ProductGrid({
   description,
   image,
   price,
-  productId,
+  slug,
 }: CardProps) {
   return (
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
         <Grid component={"main"} container>
-          <Link
-            href={`/product/${productId}}`}
-            style={{ textDecoration: "none" }}
-          >
+          <Link href={`/product/${slug}}`} style={{ textDecoration: "none" }}>
             <Card
               sx={{
                 boxShadow: "none",
