@@ -1,9 +1,9 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "isAdmin" BOOLEAN NOT NULL,
+    "username" TEXT,
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
+    "password" TEXT,
     "name" TEXT,
     "email" TEXT NOT NULL,
     "emailVerified" TIMESTAMP(3),
@@ -113,9 +113,6 @@ CREATE TABLE "_CategoryToProduct" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

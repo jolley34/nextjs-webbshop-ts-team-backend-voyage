@@ -2,15 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 export async function seedUsers(db: PrismaClient) {
   const user1 = await db.user.upsert({
-    where: { username: "shitface" },
+    where: { id: "clwgbsd2g00049q81pzvugkn1" },
     update: {},
     create: {
-      username: "shitface",
-      password: "secret",
-      isAdmin: false,
+      id: "clwgbsd2g00049q81pzvugkn1",
+      name: "Hello",
       email: "jolle@gmail.com",
-      name: "imshitface",
-      image: "avatar.jpg",
+      isAdmin: true,
+      username: "jolle",
+      password: "secret",
       orders: {
         create: [
           {
@@ -44,15 +44,15 @@ export async function seedUsers(db: PrismaClient) {
   });
 
   const user2 = await db.user.upsert({
-    where: { username: "noob" },
+    where: { id: "clwgbsder00089q814t1jch2a" },
     update: {},
     create: {
-      username: "noob",
-      password: "imnotnoob",
-      isAdmin: false,
+      id: "clwgbsder00089q814t1jch2a",
+      name: "Bye",
       email: "noob@gmail.com",
-      name: "whoknows",
-      image: "avatar.jpg",
+      isAdmin: false,
+      username: "nooben",
+      password: "imnotnoob",
     },
   });
 
