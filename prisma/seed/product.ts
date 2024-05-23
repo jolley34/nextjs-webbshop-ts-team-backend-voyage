@@ -43,7 +43,8 @@ export async function seedProducts(db: PrismaClient) {
       description: "M4",
       image:
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spacegray-gallery1-202310?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=1697311136703",
-      video: "video_url.mp4",
+      video:
+        "https://www.apple.com/105/media/us/mac/family/2024/60fc0159-4236-4a03-8534-f5ba07e538c5/anim/welcome/xlarge_2x.mp4",
       price: 15000,
       isArchived: false,
       categories: {
