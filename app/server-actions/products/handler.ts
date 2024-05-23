@@ -12,6 +12,12 @@ export async function showAllProducts() {
       price: true,
       video: true,
       isArchived: true,
+      categories: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
     },
     orderBy: { id: "desc" },
   });
