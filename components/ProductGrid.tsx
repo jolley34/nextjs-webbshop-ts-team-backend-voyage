@@ -22,48 +22,48 @@ export default function ProductGrid({
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
         <Grid component={"main"} container>
-          <Card
-            sx={{
-              boxShadow: "none",
-              cursor: "pointer",
-            }}
+          <Link
+            href={`/product/${productId}}`}
+            style={{ textDecoration: "none" }}
           >
-            <Box sx={{ position: "relative", overflow: "hidden" }}>
+            <Card
+              sx={{
+                boxShadow: "none",
+                cursor: "pointer",
+              }}
+            >
+              <Box sx={{ position: "relative", overflow: "hidden" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    transition: "transform 1s ease",
+                  }}
+                >
+                  <img
+                    width={300}
+                    height={300}
+                    src={image}
+                    alt={name}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to bottom, #e2e0df, #ffffff)",
+                      objectPosition: "top",
+                      objectFit: "cover",
+                      aspectRatio: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Box>
+              </Box>
+
               <Box
                 sx={{
                   display: "flex",
-                  transition: "transform 1s ease",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "1rem",
                 }}
-              >
-                <img
-                  width={300}
-                  height={300}
-                  src={image}
-                  alt={name}
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #e2e0df, #ffffff)",
-                    objectPosition: "top",
-                    objectFit: "cover",
-                    aspectRatio: 1,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "1rem",
-              }}
-            >
-              <Link
-                href={`/product/${productId}}`}
-                style={{ textDecoration: "none" }}
               >
                 <Box>
                   <Typography
@@ -94,9 +94,9 @@ export default function ProductGrid({
                     {price} kr
                   </Typography>
                 </Box>
-              </Link>
-            </Box>
-          </Card>
+              </Box>
+            </Card>
+          </Link>
         </Grid>
       </Box>
     </Box>
