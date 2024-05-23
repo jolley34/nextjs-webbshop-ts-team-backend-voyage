@@ -22,15 +22,6 @@ export async function showOneProduct(productId: string) {
     where: {
       id: productId,
     },
-    select: {
-      id: true,
-      name: true,
-      description: true,
-      image: true,
-      price: true,
-      video: true,
-      isArchived: true,
-    },
   });
   return product;
 }
