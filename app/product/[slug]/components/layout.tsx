@@ -10,10 +10,8 @@ import {
   Link,
   ThemeProvider,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { Prisma } from "@prisma/client";
-import { useEffect, useState } from "react";
 
 interface PageProps {
   name: string;
@@ -32,8 +30,6 @@ export default function ProductLayout({
   price,
   productId,
 }: PageProps) {
-
-
   if (!productId) {
     return (
       <div>
