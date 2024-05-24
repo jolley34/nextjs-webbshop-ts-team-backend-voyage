@@ -1,7 +1,7 @@
 "use client";
 
-import { Box } from "@mui/material";
-import React from "react";
+import { IconButton, List, ListItem } from "@mui/material";
+import Link from "next/link";
 
 interface BarProps {
   name: string;
@@ -10,12 +10,20 @@ interface BarProps {
 
 const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
   return (
-    <Box
-      sx={{ cursor: "pointer", padding: "10px" }}
-      onClick={onClick}
-    >
-      {name}
-    </Box>
+    <>
+      <List>
+        <IconButton>
+          <Link
+            href={`/products/${encodeURIComponent(name)}`}
+            style={{ textDecoration: "none" }}
+          >
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              {name}
+            </ListItem>
+          </Link>
+        </IconButton>
+      </List>
+    </>
   );
 };
 

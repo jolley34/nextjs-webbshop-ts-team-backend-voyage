@@ -15,8 +15,6 @@ export const OrderCreateSchema = z.object({
 export const UserCreateSchema = z.object({
   username: z.string().min(1),
   password: z.string().min(1),
-  firstname: z.string().min(1),
-  lastname: z.string().min(1),
   isAdmin: z.boolean().optional(),
 });
 

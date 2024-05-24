@@ -1,25 +1,23 @@
 "use server";
-
 import { db } from "@/prisma/db";
 
-export async function showAllProducts() {
+export async function getProductsByCategoryName(categoryName: string) {
   const products = await db.product.findMany({
-    select: {
-      id: true,
-      name: true,
-      description: true,
-      image: true,
-      price: true,
-      video: true,
-      isArchived: true,
+    where: {
       categories: {
-        select: {
-          id: true,
-          name: true,
-        },
+        some: { name: categoryName },
       },
     },
     orderBy: { id: "desc" },
   });
   return { products };
+}
+
+export async function showOneProduct(productId: string) {
+  const product = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  return product;
 }

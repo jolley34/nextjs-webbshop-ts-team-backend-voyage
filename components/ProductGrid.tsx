@@ -4,6 +4,7 @@ import { Prisma } from "@prisma/client";
 import Link from "next/link";
 
 interface CardProps {
+  slug: string;
   name: string;
   description: string;
   image: string;
@@ -15,51 +16,55 @@ export default function ProductGrid({
   description,
   image,
   price,
+  slug,
 }: CardProps) {
   return (
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
         <Grid component={"main"} container>
-          <Card
-            sx={{
-              boxShadow: "none",
-              cursor: "pointer",
-            }}
+          <Link
+            href={`/product/${encodeURIComponent(slug)}`}
+            style={{ textDecoration: "none" }}
           >
-            <Box sx={{ position: "relative", overflow: "hidden" }}>
+            <Card
+              sx={{
+                boxShadow: "none",
+                cursor: "pointer",
+              }}
+            >
+              <Box sx={{ position: "relative", overflow: "hidden" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    transition: "transform 1s ease",
+                  }}
+                >
+                  <img
+                    width={300}
+                    height={300}
+                    src={image}
+                    alt={name}
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to bottom, #e2e0df, #ffffff)",
+                      objectPosition: "top",
+                      objectFit: "cover",
+                      aspectRatio: 1,
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Box>
+              </Box>
+
               <Box
                 sx={{
                   display: "flex",
-                  transition: "transform 1s ease",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "1rem",
                 }}
               >
-                <img
-                  width={300}
-                  height={300}
-                  src={image}
-                  alt={name}
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to bottom, #e2e0df, #ffffff)",
-                    objectPosition: "top",
-                    objectFit: "cover",
-                    aspectRatio: 1,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              </Box>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "1rem",
-              }}
-            >
-              <Link href={`/product/}`} style={{ textDecoration: "none" }}>
                 <Box>
                   <Typography
                     fontWeight="400"
@@ -89,9 +94,9 @@ export default function ProductGrid({
                     {price} kr
                   </Typography>
                 </Box>
-              </Link>
-            </Box>
-          </Card>
+              </Box>
+            </Card>
+          </Link>
         </Grid>
       </Box>
     </Box>
