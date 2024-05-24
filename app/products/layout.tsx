@@ -1,5 +1,4 @@
 import VideoContainer from "@/components/VideoContainer";
-import Header from "@/components/shared/header/Header";
 import ShowMoreComponent from "@/components/showMore";
 import { Box, Grid } from "@mui/material";
 import { PropsWithChildren } from "react";
@@ -11,7 +10,6 @@ export default async function ProductsLayout(props: PropsWithChildren) {
 
   return (
     <Box>
-      <Header name="ananas" />
       <VideoContainer />
       <Box
         sx={{
