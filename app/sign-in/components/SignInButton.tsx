@@ -11,6 +11,7 @@ export default function SignInButton() {
         padding: "0.5rem",
         borderRadius: "10px",
         color: "white",
+        cursor: "pointer",
       }}
       onClick={() => signIn()}
     >
