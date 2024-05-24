@@ -5,9 +5,10 @@ import Link from "next/link";
 
 interface BarProps {
   name: string;
+  onClick: () => void;
 }
 
-export default function CategoryBar({ name }: BarProps) {
+const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
   return (
     <>
       <List>
@@ -24,4 +25,6 @@ export default function CategoryBar({ name }: BarProps) {
       </List>
     </>
   );
-}
+};
+
+export default CategoryBar;
