@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+import Header from "@/components/shared/header/Header";
 import {
   Box,
   CardContent,
@@ -65,6 +66,7 @@ function CartPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Header name="ananas" />
         <Box>
           <Grid
             container

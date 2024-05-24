@@ -181,7 +181,7 @@ export default function ProductLayout({
                 </Box>
 
                 <Box>
-                  <AddToCartButton />
+                  <AddToCartButton product={product} />
                 </Box>
               </Box>
             </Grid>
