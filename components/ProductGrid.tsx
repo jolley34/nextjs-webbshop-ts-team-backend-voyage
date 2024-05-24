@@ -22,15 +22,15 @@ export default function ProductGrid({
     <Box sx={{ backgroundColor: "#ffffff" }}>
       <Box>
         <Grid component={"main"} container>
-          <Link
-            href={`/product/${encodeURIComponent(slug)}`}
-            style={{ textDecoration: "none" }}
+          <Card
+            sx={{
+              boxShadow: "none",
+              cursor: "pointer",
+            }}
           >
-            <Card
-              sx={{
-                boxShadow: "none",
-                cursor: "pointer",
-              }}
+            <Link
+              href={`/product/${encodeURIComponent(slug)}`}
+              style={{ textDecoration: "none" }}
             >
               <Box sx={{ position: "relative", overflow: "hidden" }}>
                 <Box
@@ -56,14 +56,19 @@ export default function ProductGrid({
                   />
                 </Box>
               </Box>
+            </Link>
 
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "1rem",
-                }}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "1rem",
+              }}
+            >
+              <Link
+                href={`/product/${encodeURIComponent(slug)}`}
+                style={{ textDecoration: "none" }}
               >
                 <Box>
                   <Typography
@@ -91,12 +96,25 @@ export default function ProductGrid({
                     color="black"
                     data-cy="product-price"
                   >
-                    {price} kr
+                    {price.toString()} kr
                   </Typography>
                 </Box>
-              </Box>
-            </Card>
-          </Link>
+              </Link>
+              {/*               <AddToCartButtonAppleStyle product={product} /> */}
+              <button
+                style={{
+                  background: "#0072e4",
+                  border: "none",
+                  padding: "0.5rem",
+                  borderRadius: "10px",
+                  color: "white",
+                  cursor: "pointer",
+                }}
+              >
+                Köp
+              </button>
+            </Box>
+          </Card>
         </Grid>
       </Box>
     </Box>

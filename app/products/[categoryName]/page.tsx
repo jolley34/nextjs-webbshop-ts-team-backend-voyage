@@ -12,7 +12,7 @@ export default async function ProductsByCategoryPage({ params }: Props) {
   const { products } = await getProductsByCategoryName(params.categoryName!);
 
   return (
-    <Box>
+    <Box sx={{ padding: "1rem" }}>
       {products.map((product, index) => (
         <Grid item xs={12} sm={6} md={3} key={index}>
           <ProductGrid

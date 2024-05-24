@@ -18,9 +18,7 @@ export default async function ProductPage({
         <Typography variant="h2">{`Produkten med id ${productId} finns tyvärr inte...`}</Typography>
         <Typography variant="body1">
           {`Vi hittade inte produkt med id "${productId}". Gå tillbaka till `}
-          <Link href="/" variant="body1">
-            startsidan
-          </Link>
+          <Link href="/">startsidan</Link>
           {" för att fortsätta shoppingen."}
         </Typography>
       </div>

@@ -34,7 +34,7 @@ export function useLocalStorageCart(initialValue: CartItem[]) {
     saveCartToLocalStorage(updatedCart);
   };
 
-  const addToCart = (product: Product, size: string) => {
+  const addToCart = (product: Product) => {
     const existingCartItem = cart.find((item) => item.id === product.id);
 
     if (existingCartItem) {
