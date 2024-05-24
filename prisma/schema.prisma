@@ -76,7 +76,8 @@ model OrderProduct {
 
 model Category {
   id       String    @id @default(cuid())
-  name     String    @unique
+  name     String    @unique // Fina bord
+  // slug     String    @unique // fina-bord
   products Product[]
 }
 

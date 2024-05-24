@@ -1,6 +1,7 @@
 "use client";
 
 import { IconButton, List, ListItem } from "@mui/material";
+import Link from "next/link";
 
 interface BarProps {
   name: string;
@@ -11,9 +12,14 @@ export default function CategoryBar({ name }: BarProps) {
     <>
       <List>
         <IconButton>
-          <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
-            {name}
-          </ListItem>
+          <Link
+            href={`/products/${encodeURIComponent(name)}`}
+            style={{ textDecoration: "none" }}
+          >
+            <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
+              {name}
+            </ListItem>
+          </Link>
         </IconButton>
       </List>
     </>

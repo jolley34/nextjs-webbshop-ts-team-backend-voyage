@@ -32,25 +32,7 @@ export default function ProductLayout({
   price,
   productId,
 }: PageProps) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const isXsScreen = useMediaQuery(theme.breakpoints.only("xs"));
-  const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.pageYOffset);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
 
   if (!productId) {
     return (
