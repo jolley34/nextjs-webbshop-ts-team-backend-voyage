@@ -33,9 +33,9 @@ model Order {
   totalPrice        Decimal
   number            Int
 
-  user           User           @relation(fields: [userId], references: [id])
-  shippingAdress Address        @relation(fields: [shippingAddressId], references: [id])
-  products       OrderProduct[]
+  user            User           @relation(fields: [userId], references: [id])
+  shippingAddress Address        @relation(fields: [shippingAddressId], references: [id])
+  products        OrderProduct[]
 }
 
 model Address {
@@ -46,6 +46,7 @@ model Address {
   street      String
   zipcode     String
   city        String
+  email       String
 
   orders Order[]
 }

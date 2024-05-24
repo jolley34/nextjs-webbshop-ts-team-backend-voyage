@@ -3,37 +3,39 @@
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { db } from "../../../prisma/db";
-import { OrderCreate, OrderCreateSchema } from "../validation/validation";
+import { AddressCreate, AddressCreateSchema } from "../validation/validation";
 
 export async function saveOrder(
-  incomingData: OrderCreate,
-  productId: string,
-  userId: string
+  incomingData: AddressCreate,
+  cartItems: { id: string; quantity: number; price: number }[]
 ) {
   const session = await auth();
   if (!session || !session.user || !session.user.id) return;
 
-  const adressData = OrderCreateSchema.parse(incomingData);
+  const addressData = AddressCreateSchema.parse(incomingData);
 
-  const user = await db.user.findUnique({
-    where: { id: userId },
+  const address = await db.address.create({
+    data: addressData,
   });
 
-  const product = await db.product.findUnique({
-    where: { id: productId },
-  });
-
-  const order = await db.address.create({
+  const order = await db.order.create({
     data: {
-      firstName: adressData.firstName,
-      lastName: adressData.lastName,
-      city: adressData.address,
-      phoneNumber: adressData.phoneNumber,
-      street: adressData.address,
-      zipcode: adressData.zipcode,
       userId: session.user.id,
-      productId: product.id,
+      shippingAddressId: address.id,
+      totalPrice: cartItems.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      ),
+      number: 0,
+      products: {
+        create: cartItems.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+          subTotalPrice: item.price * item.quantity,
+        })),
+      },
     },
   });
+
   revalidatePath("/");
 }

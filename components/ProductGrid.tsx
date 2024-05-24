@@ -25,7 +25,6 @@ export default function ProductGrid({
           <Card
             sx={{
               boxShadow: "none",
-              cursor: "pointer",
             }}
           >
             <Link
@@ -52,6 +51,7 @@ export default function ProductGrid({
                       aspectRatio: 1,
                       width: "100%",
                       height: "100%",
+                      cursor: "pointer",
                     }}
                   />
                 </Box>
@@ -66,40 +66,32 @@ export default function ProductGrid({
                 padding: "1rem",
               }}
             >
-              <Link
-                href={`/product/${encodeURIComponent(slug)}`}
-                style={{ textDecoration: "none" }}
-              >
-                <Box>
-                  <Typography
-                    fontWeight="400"
-                    fontSize={{
-                      xs: "0.70rem",
-                      sm: "0.75rem",
-                      md: "0.75rem",
-                    }}
-                    color="black"
-                    data-cy="product-title"
-                  >
-                    {name}
-                  </Typography>
-                  <Typography
-                    fontWeight="400"
-                    fontSize="0.75rem"
-                    color="#6d6767"
-                  >
-                    {description}
-                  </Typography>
-                  <Typography
-                    fontWeight="400"
-                    fontSize="0.75rem"
-                    color="black"
-                    data-cy="product-price"
-                  >
-                    {price.toString()} kr
-                  </Typography>
-                </Box>
-              </Link>
+              <Box>
+                <Typography
+                  fontWeight="400"
+                  fontSize={{
+                    xs: "0.70rem",
+                    sm: "0.75rem",
+                    md: "0.75rem",
+                  }}
+                  color="black"
+                  data-cy="product-title"
+                >
+                  {name}
+                </Typography>
+                <Typography fontWeight="400" fontSize="0.75rem" color="#6d6767">
+                  {description}
+                </Typography>
+                <Typography
+                  fontWeight="400"
+                  fontSize="0.75rem"
+                  color="black"
+                  data-cy="product-price"
+                >
+                  {price.toString()} kr
+                </Typography>
+              </Box>
+
               {/*               <AddToCartButtonAppleStyle product={product} /> */}
               <button
                 style={{
