@@ -32,9 +32,7 @@ function CartPage() {
   };
 
   const handleDecreaseQuantity = (productId: string) => {
-    const currentItem = cart.find(
-      (item) => item.id === productId && item.size === size
-    );
+    const currentItem = cart.find((item) => item.id === productId);
     if (currentItem && currentItem.quantity > 1) {
       changeQuantity(productId, currentItem.quantity - 1);
     } else if (currentItem && currentItem.quantity === 1) {
@@ -43,9 +41,7 @@ function CartPage() {
   };
 
   const handleIncreaseQuantity = (productId: string) => {
-    const currentItem = cart.find(
-      (item) => item.id === productId && item.size === size
-    );
+    const currentItem = cart.find((item) => item.id === productId);
     if (currentItem && currentItem.quantity < 1000) {
       changeQuantity(productId, currentItem.quantity + 1);
     }
@@ -75,7 +71,7 @@ function CartPage() {
               padding: "1rem",
               bgcolor: "#f6f5f3",
               minHeight: "100vh",
-              paddingTop: { xs: "97px", sm: "104px", md: "104px" },
+              paddingTop: { xs: "165px", sm: "165px", md: "165px" },
             }}
           >
             {/* Products Column */}
@@ -84,7 +80,7 @@ function CartPage() {
                 const totalcost = item.price * item.quantity;
                 return (
                   <Box
-                    key={item.id + item.size}
+                    key={item.id}
                     sx={{
                       padding: "1rem",
                       backgroundColor: "#fff",
@@ -96,7 +92,7 @@ function CartPage() {
                       <Grid item xs={12} sm={3}>
                         <img
                           src={item.image}
-                          alt={item.title}
+                          alt={item.name}
                           style={{
                             width: "100%",
                             height: "auto",

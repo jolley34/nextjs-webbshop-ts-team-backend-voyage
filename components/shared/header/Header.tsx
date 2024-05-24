@@ -262,6 +262,7 @@ export default function Header({ name, session }: HeaderProps) {
                 <form action={signOutUser}>
                   <button
                     style={{
+                      cursor: "pointer",
                       background: "#0072e4",
                       border: "none",
                       padding: "0.5rem",
