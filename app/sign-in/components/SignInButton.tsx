@@ -3,5 +3,18 @@
 import { signIn } from "next-auth/react";
 
 export default function SignInButton() {
-  return <button onClick={() => signIn()}>Sign in with Github</button>;
+  return (
+    <button
+      style={{
+        background: "#0072e4",
+        border: "none",
+        padding: "0.5rem",
+        borderRadius: "10px",
+        color: "white",
+      }}
+      onClick={() => signIn()}
+    >
+      Sign in with Github
+    </button>
+  );
 }

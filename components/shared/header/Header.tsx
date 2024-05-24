@@ -248,12 +248,29 @@ export default function Header({ name, session }: HeaderProps) {
               </IconButton>
             </Box>
           </Toolbar>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              paddingInline: "1.25rem",
+            }}
+          >
             {session?.user ? (
               <>
                 <p style={{ color: "black" }}>{session.user.name}</p>
                 <form action={signOutUser}>
-                  <button>Sign out</button>
+                  <button
+                    style={{
+                      background: "#0072e4",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "10px",
+                      color: "white",
+                    }}
+                  >
+                    Sign out
+                  </button>
                 </form>
               </>
             ) : (
