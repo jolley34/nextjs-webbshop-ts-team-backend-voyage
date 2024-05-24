@@ -6,13 +6,9 @@ import { useLocalStorageCart } from "../storage/CartLocalStorage";
 
 interface ContextValue {
   cart: CartItem[];
-  addToCart: (product: Product, size: string) => void;
-  removeFromCart: (productId: string, size: string) => void;
-  changeQuantity: (
-    productId: string,
-    newQuantity: number,
-    size: string
-  ) => void;
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
+  changeQuantity: (productId: string, newQuantity: number) => void;
   clearLocalStorage: () => void;
 }
 

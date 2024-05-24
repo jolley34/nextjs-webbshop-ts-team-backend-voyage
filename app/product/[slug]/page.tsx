@@ -1,6 +1,5 @@
 import { showOneProduct } from "@/app/server-actions/products/handler";
 import AddToCartButton from "@/components/addtocart/AddToCartButton";
-import Header from "@/components/shared/header/Header";
 import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 
@@ -32,7 +31,6 @@ export default async function ProductPage({
 
   return (
     <>
-      <Header name="ananas" />
       <Box sx={{ width: "100%" }}>
         <Grid container>
           <Grid

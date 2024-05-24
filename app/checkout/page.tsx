@@ -9,7 +9,6 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-import Header from "@/components/shared/header/Header";
 import {
   Box,
   CardContent,
@@ -28,27 +27,27 @@ import theme from "../themes/themes";
 function CartPage() {
   const { cart, removeFromCart, changeQuantity } = useCart();
 
-  const handleRemoveFromCart = (productId: string, size: string) => {
-    removeFromCart(productId, size);
+  const handleRemoveFromCart = (productId: string) => {
+    removeFromCart(productId);
   };
 
-  const handleDecreaseQuantity = (productId: string, size: string) => {
+  const handleDecreaseQuantity = (productId: string) => {
     const currentItem = cart.find(
       (item) => item.id === productId && item.size === size
     );
     if (currentItem && currentItem.quantity > 1) {
-      changeQuantity(productId, currentItem.quantity - 1, size);
+      changeQuantity(productId, currentItem.quantity - 1);
     } else if (currentItem && currentItem.quantity === 1) {
-      removeFromCart(productId, size);
+      removeFromCart(productId);
     }
   };
 
-  const handleIncreaseQuantity = (productId: string, size: string) => {
+  const handleIncreaseQuantity = (productId: string) => {
     const currentItem = cart.find(
       (item) => item.id === productId && item.size === size
     );
     if (currentItem && currentItem.quantity < 1000) {
-      changeQuantity(productId, currentItem.quantity + 1, size);
+      changeQuantity(productId, currentItem.quantity + 1);
     }
   };
 
@@ -66,7 +65,6 @@ function CartPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Header name="ananas" />
         <Box>
           <Grid
             container
@@ -127,30 +125,17 @@ function CartPage() {
                                   "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                               }}
                             >
-                              {item.title}
+                              {item.name}
                             </Typography>
                             <IconButton
                               aria-label="delete"
-                              onClick={() =>
-                                handleRemoveFromCart(item.id, item.size)
-                              }
+                              onClick={() => handleRemoveFromCart(item.id)}
                               color="default"
                             >
                               <CloseIcon sx={{ fontSize: "1rem" }} />
                             </IconButton>
                           </Box>
-                          <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{
-                              fontSize: "1rem",
-                              color: "#797979",
-                              fontFamily:
-                                "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                            }}
-                          >
-                            Färg: {item.size}
-                          </Typography>
+
                           <Typography
                             data-cy="product-price"
                             variant="body2"
@@ -180,8 +165,7 @@ function CartPage() {
                               onChange={(event) =>
                                 changeQuantity(
                                   item.id,
-                                  Number(event.target.value),
-                                  item.size
+                                  Number(event.target.value)
                                 )
                               }
                               size="small"
@@ -211,7 +195,7 @@ function CartPage() {
                                 <RemoveIcon
                                   data-cy="decrease-quantity-button"
                                   onClick={() =>
-                                    handleDecreaseQuantity(item.id, item.size)
+                                    handleDecreaseQuantity(item.id)
                                   }
                                   sx={{ fontSize: "1rem" }}
                                 />
@@ -220,7 +204,7 @@ function CartPage() {
                                 <AddIcon
                                   data-cy="increase-quantity-button"
                                   onClick={() =>
-                                    handleIncreaseQuantity(item.id, item.size)
+                                    handleIncreaseQuantity(item.id)
                                   }
                                   sx={{ fontSize: "1rem" }}
                                 />
