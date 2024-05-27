@@ -21,6 +21,16 @@ export const UserSignInSchema = z.object({
   password: z.string().min(1),
 });
 
+const ProductSchema = z.object({
+  id: z.string(),
+  name: z.string().min(1),
+  image: z.string().url().min(1),
+  description: z.string().min(1),
+  price: z.number().positive(),
+  video: z.string().url().min(1),
+});
+
+export type ProductFormData = z.infer<typeof ProductSchema>;
 export type AddressCreate = z.infer<typeof AddressCreateSchema>;
 export type UserCreate = z.infer<typeof UserCreateSchema>;
 export type UserSignIn = z.infer<typeof UserSignInSchema>;

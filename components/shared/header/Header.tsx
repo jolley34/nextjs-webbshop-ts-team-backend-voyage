@@ -478,9 +478,10 @@ export default function Header({ name }: HeaderProps) {
 const menuItems = [
   { label: "Hem", href: "/" },
   { label: "Nyheter", href: "/" },
-  { label: "Dam", href: "/" },
-  { label: "Herr", href: "/" },
-  { label: "Collections", href: "/about" },
+  { label: "iPhone", href: "/" },
+  { label: "Watch", href: "/" },
+  { label: "iPad", href: "/about" },
+  { label: "Mac", href: "/about" },
   { label: "Vår story", href: "/" },
 ];
 
