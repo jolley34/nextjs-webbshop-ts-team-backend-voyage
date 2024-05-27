@@ -26,16 +26,16 @@ function AddToCartButton({ product }: { product: Product }) {
       <ThemeProvider theme={theme}>
         <Button
           onClick={handleClick}
-          color="secondary"
+          color="primary"
           variant="outlined"
           data-cy="product-buy-button"
           sx={{
             padding: "0.5rem",
             width: "100%",
-            bgcolor: "#1b1b1b",
-            borderRadius: 0,
+            bgcolor: "#0072e4",
+            borderRadius: "10px",
             "&:hover": {
-              bgcolor: "#333",
+              bgcolor: "#0264C5",
             },
           }}
         >

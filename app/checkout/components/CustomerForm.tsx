@@ -102,7 +102,16 @@ export default function CustomerForm() {
           helperText={errors.email?.message}
         />
       </FormControl>
-      <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{
+          mt: 2,
+          bgcolor: "#0072e4",
+          borderRadius: "10px",
+          "&:hover": { bgcolor: "#0264C5" },
+        }}
+      >
         Lägg Order
       </Button>
     </Box>

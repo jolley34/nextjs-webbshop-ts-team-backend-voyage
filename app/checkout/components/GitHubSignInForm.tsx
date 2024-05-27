@@ -22,13 +22,12 @@ export default function GitHubSignInForm() {
         size="large"
         fullWidth
         sx={{
-          bgcolor: "#000",
-          borderColor: "#000",
+          bgcolor: "#0072e4",
           marginTop: "3rem",
+          borderRadius: "10px",
           marginBottom: "3rem",
           "&:hover": {
-            bgcolor: "#333",
-            borderColor: "#000",
+            bgcolor: "#0264C5",
           },
         }}
         onClick={() => signIn()}
