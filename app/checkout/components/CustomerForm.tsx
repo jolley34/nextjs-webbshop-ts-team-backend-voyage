@@ -30,7 +30,6 @@ export default function CustomerForm() {
     <Box
       component="form"
       sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-      onSubmit={form.handleSubmit(handleSubmit)}
     >
       {" "}
       <Typography
@@ -92,17 +91,9 @@ export default function CustomerForm() {
           error={!!errors.phoneNumber}
           helperText={errors.phoneNumber?.message}
         />
-
-        <TextField
-          {...form.register("email")}
-          label="Epost"
-          variant="standard"
-          type="email"
-          error={!!errors.email}
-          helperText={errors.email?.message}
-        />
       </FormControl>
       <Button
+        onSubmit={form.handleSubmit(handleSubmit)}
         type="submit"
         variant="contained"
         sx={{
