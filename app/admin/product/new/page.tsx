@@ -1,12 +1,14 @@
-// AdminNewProductPage.tsx
-import ProductForm from "@/components/ProductForm";
+import { showAllCategories } from "@/app/server-actions/categories/handler";
 import { Box, Typography } from "@mui/material";
+import ProductForm from "../new/components/ProductForm";
 
-export default function AdminNewProductPage() {
+export default async function AdminNewProductPage() {
+  const categories = await showAllCategories();
+
   return (
     <Box
       sx={{
-        paddingTop: { xs: "81px", sm: "88px", md: "88px" },
+        paddingTop: { xs: "140px", sm: "140px", md: "140px" },
         paddingBottom: "55px",
         backgroundImage:
           "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
@@ -24,7 +26,7 @@ export default function AdminNewProductPage() {
       >
         Admin New Product Page
       </Typography>
-      <ProductForm onSubmit={createProduct} />
+      <ProductForm categories={categories} />
     </Box>
   );
 }

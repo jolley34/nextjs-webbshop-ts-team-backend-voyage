@@ -1,6 +1,6 @@
 "use client";
 
-import handleArchive from "@/app/server-actions/admin/handler";
+import { handleArchive } from "@/app/server-actions/admin/handler";
 import { Button, Typography } from "@mui/material";
 
 interface DeleteAdminButtonProps {
