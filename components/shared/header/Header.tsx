@@ -252,13 +252,16 @@ export default function Header({ name, session }: HeaderProps) {
             style={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
               gap: "0.5rem",
               paddingInline: "1.25rem",
             }}
           >
             {session?.user ? (
               <>
-                <p style={{ color: "black" }}>{session.user.name}</p>
+                <p style={{ color: "black", fontWeight: "900" }}>
+                  {session.user.name}
+                </p>
                 <form action={signOutUser}>
                   <button
                     style={{
