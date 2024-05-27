@@ -5,7 +5,7 @@ import {
   AddressCreateSchema,
 } from "@/app/server-actions/validation/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, FormControl, TextField } from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useCart } from "../../context/CartContext";
 import { saveOrder } from "../../server-actions/orders/handler";
@@ -29,9 +29,21 @@ export default function CustomerForm() {
   return (
     <Box
       component="form"
-      sx={{ display: "flex", flexDirection: "column", gap: 2, width: 300 }}
+      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
       onSubmit={form.handleSubmit(handleSubmit)}
     >
+      {" "}
+      <Typography
+        variant="h6"
+        sx={{
+          fontWeight: "100",
+          marginTop: "1.5rem",
+          fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+          fontSize: { xs: "1.5rem", md: "2rem" },
+        }}
+      >
+        Leveransuppgifter
+      </Typography>
       <FormControl fullWidth>
         <TextField
           {...form.register("firstName")}
@@ -90,7 +102,6 @@ export default function CustomerForm() {
           helperText={errors.email?.message}
         />
       </FormControl>
-
       <Button type="submit" variant="contained" sx={{ mt: 2 }}>
         Lägg Order
       </Button>

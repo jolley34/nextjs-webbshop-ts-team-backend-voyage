@@ -309,20 +309,10 @@ export default function CheckoutLayout() {
                 </Grid>
 
                 <Divider />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "100",
-                    marginTop: "1rem",
-                    fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                    fontSize: { xs: "1.5rem", md: "2rem" },
-                  }}
-                >
-                  Leveransuppgifter
-                </Typography>
+               
+                {session?.data?.user ? <CustomerForm /> : <GitHubSignInForm />}
               </CardContent>
               <Divider />
-              {session?.data?.user ? <CustomerForm /> : <GitHubSignInForm />}
               <Box sx={{ marginTop: "1rem" }}>
                 <Grid container spacing={2} alignItems="center">
                   <Grid
