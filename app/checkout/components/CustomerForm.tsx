@@ -5,6 +5,7 @@ import {
   AddressCreateSchema,
 } from "@/app/server-actions/validation/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Box, Button, FormControl, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useCart } from "../../context/CartContext";
 import { saveOrder } from "../../server-actions/orders/handler";
@@ -26,37 +27,73 @@ export default function CustomerForm() {
   };
 
   return (
-    <form
-      className="w-96 flex flex-col gap-2"
+    <Box
+      component="form"
+      sx={{ display: "flex", flexDirection: "column", gap: 2, width: 300 }}
       onSubmit={form.handleSubmit(handleSubmit)}
     >
-      <input
-        {...form.register("firstName")}
-        type="text"
-        placeholder="firstname"
-      />
-      {errors.firstName && <span>{errors.firstName.message}</span>}
-      <input
-        {...form.register("lastName")}
-        type="text"
-        placeholder="lastname"
-      />
-      {errors.lastName && <span>{errors.lastName.message}</span>}
-      <input {...form.register("city")} type="text" placeholder="city" />
-      {errors.city && <span>{errors.city.message}</span>}
-      <input {...form.register("zipcode")} type="text" placeholder="zipcode" />
-      {errors.zipcode && <span>{errors.zipcode.message}</span>}
-      <input {...form.register("street")} type="text" placeholder="street" />
-      {errors.street && <span>{errors.street.message}</span>}
-      <input
-        {...form.register("phoneNumber")}
-        type="text"
-        placeholder="phone number"
-      />
-      {errors.phoneNumber && <span>{errors.phoneNumber.message}</span>}
-      <input {...form.register("email")} type="email" placeholder="email" />
-      {errors.email && <span>{errors.email.message}</span>}
-      <button style={{ cursor: "pointer" }}>Save Order</button>
-    </form>
+      <FormControl fullWidth>
+        <TextField
+          {...form.register("firstName")}
+          label="Förnamn"
+          variant="standard"
+          error={!!errors.firstName}
+          helperText={errors.firstName?.message}
+        />
+
+        <TextField
+          {...form.register("lastName")}
+          label="Efternamn"
+          variant="standard"
+          error={!!errors.lastName}
+          helperText={errors.lastName?.message}
+        />
+
+        <TextField
+          {...form.register("city")}
+          label="Stad"
+          variant="standard"
+          error={!!errors.city}
+          helperText={errors.city?.message}
+        />
+
+        <TextField
+          {...form.register("zipcode")}
+          label="Postnummer"
+          variant="standard"
+          error={!!errors.zipcode}
+          helperText={errors.zipcode?.message}
+        />
+
+        <TextField
+          {...form.register("street")}
+          label="Adress"
+          variant="standard"
+          error={!!errors.street}
+          helperText={errors.street?.message}
+        />
+
+        <TextField
+          {...form.register("phoneNumber")}
+          label="Telefonnummer"
+          variant="standard"
+          error={!!errors.phoneNumber}
+          helperText={errors.phoneNumber?.message}
+        />
+
+        <TextField
+          {...form.register("email")}
+          label="Epost"
+          variant="standard"
+          type="email"
+          error={!!errors.email}
+          helperText={errors.email?.message}
+        />
+      </FormControl>
+
+      <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+        Lägg Order
+      </Button>
+    </Box>
   );
 }
