@@ -31,9 +31,7 @@ interface HeaderProps {
 
 export default function Header({ name }: HeaderProps) {
   const session = useSession();
-  console.log(
-    session?.data?.user
-  )
+  console.log(session?.data?.user);
   const [open, setOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -229,27 +227,29 @@ export default function Header({ name }: HeaderProps) {
             </Box>
 
             <Box>
-              <IconButton
-                size="small"
-                sx={{
-                  color: "black",
-                  opacity: open ? 0 : loaded ? 1 : 0,
-                  transition: "opacity 0.5s ease",
-                  cursor: open ? "default" : "pointer",
-                  pointerEvents: open ? "none" : "auto",
-                }}
-              ></IconButton>
-              <IconButton
-                size="small"
-                sx={{
-                  opacity: open ? 0 : loaded ? 1 : 0,
-                  transition: "opacity 0.5s ease",
-                  cursor: open ? "default" : "pointer",
-                  pointerEvents: open ? "none" : "auto",
-                }}
-              >
-                <ShopCartWithBadge />
-              </IconButton>
+              <Box>
+                <IconButton
+                  size="small"
+                  sx={{
+                    color: "black",
+                    opacity: open ? 0 : loaded ? 1 : 0,
+                    transition: "opacity 0.5s ease",
+                    cursor: open ? "default" : "pointer",
+                    pointerEvents: open ? "none" : "auto",
+                  }}
+                ></IconButton>
+                <IconButton
+                  size="small"
+                  sx={{
+                    opacity: open ? 0 : loaded ? 1 : 0,
+                    transition: "opacity 0.5s ease",
+                    cursor: open ? "default" : "pointer",
+                    pointerEvents: open ? "none" : "auto",
+                  }}
+                >
+                  <ShopCartWithBadge />
+                </IconButton>
+              </Box>
             </Box>
           </Toolbar>
           <div
