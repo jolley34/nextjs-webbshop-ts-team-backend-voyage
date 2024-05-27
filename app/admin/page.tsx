@@ -214,7 +214,7 @@ export default async function AdminPage(productId: string) {
                           }}
                           data-cy="product-price"
                         >
-                          {product.price} kr
+                          {product.price.toString()} kr
                         </Typography>
                       </CardContent>
                       {/*      <RemoveProductButton productId={product.id} /> */}
