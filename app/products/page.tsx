@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default async function ProductsPage() {
-  redirect("/products/mac");
+  redirect("/products/Mac");
 }

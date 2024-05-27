@@ -18,6 +18,12 @@ export async function saveOrder(
     data: addressData,
   });
 
+  // Todo, hämta pris från DB
+  const products = await db.product.findMany({
+    where: { id: { in: cartItems.map((item) => item.id) } },
+    select: { id: true, price: true },
+  });
+
   const order = await db.order.create({
     data: {
       userId: session.user.id,
@@ -38,4 +44,15 @@ export async function saveOrder(
   });
 
   revalidatePath("/");
+}
+// kontrollera att man är admin
+export async function getAllOrders() {
+  
+  const orders = await db.order.findMany({
+    select: {
+      id: true,
+    },
+    orderBy: { id: "desc" },
+  });
+  return { orders };
 }
