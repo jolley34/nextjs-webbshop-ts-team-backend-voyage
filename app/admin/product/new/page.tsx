@@ -1,14 +1,14 @@
-"use client";
-import ProductForm from "@/components/ProductForm";
+import { showAllCategories } from "@/app/server-actions/categories/handler";
 import { Box, Typography } from "@mui/material";
+import ProductForm from "../new/components/ProductForm";
 
-type Props = { params: { id: string; title: string } };
+export default async function AdminNewProductPage() {
+  const categories = await showAllCategories();
 
-export default function AdminNewProductPage(props: Props) {
   return (
     <Box
       sx={{
-        paddingTop: { xs: "81px", sm: "88px", md: "88px" },
+        paddingTop: { xs: "140px", sm: "140px", md: "140px" },
         paddingBottom: "55px",
         backgroundImage:
           "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
@@ -26,7 +26,7 @@ export default function AdminNewProductPage(props: Props) {
       >
         Admin New Product Page
       </Typography>
-      <ProductForm />
+      <ProductForm categories={categories} />
     </Box>
   );
 }

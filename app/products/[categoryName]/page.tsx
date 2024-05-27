@@ -13,17 +13,19 @@ export default async function ProductsByCategoryPage({ params }: Props) {
 
   return (
     <Box sx={{ padding: "1rem" }}>
-      {products.map((product, index) => (
-        <Grid item xs={12} sm={6} md={3} key={index}>
-          <ProductGrid
-            slug={product.id}
-            name={product.name}
-            image={product.image}
-            description={product.description}
-            price={product.price}
-          />
-        </Grid>
-      ))}
+      <Grid container spacing={2}>
+        {products.map((product, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <ProductGrid
+              slug={product.id}
+              name={product.name}
+              image={product.image}
+              description={product.description}
+              price={product.price}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }

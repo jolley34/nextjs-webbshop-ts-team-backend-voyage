@@ -48,7 +48,7 @@ CREATE TABLE "Product" (
     "image" TEXT NOT NULL,
     "video" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
-    "isArchived" BOOLEAN NOT NULL,
+    "isArchived" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
