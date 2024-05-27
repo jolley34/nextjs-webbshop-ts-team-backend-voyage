@@ -33,7 +33,42 @@ Linus Nilsson ([linusnilssson](https://github.com/linusnilssson))
 Joel Erlandsson ([jolley34](https://github.com/jolley34))
 Elin Vahlberg ([mypinkworld](https://github.com/mypinkworld))
 
+# Kravspecifikation på projektet
 
+## Funktionella krav
 
-### KravLista
+- [x] **Responsiv design**: Alla sidor skall vara responsiva.
 
+- [x] **Implementation med NextJS**: Arbetet ska implementeras med NextJS.
+
+- [x] **ER-diagram**: Skapa ett ER-diagram som ska ha visats vid idégodkännandet.
+
+- [x] **Företagsidé**: Beskriv er företagsidé i en kort textuell presentation, detta ska ha visats vid idégodkännandet.
+
+- [x] **Databas**: All data som programmet utnyttjar ska vara sparad i en SQL-databas (produkter, beställningar, konton, mm) med undantaget av bilder.
+
+- [x] **Lösenordssäkerhet**: Inga lösenord får sparas i klartext i databasen.
+
+- [x] **Produktkategorier**: Sidans produkter ska delas upp i kategorier, en produkt ska tillhöra minst en kategori, men kan tillhöra flera.
+
+- [x] **Produktlista**: Från hemsidan ska man kunna se en lista över alla produkter, och man ska kunna lista bara de produkter som tillhör en kategori.
+
+- [x] **Kundkorg**: Besökare ska kunna lägga produkterna i en kundkorg, som är sparad i local-storage på klienten.
+
+- [x] **Validering i checkout**: Checkout-flödet i frontend-applikationen ska ha validering på samtliga fält.
+
+- [ ] **Validering på endpoints**: Backenden ska ha validering på samtliga endpoints (även Server Actions).
+
+- [ ] **Registrering och inloggning**: En besökare som gör en beställning ska få möjligheten att registrera sig samt logga in och måste vara inloggad som kund innan beställningen skapas.
+
+- [ ] **Produktbeställning**: En besökare ska kunna beställa produkter från sidan, detta ska uppdatera lagersaldot i databasen.
+
+- [ ] **Administratörsinloggning**: Man ska kunna logga in som administratör i systemet.
+
+- [ ] **Beställningshistorik**: Administratörer ska kunna se en lista på alla gjorda beställningar.
+
+- [ ] **Lagerhantering**: Administratörer ska kunna uppdatera antalet produkter i lager från admin-delen av sidan.
+
+- [ ] **Orderhistorik**: När man är inloggad som kund ska man kunna se sina gjorda beställningar och om de är skickade eller inte.
+
+- [ ] **Produktadministration**: Administratörer ska kunna redigera, lägga till och ta bort produkter.
