@@ -1,10 +1,8 @@
-"use client";
+// AdminNewProductPage.tsx
 import ProductForm from "@/components/ProductForm";
 import { Box, Typography } from "@mui/material";
 
-type Props = { params: { id: string; title: string } };
-
-export default function AdminNewProductPage(props: Props) {
+export default function AdminNewProductPage() {
   return (
     <Box
       sx={{
@@ -26,7 +24,7 @@ export default function AdminNewProductPage(props: Props) {
       >
         Admin New Product Page
       </Typography>
-      <ProductForm />
+      <ProductForm onSubmit={createProduct} />
     </Box>
   );
 }

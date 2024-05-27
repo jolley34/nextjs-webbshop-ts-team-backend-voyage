@@ -58,7 +58,7 @@ model Product {
   image       String
   video       String
   price       Decimal
-  isArchived  Boolean
+  isArchived  Boolean @default(false)
 
   categories Category[]
   orders     OrderProduct[]

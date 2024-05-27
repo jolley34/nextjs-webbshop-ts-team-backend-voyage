@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-// "use client";
 import { db } from "@/prisma/db";
 import {
   Box,
@@ -12,8 +11,9 @@ import {
 } from "@mui/material";
 import { getProductsByCategoryName } from "../server-actions/products/handler";
 import theme from "../themes/themes";
+import DeleteAdminButton from "./product/components/deleteAdminButton";
 
-export default async function AdminPage() {
+export default async function AdminPage(productId: string) {
   // const session = await auth();
   // if (!session?.user.isAdmin) return redirect("/>SignIn");
 
@@ -29,7 +29,7 @@ export default async function AdminPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box sx={{ paddingTop: { xs: "81px", sm: "88px", md: "88px" } }}>
+        <Box sx={{ paddingTop: { xs: "140px", sm: "140px", md: "140px" } }}>
           <Grid
             container
             justifyContent="center"
@@ -60,7 +60,7 @@ export default async function AdminPage() {
               >
                 Admin Dashboard
               </Typography>
-              <Link href="/admin/product/new" data-cy="prduct-form">
+              <Link href="/admin/product/new" data-cy="product-form">
                 <Button
                   data-cy="admin-add-product"
                   color="secondary"
@@ -99,154 +99,132 @@ export default async function AdminPage() {
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 1 }}
             >
-              {products.map((product) => (
-                <Grid
-                  key={product.id}
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  data-cy="product"
-                  sx={{ marginTop: "20px", width: "100%" }}
-                >
-                  <Box
-                    sx={{
-                      backgroundColor: "#fff",
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      padding: "20px",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      borderRadius: 0,
-                      textDecoration: "none",
-                    }}
+              {products
+                .filter((product) => !product.isArchived)
+                .map((product) => (
+                  <Grid
+                    key={product.id}
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    data-cy="product"
+                    sx={{ marginTop: "20px", width: "100%" }}
                   >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      style={{
-                        objectPosition: "top",
-                        objectFit: "cover",
-                        aspectRatio: 1,
-                        width: "100%",
-                      }}
-                    />
-
-                    <CardContent>
-                      <Typography
-                        sx={{
-                          fontSize: "1rem",
-                          fontWeight: "bold",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        Titel:
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontWeight: "100",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                        data-cy="product-title"
-                      >
-                        {product.name}
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          fontSize: "1rem",
-                          fontWeight: "bold",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        ID:
-                      </Typography>
-                      <Typography
-                        data-cy="product-id"
-                        sx={{
-                          fontWeight: "100",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        {product.id}
-                      </Typography>
-
-                      <Typography
-                        sx={{
-                          fontSize: "1rem",
-                          fontWeight: "bold",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        Beskrivning:
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontWeight: "100",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        {product.description}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: "1rem",
-                          fontWeight: "bold",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                      >
-                        Pris:
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontWeight: "100",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        }}
-                        data-cy="product-price"
-                      >
-                        {product.price} kr
-                      </Typography>
-                    </CardContent>
-                    {/*      <RemoveProductButton productId={product.id} /> */}
-                    <Button
-                      href={`/admin/product/${product.id}` as any}
-                      data-cy="admin-edit-product"
-                      color="secondary"
-                      variant="outlined"
+                    <Box
                       sx={{
-                        bgcolor: "#000",
-                        borderColor: "#000",
-                        marginTop: "2px",
-                        "&:hover": {
-                          bgcolor: "#333",
-                          borderColor: "#000",
-                        },
+                        backgroundColor: "#fff",
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        padding: "20px",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        borderRadius: 0,
+                        textDecoration: "none",
                       }}
                     >
-                      <Typography
-                        sx={{
-                          color: "white",
-                          fontWeight: "400",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        style={{
+                          objectPosition: "top",
+                          objectFit: "cover",
+                          aspectRatio: 1,
+                          width: "100%",
                         }}
-                      >
-                        Redigera
-                      </Typography>
-                    </Button>
-                  </Box>
-                </Grid>
-              ))}
+                      />
+                      <CardContent>
+                        <Typography
+                          sx={{
+                            fontSize: "1rem",
+                            fontWeight: "bold",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          Titel:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontWeight: "100",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                          data-cy="product-title"
+                        >
+                          {product.name}
+                        </Typography>
+
+                        <Typography
+                          sx={{
+                            fontSize: "1rem",
+                            fontWeight: "bold",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          ID:
+                        </Typography>
+                        <Typography
+                          data-cy="product-id"
+                          sx={{
+                            fontWeight: "100",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          {product.id}
+                        </Typography>
+
+                        <Typography
+                          sx={{
+                            fontSize: "1rem",
+                            fontWeight: "bold",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          Beskrivning:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontWeight: "100",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          {product.description}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "1rem",
+                            fontWeight: "bold",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          Pris:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontWeight: "100",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                          data-cy="product-price"
+                        >
+                          {product.price} kr
+                        </Typography>
+                      </CardContent>
+                      {/*      <RemoveProductButton productId={product.id} /> */}
+                      {/*                     <EditAdminButton productId={product.id}  />
+                       */}
+                      <DeleteAdminButton productId={product.id} />
+                    </Box>
+                  </Grid>
+                ))}
             </Grid>
           </Grid>
         </Box>
