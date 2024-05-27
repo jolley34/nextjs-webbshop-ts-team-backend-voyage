@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 // RHF - Hantera tillståndet och uppbyggnaden av dataobjektet som formuläret skapar
@@ -21,7 +22,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useProducts } from "../app/context/ProductContext";
 import { Product } from "../app/storage/ProductStorage";
 import theme from "../app/themes/themes";
 

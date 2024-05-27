@@ -22,14 +22,18 @@ import { useEffect, useState } from "react";
 import { signOutUser } from "@/app/server-actions/user/userActions";
 import SignInButton from "@/app/sign-in/components/SignInButton";
 import theme from "@/app/themes/themes";
+import { useSession } from "next-auth/react";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
 
 interface HeaderProps {
   name: string;
-  session: any;
 }
 
-export default function Header({ name, session }: HeaderProps) {
+export default function Header({ name }: HeaderProps) {
+  const session = useSession();
+  console.log(
+    session?.data?.user
+  )
   const [open, setOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -257,10 +261,10 @@ export default function Header({ name, session }: HeaderProps) {
               paddingInline: "1.25rem",
             }}
           >
-            {session?.user ? (
+            {session?.data?.user ? (
               <>
                 <p style={{ color: "black", fontWeight: "900" }}>
-                  {session.user.name}
+                  {session.data.user.name}
                 </p>
                 <form action={signOutUser}>
                   <button
