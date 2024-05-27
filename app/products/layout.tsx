@@ -6,7 +6,7 @@ import CategoryBar from "../../components/categorybar/CategoryBar";
 import { showAllCategories } from "../server-actions/categories/handler";
 
 export default async function ProductsLayout(props: PropsWithChildren) {
-  const { categories } = await showAllCategories();
+  const categories = await showAllCategories();
 
   return (
     <Box>

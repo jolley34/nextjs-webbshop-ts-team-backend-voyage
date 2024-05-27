@@ -1,5 +1,7 @@
 "use server";
 import { db } from "@/prisma/db";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { ProductFormData } from "../validation/validation";
 
 export async function handleArchive(productId: string, isArchived: boolean) {
@@ -12,13 +14,14 @@ export async function handleArchive(productId: string, isArchived: boolean) {
 export async function AddNewProductAdmin(data: ProductFormData) {
   const newProduct = await db.product.create({
     data: {
-      name: data.name,
-      description: data.description,
-      image: data.image,
-      video: data.video || "",
-      price: data.price,
+      ...data,
       isArchived: false,
+      categories: {
+        connect: data.categories.map((categoryId) => ({ id: categoryId })),
+      },
     },
   });
   console.log("Product created:", newProduct);
+  revalidatePath("/admin");
+  redirect("/admin");
 }

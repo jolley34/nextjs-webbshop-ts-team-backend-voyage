@@ -21,13 +21,14 @@ export const UserSignInSchema = z.object({
   password: z.string().min(1),
 });
 
-const ProductSchema = z.object({
+export const ProductSchema = z.object({
   id: z.string(),
   name: z.string().min(1),
   image: z.string().url().min(1),
   description: z.string().min(1),
   price: z.number().positive(),
   video: z.string().url().min(1),
+  categories: z.array(z.string()),
 });
 
 export type ProductFormData = z.infer<typeof ProductSchema>;

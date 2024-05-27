@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+"use client";
+
 import { AddNewProductAdmin } from "@/app/server-actions/admin/handler";
 import { ProductFormData } from "@/app/server-actions/validation/validation";
 import {
@@ -9,24 +11,37 @@ import {
   FormControl,
   FormHelperTextProps,
   Grid,
+  MenuItem,
+  Select,
   TextField,
   ThemeProvider,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import theme from "../../../../themes/themes";
+
+interface Category {
+  id: string;
+  name: string;
+}
 
 interface Props {
   product?: ProductFormData;
+  categories: Category[];
 }
 
-export default function ProductForm({ product }: Props) {
+export default function ProductForm({ product, categories }: Props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const form = useForm<ProductFormData>();
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ProductFormData>();
 
-  const handleCreateProduct = () => {
-    const formData = form.getValues();
-    AddNewProductAdmin(formData);
+  const handleCreateProduct = async (formData: ProductFormData) => {
+    await AddNewProductAdmin(formData);
   };
 
   return (
@@ -36,6 +51,7 @@ export default function ProductForm({ product }: Props) {
         container
         justifyContent="center"
         data-cy="product-form"
+        onSubmit={handleSubmit(handleCreateProduct)}
       >
         <Card sx={{ width: "60%", padding: "5%" }}>
           <Grid
@@ -55,9 +71,9 @@ export default function ProductForm({ product }: Props) {
                       <TextField
                         variant="outlined"
                         label="Name"
-                        {...form.register("name")}
-                        error={Boolean(form.formState.errors.name)}
-                        helperText={form.formState.errors.name?.message}
+                        {...register("name")}
+                        error={Boolean(errors.name)}
+                        helperText={errors.name?.message}
                         inputProps={{ "data-cy": "product-title" }}
                         FormHelperTextProps={
                           {
@@ -71,9 +87,9 @@ export default function ProductForm({ product }: Props) {
                       <TextField
                         variant="outlined"
                         label="Price"
-                        {...form.register("price")}
-                        error={Boolean(form.formState.errors.price)}
-                        helperText={form.formState.errors.price?.message}
+                        {...register("price")}
+                        error={Boolean(errors.price)}
+                        helperText={errors.price?.message}
                         inputProps={{ "data-cy": "product-price" }}
                         FormHelperTextProps={
                           {
@@ -86,9 +102,9 @@ export default function ProductForm({ product }: Props) {
                       <TextField
                         variant="outlined"
                         label="Description"
-                        {...form.register("description")}
-                        error={Boolean(form.formState.errors.description)}
-                        helperText={form.formState.errors.description?.message}
+                        {...register("description")}
+                        error={Boolean(errors.description)}
+                        helperText={errors.description?.message}
                         inputProps={{ "data-cy": "product-description" }}
                       />
                     </Grid>
@@ -96,13 +112,13 @@ export default function ProductForm({ product }: Props) {
                       <TextField
                         variant="outlined"
                         label="Image"
-                        {...form.register("image")}
+                        {...register("image")}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                          form.register("image").onChange(e);
+                          register("image").onChange(e);
                           setImagePreview(e.target.value);
                         }}
-                        error={Boolean(form.formState.errors.image)}
-                        helperText={form.formState.errors.image?.message}
+                        error={Boolean(errors.image)}
+                        helperText={errors.image?.message}
                       />
                     </Grid>
 
@@ -110,14 +126,33 @@ export default function ProductForm({ product }: Props) {
                       <TextField
                         variant="outlined"
                         label="Video"
-                        {...form.register("video")}
-                        error={Boolean(form.formState.errors.video)}
-                        helperText={form.formState.errors.video?.message}
+                        {...register("video")}
+                        error={Boolean(errors.video)}
+                        helperText={errors.video?.message}
                       />
                     </Grid>
-                  </Grid>
 
-                  <button onClick={handleCreateProduct}>SPARA PRODUKT</button>
+                    <Grid item xs={12}>
+                      <FormControl fullWidth>
+                        <Typography>Choose categories</Typography>
+                        <Controller
+                          name="categories"
+                          control={control}
+                          defaultValue={[]}
+                          render={({ field }) => (
+                            <Select {...field} multiple variant="outlined">
+                              {categories.map((category) => (
+                                <MenuItem key={category.id} value={category.id}>
+                                  {category.name}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          )}
+                        />
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+                  <button type="submit">SPARA PRODUKT</button>
                 </FormControl>
               </Box>
             </Grid>

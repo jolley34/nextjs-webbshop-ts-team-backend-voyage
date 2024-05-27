@@ -1,7 +1,10 @@
+import { showAllCategories } from "@/app/server-actions/categories/handler";
 import { Box, Typography } from "@mui/material";
 import ProductForm from "../new/components/ProductForm";
 
-export default function AdminNewProductPage() {
+export default async function AdminNewProductPage() {
+  const categories = await showAllCategories();
+
   return (
     <Box
       sx={{
@@ -23,7 +26,7 @@ export default function AdminNewProductPage() {
       >
         Admin New Product Page
       </Typography>
-      <ProductForm />
+      <ProductForm categories={categories} />
     </Box>
   );
 }

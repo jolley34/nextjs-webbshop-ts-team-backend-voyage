@@ -9,7 +9,6 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { getProductsByCategoryName } from "../server-actions/products/handler";
 import theme from "../themes/themes";
 import DeleteAdminButton from "./product/components/deleteAdminButton";
 
@@ -17,7 +16,7 @@ export default async function AdminPage(productId: string) {
   // const session = await auth();
   // if (!session?.user.isAdmin) return redirect("/>SignIn");
 
-  const { products } = await getProductsByCategoryName();
+  const products = await db.product.findMany({ where: { isArchived: false } });
 
   const orders = await db.order.findMany({
     select: {
