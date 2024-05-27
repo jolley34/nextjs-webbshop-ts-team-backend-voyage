@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 // "use client";
+import { db } from "@/prisma/db";
 import {
   Box,
   Button,
@@ -13,7 +14,17 @@ import { getProductsByCategoryName } from "../server-actions/products/handler";
 import theme from "../themes/themes";
 
 export default async function AdminPage() {
+  // const session = await auth();
+  // if (!session?.user.isAdmin) return redirect("/>SignIn");
+
   const { products } = await getProductsByCategoryName();
+
+  const orders = await db.order.findMany({
+    select: {
+      id: true,
+    },
+    orderBy: { id: "desc" },
+  });
 
   return (
     <>
@@ -239,6 +250,11 @@ export default async function AdminPage() {
             </Grid>
           </Grid>
         </Box>
+        {orders.map((order, index) => (
+          <div key={index}>
+            <div>{order.id}</div>
+          </div>
+        ))}
       </ThemeProvider>
     </>
   );
