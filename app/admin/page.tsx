@@ -1,6 +1,5 @@
-"use client";
-
-// AdminPage.tsx
+/* eslint-disable @next/next/no-img-element */
+// "use client";
 import {
   Box,
   Button,
@@ -10,11 +9,11 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { showAllProducts } from "../server-actions/products/handler";
+import { getProductsByCategoryName } from "../server-actions/products/handler";
 import theme from "../themes/themes";
 
 export default async function AdminPage() {
-  const { products } = await showAllProducts();
+  const { products } = await getProductsByCategoryName();
 
   return (
     <>

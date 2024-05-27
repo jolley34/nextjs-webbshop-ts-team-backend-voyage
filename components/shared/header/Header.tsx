@@ -19,14 +19,17 @@ import {
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { signOutUser } from "@/app/server-actions/user/userActions";
+import SignInButton from "@/app/sign-in/components/SignInButton";
 import theme from "@/app/themes/themes";
 import ShopCartWithBadge from "../../ShopCartWithBadge";
 
 interface HeaderProps {
   name: string;
+  session: any;
 }
 
-export default function Header({ name }: HeaderProps) {
+export default function Header({ name, session }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -174,6 +177,7 @@ export default function Header({ name }: HeaderProps) {
               onClick={handleDrawerOpen}
             >
               <MenuIcon
+                onClick={handleDrawerOpen}
                 sx={{
                   color: pathname === "/about" ? "white" : "black",
                   opacity: open ? 0 : loaded ? 1 : 0,
@@ -244,6 +248,36 @@ export default function Header({ name }: HeaderProps) {
               </IconButton>
             </Box>
           </Toolbar>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              paddingInline: "1.25rem",
+            }}
+          >
+            {session?.user ? (
+              <>
+                <p style={{ color: "black" }}>{session.user.name}</p>
+                <form action={signOutUser}>
+                  <button
+                    style={{
+                      cursor: "pointer",
+                      background: "#0072e4",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "10px",
+                      color: "white",
+                    }}
+                  >
+                    Sign out
+                  </button>
+                </form>
+              </>
+            ) : (
+              <SignInButton />
+            )}
+          </div>
         </AppBar>
 
         <Box>

@@ -35,6 +35,7 @@ CREATE TABLE "Address" (
     "street" TEXT NOT NULL,
     "zipcode" TEXT NOT NULL,
     "city" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
 
     CONSTRAINT "Address_pkey" PRIMARY KEY ("id")
 );
@@ -115,10 +116,10 @@ CREATE TABLE "_CategoryToProduct" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Product_name_key" ON "Product"("name");
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");

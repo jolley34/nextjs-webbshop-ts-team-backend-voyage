@@ -10,7 +10,7 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
-  username      String?
+  username      String?   @unique
   isAdmin       Boolean   @default(false)
   password      String?
   name          String?
@@ -33,9 +33,9 @@ model Order {
   totalPrice        Decimal
   number            Int
 
-  user           User           @relation(fields: [userId], references: [id])
-  shippingAdress Address        @relation(fields: [shippingAddressId], references: [id])
-  products       OrderProduct[]
+  user            User           @relation(fields: [userId], references: [id])
+  shippingAddress Address        @relation(fields: [shippingAddressId], references: [id])
+  products        OrderProduct[]
 }
 
 model Address {
@@ -46,13 +46,14 @@ model Address {
   street      String
   zipcode     String
   city        String
+  email       String
 
   orders Order[]
 }
 
 model Product {
   id          String  @id @default(cuid())
-  name        String  @unique
+  name        String
   description String
   image       String
   video       String
@@ -76,7 +77,8 @@ model OrderProduct {
 
 model Category {
   id       String    @id @default(cuid())
-  name     String    @unique
+  name     String    @unique // Fina bord
+  // slug     String    @unique // fina-bord
   products Product[]
 }
 
