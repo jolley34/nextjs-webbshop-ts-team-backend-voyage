@@ -114,7 +114,7 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 
 - [ x ] Git & GitHub har använts
 - [ x ] Projektmappen innehåller en README.md fil - (läs ovan för mer info)
-- [ x ] Uppgiften lämnas in i tid!
+- [  ] Uppgiften lämnas in i tid!
 
 **Home**
 

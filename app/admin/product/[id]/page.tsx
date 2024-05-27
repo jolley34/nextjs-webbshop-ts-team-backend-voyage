@@ -1,18 +1,17 @@
-"use client";
-import { useProducts } from "@/app/context/ProductContext";
 import ProductForm from "@/components/ProductForm";
+import { db } from "@/prisma/db";
 import { Box, Typography } from "@mui/material";
 
 type Props = { params: { id: string; title: string } };
 
-export default function AdminEditProductPage(props: Props) {
+export default async function AdminEditProductPage(props: Props) {
   // 1. Ta reda på vilken produkt som ska ändras
   // 2. Hämta datan för den produkten
-  const { products } = useProducts();
-  const product = products.find(
-    (product) =>
-      product.id === props.params.id || product.title === props.params.title
-  );
+  const product = await db.product.findUnique({
+    where: {
+      id: props.params.id,
+    },
+  });
 
   // todo: 404 om produkten inte finns.
   if (!product) {
