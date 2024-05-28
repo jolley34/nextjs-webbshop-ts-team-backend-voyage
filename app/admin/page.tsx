@@ -271,7 +271,7 @@ export default async function AdminPage() {
         <Box sx={{ padding: "0.5rem 0rem 0.5rem 3rem" }}>
           <h1>Orders</h1>
         </Box>
-        <Box sx={{ paddingInline: "3rem", paddingBottom: "2rem" }}>
+        <Box sx={{ paddingInline: "3rem", paddingBottom: "1.5rem" }}>
           <Grid container spacing={2}>
             {orders.map((order) => (
               <Grid item xs={12} sm={12} md={12} key={order.id}>
