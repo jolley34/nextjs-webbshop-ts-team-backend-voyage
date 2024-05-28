@@ -27,14 +27,14 @@ export async function AddNewProductAdmin(data: ProductFormData) {
 }
 
 export async function EditProduct(productId: string, data: ProductFormData) {
-  const categories = data.categories || [];
+  const categories = await db.category.findMany();
 
   const updateProduct = await db.product.update({
     where: { id: productId },
     data: {
       ...data,
       categories: {
-        set: categories.map((categoryId) => ({ id: categoryId })),
+        set: categories.map((category) => ({ id: category.id })),
       },
     },
   });

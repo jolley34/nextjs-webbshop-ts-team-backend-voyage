@@ -26,6 +26,7 @@ interface Category {
 }
 
 interface Props {
+  productId: string;
   product?: ProductFormData;
   categories: Category[];
   name: string;
@@ -42,6 +43,7 @@ export default function EditForm({
   description,
   image,
   video,
+  productId,
 }: Props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const {
@@ -52,7 +54,7 @@ export default function EditForm({
   } = useForm<ProductFormData>();
 
   const handleEditProduct = async (formData: ProductFormData) => {
-    await EditProduct(formData);
+    await EditProduct(productId, formData);
   };
 
   return (
@@ -146,7 +148,7 @@ export default function EditForm({
                     <Grid item xs={12}>
                       <FormControl fullWidth>
                         <Typography>Choose new category</Typography>
-                        <Typography>NAMNET PÅ VALD KATEGORI HÄR</Typography>
+
                         <Controller
                           name="categories"
                           control={control}
