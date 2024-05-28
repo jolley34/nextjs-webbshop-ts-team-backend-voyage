@@ -1,5 +1,8 @@
-import { Card, Grid } from "@mui/material";
+"use client";
+import { Card, Grid, useTheme } from "@mui/material";
+import { styled } from "@mui/system";
 import { Prisma } from "@prisma/client";
+import { useState } from "react";
 
 interface Props {
   id: string;
@@ -17,6 +20,16 @@ interface Props {
   totalPrice: Prisma.Decimal;
 }
 
+const AnimatedCard = styled(Card)(
+  ({ theme, expanded }: { theme: any; expanded: boolean }) => ({
+    maxHeight: expanded ? "1000px" : "160px",
+    transition: "max-height 0.5s ease-in-out",
+    padding: "2rem",
+    background: "#f6f5f3",
+    cursor: "pointer",
+  })
+);
+
 export default function OrderCard({
   id,
   userId,
@@ -32,10 +45,16 @@ export default function OrderCard({
   productPrice,
   totalPrice,
 }: Props) {
+  const [expanded, setExpanded] = useState(false);
   const formattedDate = createdAt.toLocaleString();
+  const theme = useTheme();
+
+  const handleCardClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
-    <Card sx={{ padding: "2rem", background: "#f6f5f3" }}>
+    <AnimatedCard onClick={handleCardClick} expanded={expanded} theme={theme}>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={6}>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -119,6 +138,6 @@ export default function OrderCard({
           </div>
         </div>
       </div>
-    </Card>
+    </AnimatedCard>
   );
 }

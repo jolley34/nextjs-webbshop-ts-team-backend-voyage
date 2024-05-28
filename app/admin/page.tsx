@@ -61,7 +61,11 @@ export default async function AdminPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box sx={{ paddingTop: { xs: "140px", sm: "140px", md: "140px" } }}>
+        <Box
+          sx={{
+            paddingTop: { xs: "140px", sm: "140px", md: "140px" },
+          }}
+        >
           <Grid
             container
             justifyContent="center"
@@ -76,6 +80,7 @@ export default async function AdminPage() {
               sx={{
                 backgroundColor: "#fff",
                 marginBottom: "20px",
+                paddingBottom: "2rem",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -266,7 +271,7 @@ export default async function AdminPage() {
         <Box sx={{ padding: "0.5rem 0rem 0.5rem 3rem" }}>
           <h1>Orders</h1>
         </Box>
-        <Box sx={{ paddingInline: "3rem" }}>
+        <Box sx={{ paddingInline: "3rem", paddingBottom: "2rem" }}>
           <Grid container spacing={2}>
             {orders.map((order) => (
               <Grid item xs={12} sm={12} md={12} key={order.id}>
