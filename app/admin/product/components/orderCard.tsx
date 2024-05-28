@@ -19,6 +19,7 @@ interface Props {
   productName: string;
   productPrice: Prisma.Decimal;
   totalPrice: Prisma.Decimal;
+  quantity: number;
 }
 
 const AnimatedCard = styled(Card)(
@@ -53,6 +54,7 @@ export default function OrderCard({
   productName,
   productPrice,
   totalPrice,
+  quantity,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const formattedDate = createdAt.toLocaleString();
@@ -140,6 +142,14 @@ export default function OrderCard({
                       Created At
                     </Typography>
                     <Typography variant="subtitle1">{formattedDate}</Typography>
+                  </div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <div>
+                    <Typography variant="subtitle1" fontWeight="700">
+                      Quantity
+                    </Typography>
+                    <Typography variant="subtitle1">{quantity}</Typography>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>

@@ -293,6 +293,10 @@ export default async function AdminPage() {
                     .map((product) => product.product.price)
                     .join(",")}
                   totalPrice={order.totalPrice}
+                  quantity={order.products.reduce(
+                    (acc, product) => acc + product.quantity,
+                    0
+                  )}
                 />
               </Grid>
             ))}
