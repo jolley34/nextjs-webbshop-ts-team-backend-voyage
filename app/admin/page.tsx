@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/no-img-element */
 import { db } from "@/prisma/db";
 import {
   Box,
@@ -25,6 +24,7 @@ export default async function AdminPage() {
       id: true,
       userId: true,
       createdAt: true,
+      totalPrice: true,
       user: {
         select: {
           name: true,
@@ -37,8 +37,21 @@ export default async function AdminPage() {
           street: true,
           city: true,
           zipcode: true,
-          email: true,
-          phoneNumber: true,
+          /*           email: true,
+           */ phoneNumber: true,
+        },
+      },
+      products: {
+        select: {
+          product: {
+            select: {
+              name: true,
+              image: true,
+              price: true,
+            },
+          },
+          quantity: true,
+          subTotalPrice: true,
         },
       },
     },
@@ -266,8 +279,15 @@ export default async function AdminPage() {
                   lastName={order.shippingAddress.lastName}
                   street={order.shippingAddress.street}
                   zipcode={order.shippingAddress.zipcode}
-                  email={order.shippingAddress.email}
-                  phoneNumber={order.shippingAddress.phoneNumber}
+                  /*                   email={order.shippingAddress.email}
+                   */ phoneNumber={order.shippingAddress.phoneNumber}
+                  productName={order.products
+                    .map((product) => product.product.name)
+                    .join(",")}
+                  productPrice={order.products
+                    .map((product) => product.product.price)
+                    .join(",")}
+                  totalPrice={order.totalPrice}
                 />
               </Grid>
             ))}

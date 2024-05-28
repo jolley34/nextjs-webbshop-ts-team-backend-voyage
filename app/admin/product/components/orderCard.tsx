@@ -1,4 +1,5 @@
 import { Card, Grid } from "@mui/material";
+import { Prisma } from "@prisma/client";
 
 interface Props {
   id: string;
@@ -11,6 +12,9 @@ interface Props {
   zipcode: string;
   email: string;
   phoneNumber: string;
+  productName: string;
+  productPrice: Prisma.Decimal;
+  totalPrice: Prisma.Decimal;
 }
 
 export default function OrderCard({
@@ -24,6 +28,9 @@ export default function OrderCard({
   zipcode,
   email,
   phoneNumber,
+  productName,
+  productPrice,
+  totalPrice,
 }: Props) {
   const formattedDate = createdAt.toLocaleString();
 
@@ -48,6 +55,12 @@ export default function OrderCard({
             <div>
               <p style={{ fontWeight: "700" }}>Created At</p>
               <p style={{ color: "green" }}>{formattedDate}</p>
+            </div>
+            <div>
+              <p style={{ fontWeight: "700", fontSize: "1rem" }}>
+                Total Order price
+              </p>
+              <p style={{ color: "green" }}>{totalPrice.toString()} kr</p>
             </div>
           </div>
         </Grid>
@@ -93,6 +106,19 @@ export default function OrderCard({
           </Grid>
         </Grid>
       </Grid>
+      <h2 style={{ margin: 0 }}>Product</h2>
+      <div>
+        <div>
+          <div>
+            <p style={{ fontWeight: "700" }}>Product name</p>
+            <p>{productName}</p>
+          </div>
+          <div>
+            <p style={{ fontWeight: "700" }}>Product price</p>
+            <p style={{ color: "green" }}>{productPrice.toString()} kr</p>
+          </div>
+        </div>
+      </div>
     </Card>
   );
 }
