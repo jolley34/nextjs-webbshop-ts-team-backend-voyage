@@ -21,6 +21,8 @@ export default function CustomerForm() {
   } = form;
 
   const handleSubmit = async (data: AddressCreate) => {
+    console.log("Form data:", data);
+    console.log("Cart items:", cart);
     await saveOrder(data, cart);
     form.reset();
     clearLocalStorage();
@@ -29,6 +31,7 @@ export default function CustomerForm() {
   return (
     <Box
       component="form"
+      onSubmit={form.handleSubmit(handleSubmit)}
       sx={{ display: "flex", flexDirection: "column", gap: 2 }}
     >
       {" "}
@@ -48,7 +51,7 @@ export default function CustomerForm() {
           {...form.register("firstName")}
           label="Förnamn"
           variant="standard"
-          error={!!errors.firstName}
+          // error={!!errors.firstName}
           helperText={errors.firstName?.message}
         />
 
@@ -56,7 +59,7 @@ export default function CustomerForm() {
           {...form.register("lastName")}
           label="Efternamn"
           variant="standard"
-          error={!!errors.lastName}
+          // error={!!errors.lastName}
           helperText={errors.lastName?.message}
         />
 
@@ -64,7 +67,7 @@ export default function CustomerForm() {
           {...form.register("city")}
           label="Stad"
           variant="standard"
-          error={!!errors.city}
+          // error={!!errors.city}
           helperText={errors.city?.message}
         />
 
@@ -72,7 +75,7 @@ export default function CustomerForm() {
           {...form.register("zipcode")}
           label="Postnummer"
           variant="standard"
-          error={!!errors.zipcode}
+          // error={!!errors.zipcode}
           helperText={errors.zipcode?.message}
         />
 
@@ -80,7 +83,7 @@ export default function CustomerForm() {
           {...form.register("street")}
           label="Adress"
           variant="standard"
-          error={!!errors.street}
+          // error={!!errors.street}
           helperText={errors.street?.message}
         />
 
@@ -88,12 +91,19 @@ export default function CustomerForm() {
           {...form.register("phoneNumber")}
           label="Telefonnummer"
           variant="standard"
-          error={!!errors.phoneNumber}
+          // error={!!errors.phoneNumber}
           helperText={errors.phoneNumber?.message}
+        />
+
+        <TextField
+          {...form.register("email")}
+          label="Epost"
+          variant="standard"
+          // error={!!errors.email}
+          helperText={errors.email?.message}
         />
       </FormControl>
       <Button
-        onSubmit={form.handleSubmit(handleSubmit)}
         type="submit"
         variant="contained"
         sx={{
