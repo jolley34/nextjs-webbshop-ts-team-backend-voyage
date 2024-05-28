@@ -37,8 +37,8 @@ export default async function AdminPage() {
           street: true,
           city: true,
           zipcode: true,
-          /*           email: true,
-           */ phoneNumber: true,
+          email: true,
+          phoneNumber: true,
         },
       },
       products: {
@@ -284,8 +284,8 @@ export default async function AdminPage() {
                   lastName={order.shippingAddress.lastName}
                   street={order.shippingAddress.street}
                   zipcode={order.shippingAddress.zipcode}
-                  /*                   email={order.shippingAddress.email}
-                   */ phoneNumber={order.shippingAddress.phoneNumber}
+                  email={order.shippingAddress.email}
+                  phoneNumber={order.shippingAddress.phoneNumber}
                   productName={order.products
                     .map((product) => product.product.name)
                     .join(",")}
