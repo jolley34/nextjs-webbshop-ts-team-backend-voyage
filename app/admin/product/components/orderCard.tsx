@@ -23,7 +23,7 @@ interface Props {
 
 const AnimatedCard = styled(Card)(
   ({ theme, expanded }: { theme: any; expanded: boolean }) => ({
-    maxHeight: expanded ? "1000px" : "160px",
+    maxHeight: expanded ? "1000px" : "165px",
     transition: "max-height 0.5s ease-in-out, background-color 0.5s ease",
     padding: "2rem",
     background: "#f6f5f3",
