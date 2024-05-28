@@ -47,7 +47,14 @@ export default async function AdminEditProductPage(props: Props) {
       >
         Edit {product.name}
       </Typography>
-      <EditForm categories={categories} />
+      <EditForm
+        categories={categories}
+        name={product.name}
+        price={product.price}
+        description={product.description}
+        image={product.image}
+        video={product.video}
+      />
     </Box>
   );
 }
