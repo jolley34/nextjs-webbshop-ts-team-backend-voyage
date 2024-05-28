@@ -1,19 +1,25 @@
+"use client";
+
+import { EditProduct } from "@/app/server-actions/admin/handler";
 import { Button, Typography } from "@mui/material";
-import { useRouter } from "next/navigation";
 
-export default function EditAdminButton({ productId }) {
-  const router = useRouter();
+interface EditAdminButtonProps {
+  productId: string;
+}
 
-  const handleEditClick = () => {
-    router.push(`/admin/product/${productId}`);
+export default function EditAdminButton({ productId }: EditAdminButtonProps) {
+  const handleClick = async () => {
+    await EditProduct(productId);
+    window.location.reload();
   };
+
+  console.log(productId);
 
   return (
     <Button
-      onClick={handleEditClick}
-      data-cy="admin-edit-product"
       color="secondary"
       variant="outlined"
+      onClick={handleClick}
       sx={{
         bgcolor: "#000",
         borderColor: "#000",
@@ -31,7 +37,7 @@ export default function EditAdminButton({ productId }) {
           fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
         }}
       >
-        Redigera
+        Edit Product
       </Typography>
     </Button>
   );

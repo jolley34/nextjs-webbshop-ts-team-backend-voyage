@@ -25,3 +25,21 @@ export async function AddNewProductAdmin(data: ProductFormData) {
   revalidatePath("/admin");
   redirect("/admin");
 }
+
+export async function EditProduct(productId: string, data: ProductFormData) {
+  const selectedCategoryIds = data.categories;
+
+  const updateProduct = await db.product.update({
+    where: { id: productId },
+    data: {
+      ...data,
+      categories: {
+        set: selectedCategoryIds.map((categoryId) => ({ id: categoryId })),
+      },
+    },
+  });
+
+  console.log("Product updated:", updateProduct);
+  revalidatePath("/admin");
+  redirect("/admin");
+}
