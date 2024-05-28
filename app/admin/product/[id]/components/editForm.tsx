@@ -151,7 +151,7 @@ export default function EditForm({
                       <TextField
                         variant="outlined"
                         label="Stock"
-                        {...register("stock")}
+                        {...register("stock", { valueAsNumber: true })} 
                         defaultValue={stock}
                         error={Boolean(errors.stock)}
                         helperText={errors.stock?.message}

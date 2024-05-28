@@ -216,6 +216,26 @@ export default async function AdminPage() {
                         >
                           {product.price.toString()} kr
                         </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: "1rem",
+                            fontWeight: "bold",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          Lagersaldo:
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontWeight: "100",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          }}
+                        >
+                          {product.stock}
+                        </Typography>
+                        
                       </CardContent>
                       <Link
                         href={`/admin/product/${encodeURIComponent(
