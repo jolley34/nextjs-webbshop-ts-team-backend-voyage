@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import theme from "../themes/themes";
 import DeleteAdminButton from "./product/components/deleteAdminButton";
+import OrderCard from "./product/components/orderCard";
 
 export default async function AdminPage() {
   // const session = await auth();
@@ -22,6 +23,24 @@ export default async function AdminPage() {
   const orders = await db.order.findMany({
     select: {
       id: true,
+      userId: true,
+      createdAt: true,
+      user: {
+        select: {
+          name: true,
+        },
+      },
+      shippingAddress: {
+        select: {
+          firstName: true,
+          lastName: true,
+          street: true,
+          city: true,
+          zipcode: true,
+          email: true,
+          phoneNumber: true,
+        },
+      },
     },
     orderBy: { id: "desc" },
   });
@@ -231,11 +250,29 @@ export default async function AdminPage() {
             </Grid>
           </Grid>
         </Box>
-        {orders.map((order, index) => (
-          <div key={index}>
-            <div>{order.id}</div>
-          </div>
-        ))}
+        <Box sx={{ padding: "0.5rem 0rem 0.5rem 3rem" }}>
+          <h1>Orders</h1>
+        </Box>
+        <Box sx={{ paddingInline: "3rem" }}>
+          <Grid container spacing={2}>
+            {orders.map((order) => (
+              <Grid item xs={12} sm={12} md={12} key={order.id}>
+                <OrderCard
+                  id={order.id}
+                  userId={order.userId}
+                  user={order.user.name}
+                  createdAt={order.createdAt}
+                  firstName={order.shippingAddress.firstName}
+                  lastName={order.shippingAddress.lastName}
+                  street={order.shippingAddress.street}
+                  zipcode={order.shippingAddress.zipcode}
+                  email={order.shippingAddress.email}
+                  phoneNumber={order.shippingAddress.phoneNumber}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </ThemeProvider>
     </>
   );
