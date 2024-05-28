@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-img-element */
 import { db } from "@/prisma/db";
 import {
   Box,
@@ -12,7 +13,7 @@ import {
 import theme from "../themes/themes";
 import DeleteAdminButton from "./product/components/deleteAdminButton";
 
-export default async function AdminPage(productId: string) {
+export default async function AdminPage() {
   // const session = await auth();
   // if (!session?.user.isAdmin) return redirect("/>SignIn");
 
@@ -68,7 +69,6 @@ export default async function AdminPage(productId: string) {
                   sx={{
                     bgcolor: "#000",
                     borderColor: "#000",
-
                     "&:hover": {
                       bgcolor: "#333",
                       borderColor: "#000",
@@ -217,9 +217,13 @@ export default async function AdminPage(productId: string) {
                           {product.price.toString()} kr
                         </Typography>
                       </CardContent>
-                      {/*      <RemoveProductButton productId={product.id} /> */}
-                      {/*                     <EditAdminButton productId={product.id}  />
-                       */}
+                      <Link
+                        href={`/admin/product/${encodeURIComponent(
+                          product.id
+                        )}`}
+                      >
+                        <button>Edit Product</button>
+                      </Link>
                       <DeleteAdminButton productId={product.id} />
                     </Box>
                   </Grid>

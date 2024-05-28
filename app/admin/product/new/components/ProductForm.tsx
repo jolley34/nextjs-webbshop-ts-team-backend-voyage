@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-"use client";
-
 import { AddNewProductAdmin } from "@/app/server-actions/admin/handler";
 import { ProductFormData } from "@/app/server-actions/validation/validation";
 import {

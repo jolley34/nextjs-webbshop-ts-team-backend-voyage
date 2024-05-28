@@ -1,12 +1,14 @@
-import ProductForm from "@/components/ProductForm";
+"use server";
+import { showAllCategories } from "@/app/server-actions/categories/handler";
 import { db } from "@/prisma/db";
 import { Box, Typography } from "@mui/material";
+import EditForm from "./components/editForm";
 
-type Props = { params: { id: string; title: string } };
+type Props = { params: { id: string } };
 
 export default async function AdminEditProductPage(props: Props) {
-  // 1. Ta reda på vilken produkt som ska ändras
-  // 2. Hämta datan för den produkten
+  const categories = await showAllCategories();
+
   const product = await db.product.findUnique({
     where: {
       id: props.params.id,
@@ -18,9 +20,7 @@ export default async function AdminEditProductPage(props: Props) {
     return (
       <div>
         <Typography variant="body1">
-          {`Product with id or title: ${
-            props.params?.id || props.params?.title
-          } does not exist...`}
+          {`Product with id or title: ${props.params?.id} does not exist...`}
         </Typography>
       </div>
     );
@@ -29,7 +29,7 @@ export default async function AdminEditProductPage(props: Props) {
   return (
     <Box
       sx={{
-        paddingTop: { xs: "81px", sm: "88px", md: "88px" },
+        paddingTop: { xs: "140px", sm: "140px", md: "140px" },
         paddingBottom: "55px",
         backgroundImage:
           "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
@@ -45,9 +45,9 @@ export default async function AdminEditProductPage(props: Props) {
           fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
         }}
       >
-        Admin Edit Product Page
+        Edit {product.name}
       </Typography>
-      <ProductForm product={product} />
+      <EditForm categories={categories} />
     </Box>
   );
 }
