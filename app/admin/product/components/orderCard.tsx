@@ -23,7 +23,7 @@ interface Props {
 
 const AnimatedCard = styled(Card)(
   ({ theme, expanded }: { theme: any; expanded: boolean }) => ({
-    maxHeight: expanded ? "1000px" : "110px",
+    maxHeight: expanded ? "2000px" : "110px",
     transition: "max-height 0.5s ease-in-out, background-color 0.5s ease",
     padding: "2rem",
     background: "#f6f5f3",
@@ -97,7 +97,12 @@ export default function OrderCard({
               </Typography>
               <Typography
                 variant="subtitle1"
-                sx={{ margin: 0, fontSize: { xs: "1rem", sm: "1.5rem" } }}
+                sx={{
+                  margin: 0,
+                  fontSize: { xs: "1rem", sm: "1.5rem" },
+                  fontWeight: "700",
+                  color: "#878787",
+                }}
               >
                 {id}
               </Typography>
