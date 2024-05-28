@@ -28,6 +28,7 @@ export const ProductSchema = z.object({
   description: z.string().min(1),
   price: z.number().positive(),
   video: z.string().url().min(1),
+  stock: z.number().int().nonnegative(),
   categories: z.array(z.string()),
 });
 

@@ -58,6 +58,7 @@ model Product {
   image       String
   video       String
   price       Decimal
+  stock       Int     @default(10)
   isArchived  Boolean @default(false)
 
   categories Category[]

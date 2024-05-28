@@ -21,8 +21,15 @@ export async function saveOrder(
   // Todo, hämta pris från DB
   const products = await db.product.findMany({
     where: { id: { in: cartItems.map((item) => item.id) } },
-    select: { id: true, price: true },
+    select: { id: true, price: true, stock: true },
   });
+
+  for (const item of cartItems) {
+    const product = products.find((p) => p.id === item.id);
+    if (product && product.stock < item.quantity) {
+      throw new Error(`Insufficient stock for product ${product.id}`);
+    }
+  }
 
   const order = await db.order.create({
     data: {
@@ -43,11 +50,22 @@ export async function saveOrder(
     },
   });
 
+  for (const item of cartItems) {
+    await db.product.update({
+      where: { id: item.id },
+      data: {
+        stock: {
+          decrement: item.quantity,
+        },
+      },
+    });
+  }
+
   revalidatePath("/");
 }
 // kontrollera att man är admin
 export async function getAllOrders() {
-  
+
   const orders = await db.order.findMany({
     select: {
       id: true,
