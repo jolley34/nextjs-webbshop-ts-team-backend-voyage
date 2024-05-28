@@ -42,10 +42,10 @@ export default function EditForm({ product, categories }: Props) {
     },
   });
 
-  const handleEditProduct = async (formData: ProductFormData) => {
-    if (!formData.categories) {
-      formData.categories = [];
-      await EditProduct(product.id, formData);
+  const handleEditProduct = async (data: ProductFormData) => {
+    if (!data.categories) {
+      data.categories = [];
+      await EditProduct(data);
     }
 
     return (
