@@ -26,7 +26,7 @@ export default function NewsPage() {
       const windowHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
       const totalHeight = document.documentElement.scrollHeight - windowHeight;
-      const percentage = (scrollPosition / totalHeight) * 100;
+      const percentage = (scrollPosition / totalHeight) * 120;
       setScrollPercentage(percentage);
     };
 
@@ -70,8 +70,8 @@ export default function NewsPage() {
 
   const boxStyle: React.CSSProperties = {
     position: "relative",
-    height: "80vh",
-    width: `${100 - scrollPercentage * 0.2}vw`,
+    height: "100dvh",
+    width: `${100 - scrollPercentage * 0.15}vw`,
     transition: "width 0s ease-in-out",
     willChange: "width",
   };
