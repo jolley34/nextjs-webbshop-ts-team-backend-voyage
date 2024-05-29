@@ -14,7 +14,7 @@ interface Props {
   lastName: string;
   street: string;
   zipcode: string;
-  email: string;
+  email: any;
   phoneNumber: string;
   productName: string;
   productPrice: Prisma.Decimal;

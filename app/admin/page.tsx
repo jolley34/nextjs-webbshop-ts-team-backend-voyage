@@ -272,7 +272,6 @@ export default async function AdminPage() {
                         >
                           {product.stock}
                         </Typography>
-                        
                       </CardContent>
                       <Link
                         href={`/admin/product/${encodeURIComponent(
