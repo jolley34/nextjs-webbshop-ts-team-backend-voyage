@@ -63,7 +63,7 @@ export default async function AdminPage() {
       <ThemeProvider theme={theme}>
         <Box
           sx={{
-            paddingTop: { xs: "140px", sm: "140px", md: "140px" },
+            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
           }}
         >
           <Grid

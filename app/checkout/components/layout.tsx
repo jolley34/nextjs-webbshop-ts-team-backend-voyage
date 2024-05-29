@@ -71,7 +71,7 @@ export default function CheckoutLayout() {
             padding: "1rem",
             bgcolor: "#f6f5f3",
             minHeight: "100vh",
-            paddingTop: { xs: "165px", sm: "165px", md: "165px" },
+            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
           }}
         >
           {/* Products Column */}
@@ -309,7 +309,7 @@ export default function CheckoutLayout() {
                 </Grid>
 
                 <Divider />
-               
+
                 {session?.data?.user ? <CustomerForm /> : <GitHubSignInForm />}
               </CardContent>
               <Divider />
