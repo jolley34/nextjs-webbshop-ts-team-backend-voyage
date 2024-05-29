@@ -68,7 +68,7 @@ export default function VideoContainer() {
         <CardMedia
           ref={videoRef}
           component="video"
-          src="https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4"
+          src="https://www.apple.com/105/media/us/ipad/2024/45762adb-901a-4726-8b0c-1f3ee092b09a/anim/welcome-hero/xlarge_2x.mp4"
           style={{
             width: "100vw",
             height: "100%",

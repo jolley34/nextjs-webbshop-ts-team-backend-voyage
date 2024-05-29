@@ -65,7 +65,6 @@ export async function saveOrder(
   redirect("/confirmation");
 }
 
-// kontrollera att man är admin
 export async function getAllOrders() {
   const orders = await db.order.findMany({
     select: {
