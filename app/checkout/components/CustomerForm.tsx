@@ -20,6 +20,8 @@ export default function CustomerForm() {
   } = form;
 
   const handleSubmit = async (data: AddressCreate) => {
+    console.log("Form data:", data);
+    console.log("Cart items:", cart);
     await saveOrder(data, cart);
     form.reset();
     clearLocalStorage();

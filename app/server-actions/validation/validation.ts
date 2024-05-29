@@ -7,7 +7,7 @@ export const AddressCreateSchema = z.object({
   street: z.string().min(1),
   zipcode: z.string().min(1),
   city: z.string().min(1),
-  email: z.string().min(1),
+  email: z.string().email(),
 });
 
 export const UserCreateSchema = z.object({
