@@ -95,11 +95,11 @@ export default function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    ABOUT ananas
+                    OM ananas
                   </Typography>
-                  <StyledLink text="Gallery" href="/about" />
+                  <StyledLink text="Nyheter" href="/about" />
                   <StyledLink text="Admin" href="/admin" datacy="admin-link" />
-                  <StyledLink text="Tech Lifestyle" href="/about" />
+                  <StyledLink text="Hjälp med att handla" href="/about" />
                 </Box>
               </Hidden>
             </Box>
@@ -124,7 +124,7 @@ export default function Footer() {
                       color: pathname === "/about" ? "#ffffff" : "black",
                     }}
                   >
-                    ABOUT ananas
+                    OM ananas
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -136,78 +136,9 @@ export default function Footer() {
                       pathname === "/about" ? "#202020" : "white",
                   }}
                 >
-                  <StyledLink text="Gallery" href="/about" />
+                  <StyledLink text="Nyheter" href="/about" />
                   <StyledLink text="Admin" href="/admin" datacy="admin-link" />
-                  <StyledLink text="History" href="/about" />
-                </AccordionDetails>
-              </Accordion>
-            </Hidden>
-          </Grid>
-          <Grid item xs={12} sm={12} md={3}>
-            <Box display="flex" justifyContent="end">
-              <Hidden mdDown>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="flex-start"
-                >
-                  <Typography
-                    sx={{
-                      fontWeight: "100",
-                      letterSpacing: "-0.05em",
-                      fontSize: "0.8rem",
-                      paddingBottom: "0.8rem",
-                    }}
-                  >
-                    CONNECT
-                  </Typography>
-                  <StyledLink text="Follow Us" href="/about" />
-
-                  <StyledLink
-                    text="Sign up for first access to latest drops & campaigns"
-                    href="/about"
-                  />
-                </Box>
-              </Hidden>
-            </Box>
-            <Hidden mdUp>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<AddIcon sx={{ fontSize: "1rem" }} />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                  sx={{
-                    backgroundColor:
-                      pathname === "/about" ? "#2d2d2d" : "white",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontWeight: "100",
-                      letterSpacing: "-0.05em",
-
-                      fontSize: "0.7rem",
-
-                      color: pathname === "/about" ? "#ffffff" : "black",
-                    }}
-                  >
-                    CONNECT
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-
-                    backgroundColor:
-                      pathname === "/about" ? "#202020" : "white",
-                  }}
-                >
-                  <StyledLink text="Follow Us" href="/about" />
-                  <StyledLink
-                    text="Sign up for first access to latest drops, campaigns and videos"
-                    href="/about"
-                  />
+                  <StyledLink text="Hjölp med att handla" href="/about" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -228,10 +159,74 @@ export default function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    HELP
+                    KONTO
                   </Typography>
-                  <StyledLink text="Contact Us" href="/contact" />
-                  <StyledLink text="Product Care" href="/contact" />
+                  <StyledLink text="Hantera ditt Ananas-ID" href="/about" />
+                  <StyledLink text="Ananas Store-konto" href="/about" />
+                  <StyledLink text="iCloud.com" href="/about" />
+                </Box>
+              </Hidden>
+            </Box>
+            <Hidden mdUp>
+              <Accordion>
+                <AccordionSummary
+                  expandIcon={<AddIcon sx={{ fontSize: "1rem" }} />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  sx={{
+                    backgroundColor:
+                      pathname === "/about" ? "#2d2d2d" : "white",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontWeight: "100",
+                      letterSpacing: "-0.05em",
+
+                      fontSize: "0.7rem",
+
+                      color: pathname === "/about" ? "#ffffff" : "black",
+                    }}
+                  >
+                    KONTO
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+
+                    backgroundColor:
+                      pathname === "/about" ? "#202020" : "white",
+                  }}
+                >
+                  <StyledLink text="Hantera ditt Ananas-ID" href="/about" />
+                  <StyledLink text="Ananas Store-konto" href="/about" />
+                  <StyledLink text="iCloud.com" href="/about" />
+                </AccordionDetails>
+              </Accordion>
+            </Hidden>
+          </Grid>
+          <Grid item xs={12} sm={12} md={3}>
+            <Box display="flex" justifyContent="center">
+              <Hidden mdDown>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="flex-start"
+                >
+                  <Typography
+                    sx={{
+                      fontWeight: "100",
+                      letterSpacing: "-0.05em",
+                      fontSize: "0.8rem",
+                      paddingBottom: "0.8rem",
+                    }}
+                  >
+                    KUNDTJÄNST
+                  </Typography>
+                  <StyledLink text="Kontakta oss" href="/contact" />
+                  <StyledLink text="Garanti" href="/contact" />
                 </Box>
               </Hidden>
             </Box>
@@ -254,7 +249,7 @@ export default function Footer() {
                       color: pathname === "/about" ? "#ffffff" : "black",
                     }}
                   >
-                    HELP
+                    KUNDTJÄNST
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -265,8 +260,8 @@ export default function Footer() {
                       pathname === "/about" ? "#202020" : "white",
                   }}
                 >
-                  <StyledLink text="Contact Us" href="/contact" />
-                  <StyledLink text="Product Care" href="/contact" />
+                  <StyledLink text="Kontakta oss" href="/contact" />
+                  <StyledLink text="Garanti" href="/contact" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -287,11 +282,11 @@ export default function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    SERVICES
+                    TJÄNSTER
                   </Typography>
-                  <StyledLink text="Art of Gifting" href="/services" />
-                  <StyledLink text="Repairs" href="/services" />
-                  <StyledLink text="Personalisation" href="/services" />
+                  <StyledLink text="Presentkort" href="/services" />
+                  <StyledLink text="Tillbehör" href="/services" />
+                  <StyledLink text="Ananas Pay" href="/services" />
                 </Box>
               </Hidden>
             </Box>
@@ -314,7 +309,7 @@ export default function Footer() {
                       fontSize: "0.7rem",
                     }}
                   >
-                    SERVICES
+                    TJÄNSTER
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -326,9 +321,9 @@ export default function Footer() {
                       pathname === "/about" ? "#202020" : "white",
                   }}
                 >
-                  <StyledLink text="Art of Gifting" href="/faq" />
-                  <StyledLink text="Repairs" href="/services" />
-                  <StyledLink text="Personalisation" href="/services" />
+                  <StyledLink text="Presentkort" href="/faq" />
+                  <StyledLink text="Tillbehör" href="/services" />
+                  <StyledLink text="Ananas Pay" href="/services" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -351,7 +346,7 @@ export default function Footer() {
             color: pathname === "/about" ? "#ffffff" : "black",
           }}
         >
-          Follow Us
+          Följ oss
         </Typography>
         <Box
           display="flex"

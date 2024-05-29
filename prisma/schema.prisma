@@ -39,14 +39,14 @@ model Order {
 }
 
 model Address {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   firstName   String
   lastName    String
   phoneNumber String
   street      String
   zipcode     String
   city        String
-  email       String
+  email       String?
 
   orders Order[]
 }

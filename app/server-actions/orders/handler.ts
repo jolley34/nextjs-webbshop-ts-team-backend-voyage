@@ -4,13 +4,14 @@ import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 import { db } from "../../../prisma/db";
 import { AddressCreate, AddressCreateSchema } from "../validation/validation";
+import { redirect } from "next/navigation";
 
 export async function saveOrder(
   incomingData: AddressCreate,
   cartItems: { id: string; quantity: number; price: number }[]
 ) {
   const session = await auth();
-  if (!session || !session.user || !session.user.id) return;
+  if (!session  !session.user  !session.user.id) return;
 
   const addressData = AddressCreateSchema.parse(incomingData);
 
@@ -27,7 +28,7 @@ export async function saveOrder(
   for (const item of cartItems) {
     const product = products.find((p) => p.id === item.id);
     if (product && product.stock < item.quantity) {
-      throw new Error(`Insufficient stock for product ${product.id}`);
+      throw new Error(Insufficient stock for product ${product.id});
     }
   }
 
@@ -61,7 +62,7 @@ export async function saveOrder(
     });
   }
 
-  revalidatePath("/");
+  redirect("/confirmation");
 }
 // kontrollera att man är admin
 export async function getAllOrders() {

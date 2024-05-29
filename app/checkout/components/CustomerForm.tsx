@@ -20,43 +20,114 @@ export default function CustomerForm() {
   } = form;
 
   const handleSubmit = async (data: AddressCreate) => {
+    console.log("Form data:", data);
+    console.log("Cart items:", cart);
     await saveOrder(data, cart);
     form.reset();
     clearLocalStorage();
+    console.log(data);
   };
 
   return (
     <form
-      className="w-96 flex flex-col gap-2"
+      style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
       onSubmit={form.handleSubmit(handleSubmit)}
     >
-      <input
-        {...form.register("firstName")}
-        type="text"
-        placeholder="firstname"
-      />
-      {errors.firstName && <span>{errors.firstName.message}</span>}
-      <input
-        {...form.register("lastName")}
-        type="text"
-        placeholder="lastname"
-      />
-      {errors.lastName && <span>{errors.lastName.message}</span>}
-      <input {...form.register("city")} type="text" placeholder="city" />
-      {errors.city && <span>{errors.city.message}</span>}
-      <input {...form.register("zipcode")} type="text" placeholder="zipcode" />
-      {errors.zipcode && <span>{errors.zipcode.message}</span>}
-      <input {...form.register("street")} type="text" placeholder="street" />
-      {errors.street && <span>{errors.street.message}</span>}
-      <input
-        {...form.register("phoneNumber")}
-        type="text"
-        placeholder="phone number"
-      />
-      {errors.phoneNumber && <span>{errors.phoneNumber.message}</span>}
-      <input {...form.register("email")} type="email" placeholder="email" />
-      {errors.email && <span>{errors.email.message}</span>}
-      <button style={{ cursor: "pointer" }}>Save Order</button>
+      <h1
+        style={{
+          fontWeight: "100",
+          marginTop: "1.5rem",
+          fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+          fontSize: "1.5rem",
+        }}
+      >
+        Leveransuppgifter
+      </h1>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          paddingBottom: "1.5rem",
+        }}
+      >
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="first name"
+          {...form.register("firstName")}
+        />
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="email"
+          {...form.register("email")}
+        ></input>
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="last name"
+          {...form.register("lastName")}
+        />
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="city"
+          {...form.register("city")}
+        />
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="zipcode"
+          {...form.register("zipcode")}
+        />
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="street"
+          {...form.register("street")}
+        />
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="phone"
+          {...form.register("phoneNumber")}
+        />
+      </div>
+      <button
+        type="submit"
+        style={{
+          cursor: "pointer",
+          border: "none",
+          color: "white",
+          padding: "1.5rem",
+          background: "#0072e4",
+          borderRadius: "10px",
+        }}
+      >
+        Lägg Order
+      </button>
     </form>
   );
 }

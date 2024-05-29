@@ -32,16 +32,19 @@ export default function CheckoutConfirmation() {
             sx={{ objectFit: "contain", width: "65%", height: "100%" }}
             // witfh är storleke på bilden och height är på
             image={item.image}
-            alt={item.title}
+            alt={item.name}
           />
         </Grid>
         <Grid item xs={8}>
           <CardContent>
             <Typography
               variant="body2"
-              style={{ fontSize: "1rem", fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif", }}
+              style={{
+                fontSize: "1rem",
+                fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+              }}
             >
-              {item.title} - {item.description}
+              {item.name} - {item.description}
               <br />
               {item.quantity} st
               <br />
@@ -84,97 +87,108 @@ export default function CheckoutConfirmation() {
 
   return (
     <ThemeProvider theme={theme}>
-          <Box
-      style={{
-        width: "100%",
-        height: "auto",
-        backgroundImage: "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
-      }}
-    >
-      <React.Fragment>
-        <CssBaseline />
-        <Box sx={{ paddingTop: { xs: "91px", sm: "88px", md: "88px" } }}>
-          <AppBar
-            position="absolute"
-            color="default"
-            elevation={0}
-            sx={{
-              position: "relative",
-            }}
-          ></AppBar>
-          <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-            <Paper
-              variant="outlined"
-              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-            >
-            <Typography 
-              component="h1" 
-              variant="h4" 
-              align="center"
-              sx={{ 
-                fontSize: "2rem",
-                fontWeight: "700",
-                fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-              }}>
-             Checkout
-            </Typography>
-              <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 2 }}></Stepper>
-              <React.Fragment>
+      <Box
+        style={{
+          width: "100%",
+          height: "auto",
+          backgroundImage:
+            "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
+        }}
+      >
+        <React.Fragment>
+          <CssBaseline />
+          <Box sx={{ paddingTop: { xs: "91px", sm: "88px", md: "88px" } }}>
+            <AppBar
+              position="absolute"
+              color="default"
+              elevation={0}
+              sx={{
+                position: "relative",
+              }}
+            ></AppBar>
+            <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
+              <Paper
+                variant="outlined"
+                sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+              >
                 <Typography
-                  variant="h5"
-                  gutterBottom
-                  style={{ fontSize: "2rem", fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif", }}
-                >
-                  Thank you for your order.
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  style={{ marginTop: "16px", fontWeight: "bold" }}
-                  >
-                  Your order number is #{orderNumber} 
-                  </Typography>
-                  <Typography variant="subtitle1" marginBottom={4}>
-                  We have emailed your order confirmation, and will send you an update when your order has shipped.
-                </Typography>
-                {cartItems}
-                <Typography
-                  style={{
-                    fontSize: "0.950rem",
-                    fontWeight: "bold",
-                    marginBottom: "26px",
-                    marginRight: "25px",
-                    textAlign: "right",
+                  component="h1"
+                  variant="h4"
+                  align="center"
+                  sx={{
+                    fontSize: "2rem",
+                    fontWeight: "700",
                     fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                   }}
                 >
-                  Totalt: {TotalCostAll} kr
+                  Checkout
                 </Typography>
-              </React.Fragment>
-              <Typography variant="body1">Namn: {formData.name}</Typography>
-              <Typography variant="body1">
-                Adress: {formData.address}
-              </Typography>
-              <Typography variant="body1">
-                Zipcode: {formData.zipCode}
-              </Typography>
-              <Typography variant="body1">City: {formData.city}</Typography>
-              <Typography variant="body1">Email: {formData.email}</Typography>
-              <Typography variant="body1">
-                Phonenumber: {formData.phoneNumber}
-              </Typography>
-              <React.Fragment>
-                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  <Link href="/">
-                    <Button variant="contained" size="small">
-                      Tillbaka till startsidan
-                    </Button>
-                  </Link>
-                </Box>
-              </React.Fragment>
-            </Paper>
-          </Container>
-        </Box>
-      </React.Fragment>
+                <Stepper
+                  activeStep={activeStep}
+                  sx={{ pt: 3, pb: 2 }}
+                ></Stepper>
+                <React.Fragment>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    style={{
+                      fontSize: "2rem",
+                      fontFamily:
+                        "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                    }}
+                  >
+                    Thank you for your order.
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    style={{ marginTop: "16px", fontWeight: "bold" }}
+                  >
+                    Your order number is #{orderNumber}
+                  </Typography>
+                  <Typography variant="subtitle1" marginBottom={4}>
+                    We have emailed your order confirmation, and will send you
+                    an update when your order has shipped.
+                  </Typography>
+                  {cartItems}
+                  <Typography
+                    style={{
+                      fontSize: "0.950rem",
+                      fontWeight: "bold",
+                      marginBottom: "26px",
+                      marginRight: "25px",
+                      textAlign: "right",
+                      fontFamily:
+                        "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                    }}
+                  >
+                    Totalt: {TotalCostAll} kr
+                  </Typography>
+                </React.Fragment>
+                <Typography variant="body1">Namn: {formData.name}</Typography>
+                <Typography variant="body1">
+                  Adress: {formData.address}
+                </Typography>
+                <Typography variant="body1">
+                  Zipcode: {formData.zipCode}
+                </Typography>
+                <Typography variant="body1">City: {formData.city}</Typography>
+                <Typography variant="body1">Email: {formData.email}</Typography>
+                <Typography variant="body1">
+                  Phonenumber: {formData.phoneNumber}
+                </Typography>
+                <React.Fragment>
+                  <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Link href="/">
+                      <Button variant="contained" size="small">
+                        Tillbaka till startsidan
+                      </Button>
+                    </Link>
+                  </Box>
+                </React.Fragment>
+              </Paper>
+            </Container>
+          </Box>
+        </React.Fragment>
       </Box>
     </ThemeProvider>
   );

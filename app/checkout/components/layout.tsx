@@ -8,6 +8,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useSession } from "next-auth/react";
 
 import {
   Box,
@@ -20,9 +21,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useCart } from "../../context/CartContext";
+import CustomerForm from "./CustomerForm";
+import GitHubSignInForm from "./GitHubSignInForm";
 
 export default function CheckoutLayout() {
   const { cart, removeFromCart, changeQuantity } = useCart();
+  const session = useSession();
 
   const handleRemoveFromCart = (productId: string) => {
     removeFromCart(productId);
@@ -305,17 +309,8 @@ export default function CheckoutLayout() {
                 </Grid>
 
                 <Divider />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: "100",
-                    marginTop: "1rem",
-                    fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                    fontSize: { xs: "1.5rem", md: "2rem" },
-                  }}
-                >
-                  Leveransuppgifter
-                </Typography>
+               
+                {session?.data?.user ? <CustomerForm /> : <GitHubSignInForm />}
               </CardContent>
               <Divider />
               <Box sx={{ marginTop: "1rem" }}>
