@@ -72,7 +72,7 @@ export default async function ProductPage({
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: "contain",
                   backgroundImage:
                     "linear-gradient(to bottom, #e2e0df, #ffffff)",
                 }}

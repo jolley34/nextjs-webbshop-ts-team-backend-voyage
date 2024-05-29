@@ -33,7 +33,7 @@ export async function seedProducts(db: PrismaClient) {
     },
   });
 
-  const iphone = await db.product.upsert({
+  const iphone15pro = await db.product.upsert({
     where: { id: "clwj7bhe3000108jzdby5gvy3" },
     update: {},
     create: {
@@ -44,6 +44,63 @@ export async function seedProducts(db: PrismaClient) {
       video:
         "https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4",
       price: 10000,
+      isArchived: false,
+      categories: {
+        connect: [{ id: iphoneCategory.id }],
+      },
+      stock: 100,
+    },
+  });
+
+  const iphone15 = await db.product.upsert({
+    where: { id: "clwj7bhe30203083zdby51y3" },
+    update: {},
+    create: {
+      name: "iPhone 15",
+      description: "A total powerhouse.",
+      image:
+        "https://www.apple.com/v/iphone/home/bu/images/overview/select/iphone_15__fm75iyqlkjau_xlarge_2x.png",
+      video:
+        "https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4",
+      price: 8000,
+      isArchived: false,
+      categories: {
+        connect: [{ id: iphoneCategory.id }],
+      },
+      stock: 100,
+    },
+  });
+
+  const iphone14 = await db.product.upsert({
+    where: { id: "clwj7bh23e3023083zdby52y3" },
+    update: {},
+    create: {
+      name: "iPhone 14",
+      description: "As amazing as ever.",
+      image:
+        "https://www.apple.com/v/iphone/home/bu/images/overview/select/iphone_14__cjgvgyn9cquu_xlarge_2x.png",
+      video:
+        "https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4",
+      price: 7000,
+      isArchived: false,
+      categories: {
+        connect: [{ id: iphoneCategory.id }],
+      },
+      stock: 100,
+    },
+  });
+
+  const iphone13 = await db.product.upsert({
+    where: { id: "aawj37bh3323e3023083zdby52y3" },
+    update: {},
+    create: {
+      name: "iPhone 13",
+      description: "All kinds of awesome.",
+      image:
+        "https://www.apple.com/v/iphone/home/bu/images/overview/select/iphone_13__gnwdyqfq7i2y_xlarge_2x.png",
+      video:
+        "https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4",
+      price: 6000,
       isArchived: false,
       categories: {
         connect: [{ id: iphoneCategory.id }],
@@ -109,7 +166,10 @@ export async function seedProducts(db: PrismaClient) {
     },
   });
 
-  console.log({ iphone });
+  console.log({ iphone15pro });
+  console.log({ iphone15 });
+  console.log({ iphone14 });
+  console.log({ iphone13 });
   console.log({ iMac });
   console.log({ ipad });
   console.log({ vision });

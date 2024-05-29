@@ -8,7 +8,7 @@ export async function getProductsByCategoryName(categoryName: string) {
         some: { name: categoryName },
       },
     },
-    orderBy: { id: "desc" },
+    orderBy: { id: "asc" },
   });
   return { products };
 }

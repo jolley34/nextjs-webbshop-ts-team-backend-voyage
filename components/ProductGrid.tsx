@@ -3,6 +3,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, Button, Card, Grid, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import Link from "next/link";
+import { useState } from "react";
 
 interface CardProps {
   slug: string;
@@ -19,6 +20,8 @@ export default function ProductGrid({
   price,
   slug,
 }: CardProps) {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <Box>
       <Box sx={{ paddingBottom: "6rem" }}>
@@ -32,22 +35,23 @@ export default function ProductGrid({
               href={`/product/${encodeURIComponent(slug)}`}
               style={{ textDecoration: "none" }}
             >
-              <Box sx={{ position: "relative", overflow: "hidden" }}>
+              <Box>
                 <Box
                   sx={{
                     display: "flex",
-                    transition: "transform 1s ease",
+                    transition: "transform 0.5s ease",
+                    transform: hovered ? "scale(1.025)" : "scale(1)",
                   }}
                 >
                   <img
-                    width={"100%"}
-                    height={"100%"}
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
                     src={image}
                     alt={name}
                     style={{
+                      backgroundImage: "#f6f5f3",
                       background: "#f6f5f3",
                       objectFit: "contain",
-                      aspectRatio: 1,
                       width: "100%",
                       height: "100%",
                       cursor: "pointer",

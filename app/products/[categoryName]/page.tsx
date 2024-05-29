@@ -40,7 +40,7 @@ export default async function ProductsByCategoryPage({ params }: Props) {
           </Typography>
         </Box>
       </Box>
-      <Grid container spacing={0}>
+      <Grid container spacing={6} sx={{ paddingInline: "8rem" }}>
         {products.map((product, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <ProductGrid
