@@ -1,4 +1,5 @@
 "use client";
+
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,15 +12,16 @@ export default function NewsPage() {
 
   const bottomVideoRef = useRef<HTMLVideoElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const handleMouseEnter = (index) => {
+    setHoveredCard(index);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setHoveredCard(null);
   };
+
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,7 +110,7 @@ export default function NewsPage() {
                       position: "relative",
                       cursor: "pointer",
                     }}
-                    onMouseEnter={handleMouseEnter}
+                    onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
                     <CardMedia
@@ -118,9 +120,10 @@ export default function NewsPage() {
                         objectFit: "cover",
                         transition:
                           "transform 0.3s ease-in-out, height 0.5s ease-in-out",
-                        height: isHovered ? "65dvh" : "60dvh",
+                        height: hoveredCard === index ? "65dvh" : "60dvh",
                         width: "100%",
-                        transform: isHovered ? "scale(1.1)" : "scale(1)",
+                        transform:
+                          hoveredCard === index ? "scale(1.1)" : "scale(1)",
                       }}
                     />
                   </Card>
@@ -212,6 +215,86 @@ export default function NewsPage() {
             </Grid>
           </Grid>
         </Box>
+      </Box>
+      <Box sx={{ padding: "6rem" }}>
+        <Grid container spacing={3}>
+          {[
+            {
+              src: "https://www.apple.com/v/education/college-students/a/images/overview/lifestyle_ipad__cd0szs4f2fte_xlarge_2x.jpg",
+              title: "Learning",
+              description: "Your classroom can be anywhere.",
+            },
+            {
+              src: "https://support.apple.com/content/dam/edam/applecare/images/en_US/psp_content/tile-feature-taa-fundamentals.image.large_2x.png",
+              title: "Entertainment",
+              description: "Kick back. Tune in. Game on.",
+            },
+            {
+              src: "https://www.apple.com/v/mac/home/bz/images/overview/consider/boc_performance_02__b1m37qedkb6q_large_2x.jpg",
+              title: "Productivity",
+              description: "Your workplace can be any place.",
+            },
+            {
+              src: "https://www.apple.com/v/ipad/home/cj/images/overview/consider/modal/fc_creativity_supplies__fan9ceoh20i2_large_2x.jpg",
+              title: "Creativity",
+              description: "Take your inner artist out and about.",
+            },
+          ].map((item, index) => (
+            <Grid key={index} item xs={12} sm={6} md={3}>
+              <Card
+                sx={{
+                  height: "80dvh",
+                  borderRadius: "20px",
+                  position: "relative",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <img
+                  style={{
+                    objectFit: "cover",
+                    transition:
+                      "transform 0.3s ease-in-out, height 0.5s ease-in-out",
+                    height: hoveredCard === index ? "85dvh" : "80dvh",
+                    width: "100%",
+                    transform:
+                      hoveredCard === index ? "scale(1.1)" : "scale(1)",
+                  }}
+                  src={item.src}
+                ></img>
+                <Box
+                  sx={{ display: "flex", gap: "1rem", flexDirection: "column" }}
+                >
+                  <Typography
+                    sx={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      padding: "2rem",
+                      color: "white",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      position: "absolute",
+                      top: 40,
+                      left: 0,
+                      padding: "2rem",
+                      color: "white",
+                      fontSize: "0.75rem",
+                    }}
+                  >
+                    {item.description}
+                  </Typography>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </>
   );
