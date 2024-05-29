@@ -1,5 +1,6 @@
 "use client";
-import { Box, Card, Grid, Typography } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, Button, Card, Grid, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import Link from "next/link";
 
@@ -19,8 +20,8 @@ export default function ProductGrid({
   slug,
 }: CardProps) {
   return (
-    <Box sx={{ backgroundColor: "#ffffff" }}>
-      <Box>
+    <Box>
+      <Box sx={{ paddingBottom: "6rem" }}>
         <Grid component={"main"} container>
           <Card
             sx={{
@@ -39,15 +40,13 @@ export default function ProductGrid({
                   }}
                 >
                   <img
-                    width={300}
-                    height={300}
+                    width={"100%"}
+                    height={"100%"}
                     src={image}
                     alt={name}
                     style={{
-                      backgroundImage:
-                        "linear-gradient(to bottom, #e2e0df, #ffffff)",
-                      objectPosition: "top",
-                      objectFit: "cover",
+                      background: "#f6f5f3",
+                      objectFit: "contain",
                       aspectRatio: 1,
                       width: "100%",
                       height: "100%",
@@ -60,51 +59,79 @@ export default function ProductGrid({
 
             <Box
               sx={{
+                background: "#f6f5f3",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 padding: "1rem",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.5rem",
+                  alignItems: "center",
+                }}
+              >
                 <Typography
                   fontWeight="400"
                   fontSize={{
                     xs: "0.70rem",
-                    sm: "0.75rem",
-                    md: "0.75rem",
+                    sm: "1rem",
+                    md: "2rem",
                   }}
                   color="black"
                   data-cy="product-title"
                 >
                   {name}
                 </Typography>
-                <Typography fontWeight="400" fontSize="0.75rem" color="#6d6767">
-                  {description}
-                </Typography>
-                <Typography
-                  fontWeight="400"
-                  fontSize="0.75rem"
-                  color="black"
-                  data-cy="product-price"
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                 >
-                  {price.toString()} kr
-                </Typography>
+                  <Typography fontWeight="400" fontSize="1rem" color="#6d6767">
+                    {description}
+                  </Typography>
+                  <Box
+                    sx={{ display: "flex", gap: "2rem", alignItems: "center" }}
+                  >
+                    <Button
+                      sx={{
+                        border: "1px solid black",
+                        borderRadius: "20px",
+                        padding: "0rem 1rem 0rem 1rem",
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                    <Link
+                      href={`/product/${encodeURIComponent(slug)}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <Typography
+                        sx={{
+                          textTransform: "capitalize",
+                          fontSize: "1rem",
+                          cursor: "pointer",
+                          borderBottom: "2px solid transparent",
+                          transition: "border-bottom 0.3s ease",
+                          "&:hover": {
+                            borderBottom: "2px solid #6d6767",
+                          },
+                        }}
+                      >
+                        Buy <ArrowForwardIosIcon sx={{ fontSize: "12px" }} />
+                      </Typography>
+                    </Link>
+                  </Box>
+                </Box>
               </Box>
-
-              {/*               <AddToCartButtonAppleStyle product={product} /> */}
-              <button
-                style={{
-                  background: "#0072e4",
-                  border: "none",
-                  padding: "0.5rem",
-                  borderRadius: "10px",
-                  color: "white",
-                  cursor: "pointer",
-                }}
-              >
-                Köp
-              </button>
             </Box>
           </Card>
         </Grid>

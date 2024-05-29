@@ -37,13 +37,13 @@ export async function seedProducts(db: PrismaClient) {
     where: { id: "clwj7bhe3000108jzdby5gvy3" },
     update: {},
     create: {
-      name: "iPhone 15",
-      description: "Jätte bra",
+      name: "iPhone 15 Pro",
+      description: "The ultimate iPhone.",
       image:
-        "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-blue?wid=5120&hei=2880&fmt=webp&qlt=70&.v=cHJOTXEwTU92OEtKVDV2cVB1R2FTSjlERndlRTljaUdZeHJGM3dlLzR2OGlYQ0tYMHd1OS9ZREtnNzFSR1owOHF2TWlpSzUzejRCZGt2SjJUNGl1VEtsS0dZaHBma3VTb3UwU2F6dkc4TGZPaDVjV2NEQVBZbTZldUQyWkpKRHk=&traceId=1",
+        "https://www.apple.com/v/iphone/home/bu/images/overview/select/iphone_15_pro__bpnjhcrxofqu_xlarge_2x.png",
       video:
         "https://www.apple.com/105/media/us/iphone/family/2024/1efec3e0-8619-4684-a57e-6e2310394f08/anim/welcome/xlarge_2x.mp4",
-      price: 100,
+      price: 10000,
       isArchived: false,
       categories: {
         connect: [{ id: iphoneCategory.id }],
