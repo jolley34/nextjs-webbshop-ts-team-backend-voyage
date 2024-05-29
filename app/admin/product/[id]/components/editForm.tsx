@@ -34,6 +34,7 @@ interface Props {
   description: string;
   image: string;
   video: string;
+  stock: number;
 }
 
 export default function EditForm({
@@ -43,6 +44,7 @@ export default function EditForm({
   description,
   image,
   video,
+  stock,
   productId,
 }: Props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -142,6 +144,17 @@ export default function EditForm({
                         {...register("video")}
                         error={Boolean(errors.video)}
                         helperText={errors.video?.message}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12}>
+                      <TextField
+                        variant="outlined"
+                        label="Stock"
+                        {...register("stock", { valueAsNumber: true })} 
+                        defaultValue={stock}
+                        error={Boolean(errors.stock)}
+                        helperText={errors.stock?.message}
                       />
                     </Grid>
 

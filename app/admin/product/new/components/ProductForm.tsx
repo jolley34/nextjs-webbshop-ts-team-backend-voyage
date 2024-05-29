@@ -129,6 +129,16 @@ export default function ProductForm({ product, categories }: Props) {
                         helperText={errors.video?.message}
                       />
                     </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        variant="outlined"
+                        label="Stock"
+                        {...register("stock", { valueAsNumber: true })} 
+                        defaultValue={product?.stock || 0}
+                        error={Boolean(errors.stock)}
+                        helperText={errors.stock?.message}
+                      />
+                    </Grid>
 
                     <Grid item xs={12}>
                       <FormControl fullWidth>
