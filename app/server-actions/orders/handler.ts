@@ -1,16 +1,17 @@
 "use server";
 
 import { auth } from "@/auth";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { db } from "../../../prisma/db";
 import { AddressCreate, AddressCreateSchema } from "../validation/validation";
+import { redirect } from "next/navigation";
 
 export async function saveOrder(
   incomingData: AddressCreate,
   cartItems: { id: string; quantity: number; price: number }[]
 ) {
   const session = await auth();
-  if (!session || !session.user || !session.user.id) return;
+  if (!session  !session.user  !session.user.id) return;
 
   const addressData = AddressCreateSchema.parse(incomingData);
 
@@ -21,8 +22,15 @@ export async function saveOrder(
   // Todo, hämta pris från DB
   const products = await db.product.findMany({
     where: { id: { in: cartItems.map((item) => item.id) } },
-    select: { id: true, price: true },
+    select: { id: true, price: true, stock: true },
   });
+
+  for (const item of cartItems) {
+    const product = products.find((p) => p.id === item.id);
+    if (product && product.stock < item.quantity) {
+      throw new Error(Insufficient stock for product ${product.id});
+    }
+  }
 
   const order = await db.order.create({
     data: {
@@ -43,10 +51,22 @@ export async function saveOrder(
     },
   });
 
+  for (const item of cartItems) {
+    await db.product.update({
+      where: { id: item.id },
+      data: {
+        stock: {
+          decrement: item.quantity,
+        },
+      },
+    });
+  }
+
   redirect("/confirmation");
 }
 // kontrollera att man är admin
 export async function getAllOrders() {
+
   const orders = await db.order.findMany({
     select: {
       id: true,

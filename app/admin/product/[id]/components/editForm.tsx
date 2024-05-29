@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { AddNewProductAdmin } from "@/app/server-actions/admin/handler";
+import { EditProduct } from "@/app/server-actions/admin/handler";
 import { ProductFormData } from "@/app/server-actions/validation/validation";
 import {
   Box,
@@ -15,6 +15,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { Prisma } from "@prisma/client";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import theme from "../../../../themes/themes";
@@ -25,11 +26,27 @@ interface Category {
 }
 
 interface Props {
+  productId: string;
   product?: ProductFormData;
   categories: Category[];
+  name: string;
+  price: Prisma.Decimal;
+  description: string;
+  image: string;
+  video: string;
+  stock: number;
 }
 
-export default function ProductForm({ product, categories }: Props) {
+export default function EditForm({
+  categories,
+  name,
+  price,
+  description,
+  image,
+  video,
+  stock,
+  productId,
+}: Props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const {
     control,
@@ -38,8 +55,8 @@ export default function ProductForm({ product, categories }: Props) {
     formState: { errors },
   } = useForm<ProductFormData>();
 
-  const handleCreateProduct = async (formData: ProductFormData) => {
-    await AddNewProductAdmin(formData);
+  const handleEditProduct = async (formData: ProductFormData) => {
+    await EditProduct(productId, formData);
   };
 
   return (
@@ -49,7 +66,7 @@ export default function ProductForm({ product, categories }: Props) {
         container
         justifyContent="center"
         data-cy="product-form"
-        onSubmit={handleSubmit(handleCreateProduct)}
+        onSubmit={handleSubmit(handleEditProduct)}
       >
         <Card sx={{ width: "60%", padding: "5%" }}>
           <Grid
@@ -68,7 +85,7 @@ export default function ProductForm({ product, categories }: Props) {
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        label="Name"
+                        label={name}
                         {...register("name")}
                         error={Boolean(errors.name)}
                         helperText={errors.name?.message}
@@ -84,7 +101,7 @@ export default function ProductForm({ product, categories }: Props) {
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        label="Price"
+                        label={price.toString()}
                         {...register("price")}
                         error={Boolean(errors.price)}
                         helperText={errors.price?.message}
@@ -99,7 +116,7 @@ export default function ProductForm({ product, categories }: Props) {
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        label="Description"
+                        label={description}
                         {...register("description")}
                         error={Boolean(errors.description)}
                         helperText={errors.description?.message}
@@ -109,7 +126,7 @@ export default function ProductForm({ product, categories }: Props) {
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        label="Image"
+                        label={image}
                         {...register("image")}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                           register("image").onChange(e);
@@ -123,18 +140,19 @@ export default function ProductForm({ product, categories }: Props) {
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
-                        label="Video"
+                        label={video}
                         {...register("video")}
                         error={Boolean(errors.video)}
                         helperText={errors.video?.message}
                       />
                     </Grid>
+                    
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
                         label="Stock"
                         {...register("stock", { valueAsNumber: true })} 
-                        defaultValue={product?.stock || 0}
+                        defaultValue={stock}
                         error={Boolean(errors.stock)}
                         helperText={errors.stock?.message}
                       />
@@ -142,7 +160,8 @@ export default function ProductForm({ product, categories }: Props) {
 
                     <Grid item xs={12}>
                       <FormControl fullWidth>
-                        <Typography>Choose categories</Typography>
+                        <Typography>Choose new category</Typography>
+
                         <Controller
                           name="categories"
                           control={control}
@@ -160,7 +179,7 @@ export default function ProductForm({ product, categories }: Props) {
                       </FormControl>
                     </Grid>
                   </Grid>
-                  <button type="submit">SPARA PRODUKT</button>
+                  <button type="submit">UPPDATERA PRODUKT</button>
                 </FormControl>
               </Box>
             </Grid>

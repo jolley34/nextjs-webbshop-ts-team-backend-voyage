@@ -12,6 +12,7 @@ export async function handleArchive(productId: string, isArchived: boolean) {
 }
 
 export async function AddNewProductAdmin(data: ProductFormData) {
+  data.stock = Number(data.stock);
   const newProduct = await db.product.create({
     data: {
       ...data,
@@ -22,6 +23,26 @@ export async function AddNewProductAdmin(data: ProductFormData) {
     },
   });
   console.log("Product created:", newProduct);
+  revalidatePath("/admin");
+  redirect("/admin");
+}
+
+
+export async function EditProduct(productId: string, data: ProductFormData) {
+  const selectedCategoryIds = data.categories;
+  data.stock = Number(data.stock);
+
+  const updateProduct = await db.product.update({
+    where: { id: productId },
+    data: {
+      ...data,
+      categories: {
+        set: selectedCategoryIds.map((categoryId) => ({ id: categoryId })),
+      },
+    },
+  });
+
+  console.log("Product updated:", updateProduct);
   revalidatePath("/admin");
   redirect("/admin");
 }
