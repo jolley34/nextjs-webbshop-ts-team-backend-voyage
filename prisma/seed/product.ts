@@ -48,6 +48,7 @@ export async function seedProducts(db: PrismaClient) {
       categories: {
         connect: [{ id: iphoneCategory.id }],
       },
+      stock: 100,
     },
   });
 
@@ -66,6 +67,7 @@ export async function seedProducts(db: PrismaClient) {
       categories: {
         connect: [{ id: iPadCategory.id }],
       },
+      stock: 200,
     },
   });
 
@@ -84,6 +86,7 @@ export async function seedProducts(db: PrismaClient) {
       categories: {
         connect: [{ id: visionCategory.id }],
       },
+      stock: 1000,
     },
   });
 
@@ -102,6 +105,7 @@ export async function seedProducts(db: PrismaClient) {
       categories: {
         connect: [{ id: macCategory.id }],
       },
+      stock: 3000,
     },
   });
 
