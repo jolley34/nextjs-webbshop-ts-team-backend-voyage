@@ -1,6 +1,6 @@
 "use client";
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function NewsPage() {
   const videoRefs = [
@@ -9,7 +9,33 @@ export default function NewsPage() {
     useRef<HTMLVideoElement>(null),
   ];
 
-  const bottomVideoRef = useRef<HTMLVideoElement>(null); // Ny video referens
+  const bottomVideoRef = useRef<HTMLVideoElement>(null);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const totalHeight = document.documentElement.scrollHeight - windowHeight;
+      const percentage = (scrollPosition / totalHeight) * 100;
+      setScrollPercentage(percentage);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     videoRefs.forEach((videoRef, index) => {
@@ -23,7 +49,6 @@ export default function NewsPage() {
       }
     });
 
-    // Ny video inställningar
     const bottomVideo = bottomVideoRef.current;
     if (bottomVideo) {
       bottomVideo.src =
@@ -43,6 +68,14 @@ export default function NewsPage() {
     "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/visionos/large.mp4",
   ];
 
+  const boxStyle: React.CSSProperties = {
+    position: "relative",
+    height: "80vh",
+    width: `${100 - scrollPercentage * 0.2}vw`,
+    transition: "width 0s ease-in-out",
+    willChange: "width",
+  };
+
   return (
     <>
       <Box
@@ -51,6 +84,7 @@ export default function NewsPage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          paddingBottom: "4rem",
         }}
       >
         <Box sx={{ padding: "6rem" }}>
@@ -67,11 +101,27 @@ export default function NewsPage() {
             <Grid container spacing={2}>
               {videoRefs.map((videoRef, index) => (
                 <Grid key={index} item xs={12} sm={12} md={4}>
-                  <Card>
+                  <Card
+                    sx={{
+                      borderRadius: "20px",
+                      overflow: "hidden",
+                      position: "relative",
+                      cursor: "pointer",
+                    }}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <CardMedia
                       ref={videoRef}
                       component="video"
-                      sx={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      sx={{
+                        objectFit: "cover",
+                        transition:
+                          "transform 0.3s ease-in-out, height 0.5s ease-in-out",
+                        height: isHovered ? "65dvh" : "60dvh",
+                        width: "100%",
+                        transform: isHovered ? "scale(1.1)" : "scale(1)",
+                      }}
                     />
                   </Card>
                 </Grid>
@@ -79,11 +129,12 @@ export default function NewsPage() {
             </Grid>
           </Box>
         </Box>
-        <Box sx={{ position: "relative", width: "100vw", height: "80dvh" }}>
+        <Box style={boxStyle}>
           <CardMedia
             component="video"
             ref={bottomVideoRef}
             sx={{
+              borderRadius: "20px",
               height: "100%",
               width: "100%",
               objectFit: "cover",
@@ -101,6 +152,65 @@ export default function NewsPage() {
           >
             Dynamic Island <br /> stays on top of it all.
           </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          padding: "4rem 6rem 6rem 6rem",
+          background: "#f6f5f3",
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "4rem",
+          }}
+        >
+          <Typography sx={{ fontSize: "3rem" }}>Explore the lineup.</Typography>
+          <Grid container spacing={4} sx={{ width: "100%" }}>
+            <Grid item xs={12} sm={6} md={3}>
+              <img
+                style={{
+                  width: "100%",
+                  height: "300px",
+                  objectFit: "contain",
+                }}
+                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_pro__6bgrkek0jnm2_xlarge_2x.png"
+              ></img>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <img
+                style={{
+                  width: "100%",
+                  height: "300px",
+                  objectFit: "contain",
+                }}
+                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_air__cr381zljqdiu_xlarge_2x.png"
+              ></img>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <img
+                style={{
+                  width: "100%",
+                  height: "300px",
+                  objectFit: "contain",
+                }}
+                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_10th_gen__ej5p5x6yf2gm_xlarge_2x.png"
+              ></img>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <img
+                style={{
+                  width: "100%",
+                  height: "300px",
+                  objectFit: "contain",
+                }}
+                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_mini__f3iy3qb50gia_xlarge_2x.png"
+              ></img>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
     </>

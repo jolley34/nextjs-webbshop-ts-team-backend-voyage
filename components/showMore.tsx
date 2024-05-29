@@ -24,7 +24,7 @@ export default function ShowMoreComponent() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          padding: "4rem",
+          padding: "4rem 4rem 1rem 4rem",
           flexDirection: "column",
           gap: "1rem",
         }}
