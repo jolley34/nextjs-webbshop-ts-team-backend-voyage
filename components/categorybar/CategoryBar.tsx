@@ -12,10 +12,10 @@ const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
   return (
     <>
       <List>
-        <IconButton>
+        <IconButton sx={{ textDecoration: "none" }}>
           <Link
             href={`/products/${encodeURIComponent(name)}`}
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none", color: "black" }}
           >
             <ListItem sx={{ cursor: "pointer", fontSize: "0.75rem" }}>
               {name}
