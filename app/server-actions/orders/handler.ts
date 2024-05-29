@@ -1,7 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
-import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { db } from "../../../prisma/db";
 import { AddressCreate, AddressCreateSchema } from "../validation/validation";
 
@@ -43,11 +43,10 @@ export async function saveOrder(
     },
   });
 
-  revalidatePath("/");
+  redirect("/confirmation");
 }
 // kontrollera att man är admin
 export async function getAllOrders() {
-  
   const orders = await db.order.findMany({
     select: {
       id: true,
