@@ -5,7 +5,6 @@ import {
   AddressCreateSchema,
 } from "@/app/server-actions/validation/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useCart } from "../../context/CartContext";
 import { saveOrder } from "../../server-actions/orders/handler";
@@ -24,87 +23,109 @@ export default function CustomerForm() {
     await saveOrder(data, cart);
     form.reset();
     clearLocalStorage();
+    console.log(data);
   };
 
   return (
-    <Box
-      component="form"
-      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+    <form
+      style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
+      onSubmit={form.handleSubmit(handleSubmit)}
     >
-      {" "}
-      <Typography
-        variant="h6"
-        sx={{
+      <h1
+        style={{
           fontWeight: "100",
           marginTop: "1.5rem",
           fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-          fontSize: { xs: "1.5rem", md: "2rem" },
+          fontSize: "1.5rem",
         }}
       >
         Leveransuppgifter
-      </Typography>
-      <FormControl fullWidth>
-        <TextField
+      </h1>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          paddingBottom: "1.5rem",
+        }}
+      >
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="first name"
           {...form.register("firstName")}
-          label="Förnamn"
-          variant="standard"
-          error={!!errors.firstName}
-          helperText={errors.firstName?.message}
         />
-
-        <TextField
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="email"
+          {...form.register("email")}
+        ></input>
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="last name"
           {...form.register("lastName")}
-          label="Efternamn"
-          variant="standard"
-          error={!!errors.lastName}
-          helperText={errors.lastName?.message}
         />
-
-        <TextField
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="city"
           {...form.register("city")}
-          label="Stad"
-          variant="standard"
-          error={!!errors.city}
-          helperText={errors.city?.message}
         />
-
-        <TextField
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="zipcode"
           {...form.register("zipcode")}
-          label="Postnummer"
-          variant="standard"
-          error={!!errors.zipcode}
-          helperText={errors.zipcode?.message}
         />
-
-        <TextField
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="street"
           {...form.register("street")}
-          label="Adress"
-          variant="standard"
-          error={!!errors.street}
-          helperText={errors.street?.message}
         />
-
-        <TextField
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="phone"
           {...form.register("phoneNumber")}
-          label="Telefonnummer"
-          variant="standard"
-          error={!!errors.phoneNumber}
-          helperText={errors.phoneNumber?.message}
         />
-      </FormControl>
-      <Button
-        onSubmit={form.handleSubmit(handleSubmit)}
+      </div>
+      <button
         type="submit"
-        variant="contained"
-        sx={{
-          mt: 2,
-          bgcolor: "#0072e4",
+        style={{
+          cursor: "pointer",
+          border: "none",
+          color: "white",
+          padding: "1.5rem",
+          background: "#0072e4",
           borderRadius: "10px",
-          "&:hover": { bgcolor: "#0264C5" },
         }}
       >
         Lägg Order
-      </Button>
-    </Box>
+      </button>
+    </form>
   );
 }

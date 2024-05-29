@@ -35,7 +35,7 @@ CREATE TABLE "Address" (
     "street" TEXT NOT NULL,
     "zipcode" TEXT NOT NULL,
     "city" TEXT NOT NULL,
-    "email" TEXT NOT NULL,
+    "email" TEXT,
 
     CONSTRAINT "Address_pkey" PRIMARY KEY ("id")
 );
