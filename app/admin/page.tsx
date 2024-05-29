@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/no-img-element */
 import { db } from "@/prisma/db";
 import {
   Box,
@@ -12,6 +11,7 @@ import {
 } from "@mui/material";
 import theme from "../themes/themes";
 import DeleteAdminButton from "./product/components/deleteAdminButton";
+import OrderCard from "./product/components/orderCard";
 
 export default async function AdminPage() {
   // const session = await auth();
@@ -22,6 +22,38 @@ export default async function AdminPage() {
   const orders = await db.order.findMany({
     select: {
       id: true,
+      userId: true,
+      createdAt: true,
+      totalPrice: true,
+      user: {
+        select: {
+          name: true,
+        },
+      },
+      shippingAddress: {
+        select: {
+          firstName: true,
+          lastName: true,
+          street: true,
+          city: true,
+          zipcode: true,
+          email: true,
+          phoneNumber: true,
+        },
+      },
+      products: {
+        select: {
+          product: {
+            select: {
+              name: true,
+              image: true,
+              price: true,
+            },
+          },
+          quantity: true,
+          subTotalPrice: true,
+        },
+      },
     },
     orderBy: { id: "desc" },
   });
@@ -29,7 +61,11 @@ export default async function AdminPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box sx={{ paddingTop: { xs: "140px", sm: "140px", md: "140px" } }}>
+        <Box
+          sx={{
+            paddingTop: { xs: "140px", sm: "140px", md: "140px" },
+          }}
+        >
           <Grid
             container
             justifyContent="center"
@@ -44,6 +80,7 @@ export default async function AdminPage() {
               sx={{
                 backgroundColor: "#fff",
                 marginBottom: "20px",
+                paddingBottom: "2rem",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -251,11 +288,40 @@ export default async function AdminPage() {
             </Grid>
           </Grid>
         </Box>
-        {orders.map((order, index) => (
-          <div key={index}>
-            <div>{order.id}</div>
-          </div>
-        ))}
+        <Box sx={{ padding: "0.5rem 0rem 0.5rem 3rem" }}>
+          <h1>Orders</h1>
+        </Box>
+        <Box sx={{ paddingInline: "3rem", paddingBottom: "1.5rem" }}>
+          <Grid container spacing={2}>
+            {orders.map((order) => (
+              <Grid item xs={12} sm={12} md={12} key={order.id}>
+                <OrderCard
+                  id={order.id}
+                  userId={order.userId}
+                  user={order.user.name}
+                  createdAt={order.createdAt}
+                  firstName={order.shippingAddress.firstName}
+                  lastName={order.shippingAddress.lastName}
+                  street={order.shippingAddress.street}
+                  zipcode={order.shippingAddress.zipcode}
+                  email={order.shippingAddress.email}
+                  phoneNumber={order.shippingAddress.phoneNumber}
+                  productName={order.products
+                    .map((product) => product.product.name)
+                    .join(",")}
+                  productPrice={order.products
+                    .map((product) => product.product.price)
+                    .join(",")}
+                  totalPrice={order.totalPrice}
+                  quantity={order.products.reduce(
+                    (acc, product) => acc + product.quantity,
+                    0
+                  )}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </ThemeProvider>
     </>
   );

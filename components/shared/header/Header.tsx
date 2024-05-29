@@ -252,39 +252,6 @@ export default function Header({ name }: HeaderProps) {
               </Box>
             </Box>
           </Toolbar>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "0.5rem",
-              paddingInline: "1.25rem",
-            }}
-          >
-            {session?.data?.user ? (
-              <>
-                <p style={{ color: "black", fontWeight: "900" }}>
-                  {session.data.user.name}
-                </p>
-                <form action={signOutUser}>
-                  <button
-                    style={{
-                      cursor: "pointer",
-                      background: "#0072e4",
-                      border: "none",
-                      padding: "0.5rem",
-                      borderRadius: "10px",
-                      color: "white",
-                    }}
-                  >
-                    Sign out
-                  </button>
-                </form>
-              </>
-            ) : (
-              <SignInButton />
-            )}
-          </div>
         </AppBar>
 
         <Box>
@@ -399,6 +366,31 @@ export default function Header({ name }: HeaderProps) {
                           </ListItemButton>
                         </Link>
                       ))}
+                      <div style={{ padding: "2rem 1rem 1rem 1rem" }}>
+                        {session?.data?.user ? (
+                          <>
+                            <p style={{ color: "black", fontWeight: "900" }}>
+                              {session.data.user.name}
+                            </p>
+                            <form action={signOutUser}>
+                              <button
+                                style={{
+                                  cursor: "pointer",
+                                  background: "#0072e4",
+                                  border: "none",
+                                  padding: "0.5rem",
+                                  borderRadius: "10px",
+                                  color: "white",
+                                }}
+                              >
+                                Sign out
+                              </button>
+                            </form>
+                          </>
+                        ) : (
+                          <SignInButton />
+                        )}
+                      </div>
                     </Box>
                   </ListItem>
                 </Box>
