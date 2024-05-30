@@ -36,13 +36,13 @@ export default async function ProductsByCategoryPage({ params }: Props) {
               },
             }}
           >
-            Compare all models{" "}
+            Compare all models
           </Typography>
         </Box>
       </Box>
-      <Grid container spacing={6} sx={{ paddingInline: "8rem" }}>
+      <Grid container spacing={2}>
         {products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <ProductGrid
               slug={product.id}
               name={product.name}
