@@ -32,14 +32,15 @@ function AddToCartButton({ product }: { product: Product }) {
           sx={{
             padding: "0.5rem",
             width: "100%",
+            border: "none",
             bgcolor: "#0072e4",
-            borderRadius: "10px",
+            borderRadius: "20px",
             "&:hover": {
               bgcolor: "#0264C5",
             },
           }}
         >
-          <Typography sx={{ color: "white", fontWeight: "700" }}>
+          <Typography sx={{ color: "white", fontWeight: "400" }}>
             Lägg till i kundvagn
           </Typography>
         </Button>

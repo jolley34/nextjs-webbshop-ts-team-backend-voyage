@@ -378,8 +378,8 @@ export default function Header({ name }: HeaderProps) {
                                   cursor: "pointer",
                                   background: "#0072e4",
                                   border: "none",
-                                  padding: "0.5rem",
-                                  borderRadius: "10px",
+                                  padding: "0.5rem 1rem",
+                                  borderRadius: "20px",
                                   color: "white",
                                 }}
                               >
@@ -478,6 +478,7 @@ const menuItems = [
 ];
 
 const subItems = [
+  { label: "Mina sidor", href: "/my-page" },
   { label: "Hållbarhet", href: "/" },
   { label: "Hitta din butik", href: "/" },
   { label: "Kan vi hjälpa dig?", href: "/contact" },

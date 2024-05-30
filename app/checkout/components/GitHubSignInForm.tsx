@@ -13,7 +13,7 @@ export default function GitHubSignInForm() {
           fontSize: { xs: "1.5rem", md: "2rem" },
         }}
       >
-        Logga in för att slutföra din order
+        Logga in för att slutföra din order...
       </Typography>
       <Button
         type="submit"
@@ -23,9 +23,10 @@ export default function GitHubSignInForm() {
         fullWidth
         sx={{
           bgcolor: "#0072e4",
-          marginTop: "3rem",
-          borderRadius: "10px",
-          marginBottom: "3rem",
+          marginTop: "2rem",
+          borderRadius: "20px",
+          border: "none",
+          marginBottom: "2rem",
           "&:hover": {
             bgcolor: "#0264C5",
           },
