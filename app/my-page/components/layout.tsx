@@ -77,30 +77,28 @@ function MyPageLayout() {
                 border: "1px solid #edede9",
               }}
             >
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Mina beställningar
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Mina returer
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Mina uppgifter
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Ändra lösenord
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Betalningsmetoder
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
-              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
-                Kontoinställningar
-                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
-              </Typography>
+              {[
+                "Mina beställningar",
+                "Mina returer",
+                "Mina uppgifter",
+                "Ändra lösenord",
+                "Betalningsmetoder",
+                "Kontoinställningar",
+              ].map((text) => (
+                <Box
+                  key={text}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: "1rem",
+                    padding: "0.5rem",
+                  }}
+                >
+                  <Typography>{text}</Typography>
+                  <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+                </Box>
+              ))}
             </Box>
           </Grid>
 
