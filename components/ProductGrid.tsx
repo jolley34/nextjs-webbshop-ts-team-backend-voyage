@@ -1,7 +1,9 @@
 "use client";
-import { Box, Card, Grid, Typography } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, Button, Card, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import Link from "next/link";
+import { useState } from "react";
 
 interface CardProps {
   slug: string;
@@ -18,97 +20,122 @@ export default function ProductGrid({
   price,
   slug,
 }: CardProps) {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <Box sx={{ backgroundColor: "#ffffff" }}>
-      <Box>
-        <Grid component={"main"} container>
-          <Card
+    <>
+      <Box sx={{ paddingBottom: "6rem" }}>
+        <Card
+          sx={{
+            height: "500px",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#f6f5f3",
+          }}
+        >
+          <Link
+            href={`/product/${encodeURIComponent(slug)}`}
+            style={{ textDecoration: "none" }}
+          >
+            <img
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              src={image}
+              alt={name}
+              style={{
+                backgroundImage: "#f6f5f3",
+                background: "#f6f5f3",
+                objectFit: "contain",
+                width: "500px",
+                height: "250px",
+                cursor: "pointer",
+                transition: "transform 0.5s ease",
+                transform: hovered ? "scale(1.025)" : "scale(1)",
+              }}
+            />
+          </Link>
+
+          <Box
             sx={{
-              boxShadow: "none",
+              background: "#f6f5f3",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "1rem",
             }}
           >
-            <Link
-              href={`/product/${encodeURIComponent(slug)}`}
-              style={{ textDecoration: "none" }}
-            >
-              <Box sx={{ position: "relative", overflow: "hidden" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    transition: "transform 1s ease",
-                  }}
-                >
-                  <img
-                    width={300}
-                    height={300}
-                    src={image}
-                    alt={name}
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to bottom, #e2e0df, #ffffff)",
-                      objectPosition: "top",
-                      objectFit: "cover",
-                      aspectRatio: 1,
-                      width: "100%",
-                      height: "100%",
-                      cursor: "pointer",
-                    }}
-                  />
-                </Box>
-              </Box>
-            </Link>
-
             <Box
               sx={{
                 display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
                 alignItems: "center",
-                justifyContent: "space-between",
-                padding: "1rem",
               }}
             >
-              <Box>
-                <Typography
-                  fontWeight="400"
-                  fontSize={{
-                    xs: "0.70rem",
-                    sm: "0.75rem",
-                    md: "0.75rem",
-                  }}
-                  color="black"
-                  data-cy="product-title"
-                >
-                  {name}
-                </Typography>
-                <Typography fontWeight="400" fontSize="0.75rem" color="#6d6767">
-                  {description}
-                </Typography>
-                <Typography
-                  fontWeight="400"
-                  fontSize="0.75rem"
-                  color="black"
-                  data-cy="product-price"
-                >
-                  {price.toString()} kr
-                </Typography>
-              </Box>
-
-              {/*               <AddToCartButtonAppleStyle product={product} /> */}
-              <button
-                style={{
-                  background: "#0072e4",
-                  border: "none",
-                  padding: "0.5rem",
-                  borderRadius: "10px",
-                  color: "white",
-                  cursor: "pointer",
+              <Typography
+                fontWeight="400"
+                fontSize={{
+                  xs: "0.70rem",
+                  sm: "1rem",
+                  md: "2rem",
+                }}
+                color="black"
+                data-cy="product-title"
+              >
+                {name}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                Köp
-              </button>
+                <Typography fontWeight="400" fontSize="1rem" color="#6d6767">
+                  {description}
+                </Typography>
+                <Box
+                  sx={{ display: "flex", gap: "2rem", alignItems: "center" }}
+                >
+                  <Button
+                    sx={{
+                      border: "1px solid black",
+                      borderRadius: "20px",
+                      padding: "0rem 1rem 0rem 1rem",
+                    }}
+                  >
+                    Learn More
+                  </Button>
+                  <Link
+                    href={`/product/${encodeURIComponent(slug)}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Typography
+                      sx={{
+                        textTransform: "capitalize",
+                        fontSize: "1rem",
+                        cursor: "pointer",
+                        borderBottom: "2px solid transparent",
+                        transition: "border-bottom 0.3s ease",
+                        "&:hover": {
+                          borderBottom: "2px solid #6d6767",
+                        },
+                      }}
+                    >
+                      Buy <ArrowForwardIosIcon sx={{ fontSize: "12px" }} />
+                    </Typography>
+                  </Link>
+                </Box>
+              </Box>
             </Box>
-          </Card>
-        </Grid>
+          </Box>
+        </Card>
       </Box>
-    </Box>
+    </>
   );
 }
