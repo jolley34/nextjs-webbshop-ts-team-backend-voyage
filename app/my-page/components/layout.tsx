@@ -1,3 +1,5 @@
+import { signOutUser } from "@/app/server-actions/user/userActions";
+import SignInButton from "@/app/sign-in/components/SignInButton";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   Avatar,
@@ -10,8 +12,11 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { useSession } from "next-auth/react";
 
 function MyPageLayout() {
+  const session = useSession();
+
   return (
     <>
       <Box>
@@ -28,26 +33,24 @@ function MyPageLayout() {
           }}
         >
           {/* Header Column */}
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12}>
             <Box
               sx={{
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
-                borderRadius: "10px",
-                marginTop: "2rem",
-                border: "1px solid #edede9",
+                marginTop: "1rem",
               }}
             >
               <CardContent>
                 <ListItem
-                  alignItems="center" // Se till att alignItems är center
-                  sx={{ display: "flex", alignItems: "center" }} // Lägg till flexbox
+                  alignItems="center"
+                  sx={{ display: "flex", alignItems: "center" }}
                 >
                   <ListItemAvatar>
                     <Avatar
                       alt="Jane Doe"
-                      sx={{ width: 100, height: 100, margin: "1rem" }} // Ange önskad bredd och höjd
+                      sx={{ width: 100, height: 100, margin: "1rem" }}
                     />
                   </ListItemAvatar>
                   <ListItemText>
@@ -58,7 +61,29 @@ function MyPageLayout() {
                         padding: "1.5rem",
                       }}
                     >
-                      Förnamn Efternamn
+                      {session?.data?.user ? (
+                        <>
+                          <p style={{ color: "black", fontWeight: "900" }}>
+                            {session.data.user.name}
+                          </p>
+                          <form action={signOutUser}>
+                            <button
+                              style={{
+                                cursor: "pointer",
+                                background: "#0072e4",
+                                border: "none",
+                                padding: "0.5rem",
+                                borderRadius: "10px",
+                                color: "white",
+                              }}
+                            >
+                              Sign out
+                            </button>
+                          </form>
+                        </>
+                      ) : (
+                        <SignInButton />
+                      )}
                     </Typography>
                   </ListItemText>
                 </ListItem>
@@ -73,8 +98,6 @@ function MyPageLayout() {
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
-                borderRadius: "10px",
-                border: "1px solid #edede9",
               }}
             >
               {[
@@ -109,14 +132,11 @@ function MyPageLayout() {
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
-                borderRadius: "10px",
-                border: "1px solid #edede9",
               }}
             >
               <List
                 sx={{
                   width: "100%",
-                  // maxWidth: 360,
                   bgcolor: "background.paper",
                   textAlign: "justify",
                 }}
