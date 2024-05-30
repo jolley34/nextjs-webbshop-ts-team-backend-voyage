@@ -8,8 +8,8 @@ export default function SignInButton() {
       style={{
         background: "#0072e4",
         border: "none",
-        padding: "0.5rem",
-        borderRadius: "10px",
+        padding: "0.5rem 1rem",
+        borderRadius: "20px",
         color: "white",
         cursor: "pointer",
       }}

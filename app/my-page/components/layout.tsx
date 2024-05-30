@@ -9,7 +9,6 @@ import {
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import { useSession } from "next-auth/react";
@@ -53,7 +52,14 @@ function MyPageLayout() {
                       sx={{ width: 100, height: 100, margin: "1rem" }}
                     />
                   </ListItemAvatar>
-                  <ListItemText>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      width: "100%", // Make sure this spans the full width
+                    }}
+                  >
                     <Typography
                       sx={{
                         fontWeight: "bold",
@@ -62,30 +68,30 @@ function MyPageLayout() {
                       }}
                     >
                       {session?.data?.user ? (
-                        <>
-                          <p style={{ color: "black", fontWeight: "900" }}>
-                            {session.data.user.name}
-                          </p>
-                          <form action={signOutUser}>
-                            <button
-                              style={{
-                                cursor: "pointer",
-                                background: "#0072e4",
-                                border: "none",
-                                padding: "0.5rem",
-                                borderRadius: "10px",
-                                color: "white",
-                              }}
-                            >
-                              Sign out
-                            </button>
-                          </form>
-                        </>
+                        <p style={{ color: "black", fontWeight: "900" }}>
+                          {session.data.user.name}
+                        </p>
                       ) : (
                         <SignInButton />
                       )}
                     </Typography>
-                  </ListItemText>
+                    {session?.data?.user && (
+                      <form action={signOutUser}>
+                        <button
+                          style={{
+                            cursor: "pointer",
+                            background: "#0072e4",
+                            border: "none",
+                            padding: "0.5rem 1rem",
+                            borderRadius: "20px",
+                            color: "white",
+                          }}
+                        >
+                          Sign out
+                        </button>
+                      </form>
+                    )}
+                  </Box>
                 </ListItem>
               </CardContent>
             </Box>
