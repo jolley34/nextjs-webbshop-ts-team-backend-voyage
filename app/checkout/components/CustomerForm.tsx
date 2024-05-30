@@ -57,7 +57,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="first name"
+          placeholder="Förnamn"
           {...form.register("firstName")}
         />
         <input
@@ -66,7 +66,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="email"
+          placeholder="Epost"
           {...form.register("email")}
         ></input>
         <input
@@ -75,7 +75,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="last name"
+          placeholder="Efternamn"
           {...form.register("lastName")}
         />
         <input
@@ -84,7 +84,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="city"
+          placeholder="Stad"
           {...form.register("city")}
         />
         <input
@@ -93,7 +93,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="zipcode"
+          placeholder="Postnummer"
           {...form.register("zipcode")}
         />
         <input
@@ -102,7 +102,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="street"
+          placeholder="Adress"
           {...form.register("street")}
         />
         <input
@@ -111,7 +111,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="phone"
+          placeholder="Telefonnummer"
           {...form.register("phoneNumber")}
         />
       </div>
@@ -121,12 +121,12 @@ export default function CustomerForm() {
           cursor: "pointer",
           border: "none",
           color: "white",
-          padding: "1.5rem",
+          padding: "0.75rem",
           background: "#0072e4",
-          borderRadius: "10px",
+          borderRadius: "20px",
         }}
       >
-        Lägg Order
+        BESTÄLL
       </button>
     </form>
   );
