@@ -5,6 +5,7 @@ import {
   Avatar,
   Box,
   CardContent,
+  Divider,
   Grid,
   List,
   ListItem,
@@ -13,8 +14,47 @@ import {
 } from "@mui/material";
 import { useSession } from "next-auth/react";
 
-function MyPageLayout() {
+export default function MyPageLayout() {
   const session = useSession();
+
+  //   const orders = await db.order.findMany({
+  //     select: {
+  //       id: true,
+  //       userId: true,
+  //       createdAt: true,
+  //       totalPrice: true,
+  //       user: {
+  //         select: {
+  //           name: true,
+  //         },
+  //       },
+  //       shippingAddress: {
+  //         select: {
+  //           firstName: true,
+  //           lastName: true,
+  //           street: true,
+  //           city: true,
+  //           zipcode: true,
+  //           email: true,
+  //           phoneNumber: true,
+  //         },
+  //       },
+  //       products: {
+  //         select: {
+  //           product: {
+  //             select: {
+  //               name: true,
+  //               image: true,
+  //               price: true,
+  //             },
+  //           },
+  //           quantity: true,
+  //           subTotalPrice: true,
+  //         },
+  //       },
+  //     },
+  //     orderBy: { id: "desc" },
+  //   });
 
   return (
     <>
@@ -34,11 +74,11 @@ function MyPageLayout() {
           {/* Header Column */}
           <Grid item xs={12}>
             <Box
+              alignItems="flex-start"
               sx={{
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
-                marginTop: "1rem",
               }}
             >
               <CardContent>
@@ -57,7 +97,7 @@ function MyPageLayout() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      width: "100%", // Make sure this spans the full width
+                      width: "100%",
                     }}
                   >
                     <Typography
@@ -104,6 +144,8 @@ function MyPageLayout() {
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
+                marginBottom: "1rem",
+                minHeight: "50vh",
               }}
             >
               {[
@@ -122,6 +164,29 @@ function MyPageLayout() {
                     justifyContent: "space-between",
                     fontSize: "1rem",
                     padding: "0.5rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Typography>{text}</Typography>
+                  <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+                </Box>
+              ))}
+              <Divider sx={{ marginY: "1rem" }} />
+              {[
+                "Sekretessalternativ",
+                "Sociala konton",
+                "Presentkort",
+                "Hjälp och support",
+              ].map((text) => (
+                <Box
+                  key={text}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: "1rem",
+                    padding: "0.5rem",
+                    cursor: "pointer",
                   }}
                 >
                   <Typography>{text}</Typography>
@@ -138,6 +203,8 @@ function MyPageLayout() {
                 width: "100%",
                 backgroundColor: "#fff",
                 padding: "1rem",
+                marginBottom: "1rem",
+                minHeight: "50vh",
               }}
             >
               <List
@@ -156,6 +223,35 @@ function MyPageLayout() {
                 >
                   Mina beställningar:
                 </Typography>
+                {/* <Grid container spacing={2}>
+                  {orders.map((order) => (
+                    <Grid item xs={12} sm={12} md={12} key={order.id}>
+                      <OrderCard
+                        id={order.id}
+                        userId={order.userId}
+                        user={order.user.name}
+                        createdAt={order.createdAt}
+                        firstName={order.shippingAddress.firstName}
+                        lastName={order.shippingAddress.lastName}
+                        street={order.shippingAddress.street}
+                        zipcode={order.shippingAddress.zipcode}
+                        email={order.shippingAddress.email}
+                        phoneNumber={order.shippingAddress.phoneNumber}
+                        productName={order.products
+                          .map((product) => product.product.name)
+                          .join(",")}
+                        productPrice={order.products
+                          .map((product) => product.product.price)
+                          .join(",")}
+                        totalPrice={order.totalPrice}
+                        quantity={order.products.reduce(
+                          (acc, product) => acc + product.quantity,
+                          0
+                        )}
+                      />
+                    </Grid>
+                  ))}
+                </Grid> */}
               </List>
             </Box>
           </Grid>
@@ -164,5 +260,3 @@ function MyPageLayout() {
     </>
   );
 }
-
-export default MyPageLayout;
