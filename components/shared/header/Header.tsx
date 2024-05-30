@@ -97,6 +97,7 @@ export default function Header({ name }: HeaderProps) {
       pathname === "/contact" ||
       pathname === "/sign-in" ||
       pathname === "/sign-up" ||
+      pathname === "/my-page" ||
       pathname.startsWith("/admin/product/")
     );
   };
