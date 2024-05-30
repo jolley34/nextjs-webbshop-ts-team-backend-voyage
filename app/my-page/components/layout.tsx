@@ -1,3 +1,4 @@
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   Avatar,
   Box,
@@ -35,25 +36,30 @@ function MyPageLayout() {
                 padding: "1rem",
                 borderRadius: "10px",
                 marginTop: "2rem",
-
                 border: "1px solid #edede9",
               }}
             >
               <CardContent>
-                <ListItem alignItems="flex-start">
+                <ListItem
+                  alignItems="center" // Se till att alignItems är center
+                  sx={{ display: "flex", alignItems: "center" }} // Lägg till flexbox
+                >
                   <ListItemAvatar>
                     <Avatar
-                      alt="Remy Sharp"
-                      //   src={profileAvatar}
+                      alt="Jane Doe"
                       sx={{ width: 100, height: 100, margin: "1rem" }} // Ange önskad bredd och höjd
                     />
                   </ListItemAvatar>
-                  <ListItemText sx={{ margin: "1rem" }}>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Username
+                  <ListItemText>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "1.5rem",
+                        padding: "1.5rem",
+                      }}
+                    >
+                      Förnamn Efternamn
                     </Typography>
-
-                    <Grid container alignItems="center" spacing={2}></Grid>
                   </ListItemText>
                 </ListItem>
               </CardContent>
@@ -68,11 +74,34 @@ function MyPageLayout() {
                 backgroundColor: "#fff",
                 padding: "1rem",
                 borderRadius: "10px",
-                marginTop: "2rem",
-
                 border: "1px solid #edede9",
               }}
-            ></Box>
+            >
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Mina beställningar
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Mina returer
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Mina uppgifter
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Ändra lösenord
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Betalningsmetoder
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+              <Typography sx={{ fontSize: "1rem", padding: "0.5rem" }}>
+                Kontoinställningar
+                <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+              </Typography>
+            </Box>
           </Grid>
 
           {/* Orders Column */}
@@ -84,7 +113,6 @@ function MyPageLayout() {
                 padding: "1rem",
                 borderRadius: "10px",
                 border: "1px solid #edede9",
-                marginTop: "2rem",
               }}
             >
               <List
