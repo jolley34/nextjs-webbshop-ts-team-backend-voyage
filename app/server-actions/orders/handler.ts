@@ -103,3 +103,21 @@ export async function handleIsShipped(orderId: string) {
     },
   });
 }
+
+export async function handleNotShipped(orderId: string) {
+  await db.order.update({
+    where: { id: orderId },
+    data: {
+      products: {
+        updateMany: [
+          {
+            where: { orderId: orderId },
+            data: {
+              isShipped: false,
+            },
+          },
+        ],
+      },
+    },
+  });
+}

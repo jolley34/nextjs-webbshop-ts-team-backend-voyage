@@ -2,6 +2,7 @@
 import {
   OrderWithUserProductsAddress,
   handleIsShipped,
+  handleNotShipped,
 } from "@/app/server-actions/orders/handler";
 import {
   Card,
@@ -12,7 +13,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   order: OrderWithUserProductsAddress;
@@ -38,6 +39,16 @@ const AnimatedCard = styled(Card)(
 
 export default function OrderCard({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
+  const [isShipped, setIsShipped] = useState(false);
+
+  useEffect(() => {
+    const savedStatus = localStorage.getItem(`order_${order.id}_isShipped`);
+    if (savedStatus !== null) {
+      setIsShipped(savedStatus === "true");
+    } else {
+      setIsShipped(order.products.every((product) => product.isShipped));
+    }
+  }, [order.products, order.id]);
 
   const theme = useTheme();
 
@@ -49,7 +60,17 @@ export default function OrderCard({ order }: Props) {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     event.stopPropagation();
-    await handleIsShipped(order.id);
+    if (isShipped) {
+      await handleNotShipped(order.id);
+    } else {
+      await handleIsShipped(order.id);
+    }
+    const newIsShipped = !isShipped;
+    setIsShipped(newIsShipped);
+    localStorage.setItem(
+      `order_${order.id}_isShipped`,
+      newIsShipped.toString()
+    );
   };
 
   console.log(order);
@@ -167,7 +188,12 @@ export default function OrderCard({ order }: Props) {
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
                   <FormControlLabel
-                    control={<Checkbox onChange={handleCheckboxClick} />}
+                    control={
+                      <Checkbox
+                        checked={isShipped}
+                        onChange={handleCheckboxClick}
+                      />
+                    }
                     label="Is Shipped"
                   />
                 </Grid>
