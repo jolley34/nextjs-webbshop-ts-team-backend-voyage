@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/auth";
+import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { db } from "../../../prisma/db";
 import { AddressCreate, AddressCreateSchema } from "../validation/validation";
@@ -65,12 +66,22 @@ export async function saveOrder(
   redirect("/confirmation");
 }
 
-export async function getAllOrders() {
-  const orders = await db.order.findMany({
-    select: {
-      id: true,
+export async function getUserOrders() {
+  const session = await auth();
+  return await db.order.findMany({
+    where: { userId: session?.user.id },
+    include: {
+      user: true,
+      shippingAddress: true,
+      products: {
+        include: {
+          product: true,
+        },
+      },
     },
-    orderBy: { id: "desc" },
   });
-  return { orders };
 }
+
+export type OrderWithUserProductsAddress = Prisma.PromiseReturnType<
+  typeof getUserOrders
+>[0];
