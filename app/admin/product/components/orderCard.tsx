@@ -195,7 +195,7 @@ export default function OrderCard({ order }: Props) {
                     </Typography>
                   </div>
                 </Grid>
-                {pathname === "my-page/order" && (
+                {!pathname.startsWith("/my-page") && (
                   <Grid item xs={12} sm={6} md={3}>
                     <FormControlLabel
                       control={
