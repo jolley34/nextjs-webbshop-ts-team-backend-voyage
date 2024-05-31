@@ -57,7 +57,7 @@ Elin Vahlberg ([mypinkworld](https://github.com/mypinkworld))
 
 - [x] **Validering i checkout**: Checkout-flödet i frontend-applikationen ska ha validering på samtliga fält.
 
-- [ ] **Validering på endpoints**: Backenden ska ha validering på samtliga endpoints (även Server Actions).
+- [x] **Validering på endpoints**: Backenden ska ha validering på samtliga endpoints (även Server Actions).
 
 - [x] **Registrering och inloggning**: En besökare som gör en beställning ska få möjligheten att registrera sig samt logga in och måste vara inloggad som kund innan beställningen skapas.
 

@@ -13,6 +13,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -40,6 +41,8 @@ const AnimatedCard = styled(Card)(
 export default function OrderCard({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [isShipped, setIsShipped] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     const savedStatus = localStorage.getItem(`order_${order.id}_isShipped`);
@@ -192,17 +195,19 @@ export default function OrderCard({ order }: Props) {
                     </Typography>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={isShipped}
-                        onChange={handleCheckboxClick}
-                      />
-                    }
-                    label="Is Shipped"
-                  />
-                </Grid>
+                {pathname === "my-page/order" && (
+                  <Grid item xs={12} sm={6} md={3}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isShipped}
+                          onChange={handleCheckboxClick}
+                        />
+                      }
+                      label="Is Shipped"
+                    />
+                  </Grid>
+                )}
               </Grid>
             </Card>
             {/* Address */}
