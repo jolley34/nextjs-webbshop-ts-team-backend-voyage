@@ -1,5 +1,6 @@
 import { signOutUser } from "@/app/server-actions/user/userActions";
 import SignInButton from "@/app/sign-in/components/SignInButton";
+import { auth } from "@/auth";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   Avatar,
@@ -7,54 +8,14 @@ import {
   CardContent,
   Divider,
   Grid,
-  List,
   ListItem,
   ListItemAvatar,
   Typography,
 } from "@mui/material";
-import { useSession } from "next-auth/react";
+import { PropsWithChildren } from "react";
 
-export default function MyPageLayout() {
-  const session = useSession();
-
-  //   const orders = await db.order.findMany({
-  //     select: {
-  //       id: true,
-  //       userId: true,
-  //       createdAt: true,
-  //       totalPrice: true,
-  //       user: {
-  //         select: {
-  //           name: true,
-  //         },
-  //       },
-  //       shippingAddress: {
-  //         select: {
-  //           firstName: true,
-  //           lastName: true,
-  //           street: true,
-  //           city: true,
-  //           zipcode: true,
-  //           email: true,
-  //           phoneNumber: true,
-  //         },
-  //       },
-  //       products: {
-  //         select: {
-  //           product: {
-  //             select: {
-  //               name: true,
-  //               image: true,
-  //               price: true,
-  //             },
-  //           },
-  //           quantity: true,
-  //           subTotalPrice: true,
-  //         },
-  //       },
-  //     },
-  //     orderBy: { id: "desc" },
-  //   });
+export default async function MyPageLayout({ children }: PropsWithChildren) {
+  const session = await auth();
 
   return (
     <>
@@ -107,15 +68,15 @@ export default function MyPageLayout() {
                         padding: "1.5rem",
                       }}
                     >
-                      {session?.data?.user ? (
+                      {session?.user ? (
                         <p style={{ color: "black", fontWeight: "900" }}>
-                          {session.data.user.name}
+                          {session.user.name}
                         </p>
                       ) : (
                         <SignInButton />
                       )}
                     </Typography>
-                    {session?.data?.user && (
+                    {session?.user && (
                       <form action={signOutUser}>
                         <button
                           style={{
@@ -207,52 +168,7 @@ export default function MyPageLayout() {
                 minHeight: "50vh",
               }}
             >
-              <List
-                sx={{
-                  width: "100%",
-                  bgcolor: "background.paper",
-                  textAlign: "justify",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  Mina beställningar:
-                </Typography>
-                {/* <Grid container spacing={2}>
-                  {orders.map((order) => (
-                    <Grid item xs={12} sm={12} md={12} key={order.id}>
-                      <OrderCard
-                        id={order.id}
-                        userId={order.userId}
-                        user={order.user.name}
-                        createdAt={order.createdAt}
-                        firstName={order.shippingAddress.firstName}
-                        lastName={order.shippingAddress.lastName}
-                        street={order.shippingAddress.street}
-                        zipcode={order.shippingAddress.zipcode}
-                        email={order.shippingAddress.email}
-                        phoneNumber={order.shippingAddress.phoneNumber}
-                        productName={order.products
-                          .map((product) => product.product.name)
-                          .join(",")}
-                        productPrice={order.products
-                          .map((product) => product.product.price)
-                          .join(",")}
-                        totalPrice={order.totalPrice}
-                        quantity={order.products.reduce(
-                          (acc, product) => acc + product.quantity,
-                          0
-                        )}
-                      />
-                    </Grid>
-                  ))}
-                </Grid> */}
-              </List>
+              {children}
             </Box>
           </Grid>
         </Grid>

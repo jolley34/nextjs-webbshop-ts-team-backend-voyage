@@ -294,29 +294,7 @@ export default async function AdminPage() {
           <Grid container spacing={2}>
             {orders.map((order) => (
               <Grid item xs={12} sm={12} md={12} key={order.id}>
-                <OrderCard
-                  id={order.id}
-                  userId={order.userId}
-                  user={order.user.name}
-                  createdAt={order.createdAt}
-                  firstName={order.shippingAddress.firstName}
-                  lastName={order.shippingAddress.lastName}
-                  street={order.shippingAddress.street}
-                  zipcode={order.shippingAddress.zipcode}
-                  email={order.shippingAddress.email}
-                  phoneNumber={order.shippingAddress.phoneNumber}
-                  productName={order.products
-                    .map((product) => product.product.name)
-                    .join(",")}
-                  productPrice={order.products
-                    .map((product) => product.product.price)
-                    .join(",")}
-                  totalPrice={order.totalPrice}
-                  quantity={order.products.reduce(
-                    (acc, product) => acc + product.quantity,
-                    0
-                  )}
-                />
+                <OrderCard order={order} />
               </Grid>
             ))}
           </Grid>

@@ -1,25 +1,11 @@
 "use client";
-"use client";
+import { OrderWithUserProductsAddress } from "@/app/server-actions/orders/handler";
 import { Card, Grid, Typography, useTheme } from "@mui/material";
 import { styled } from "@mui/system";
-import { Prisma } from "@prisma/client";
 import { useState } from "react";
 
 interface Props {
-  id: string;
-  userId: string;
-  user: any;
-  createdAt: Date;
-  firstName: string;
-  lastName: string;
-  street: string;
-  zipcode: string;
-  email: any;
-  phoneNumber: string;
-  productName: string;
-  productPrice: Prisma.Decimal;
-  totalPrice: Prisma.Decimal;
-  quantity: number;
+  order: OrderWithUserProductsAddress;
 }
 
 const AnimatedCard = styled(Card)(
@@ -40,30 +26,28 @@ const AnimatedCard = styled(Card)(
   })
 );
 
-export default function OrderCard({
-  id,
-  userId,
-  user,
-  createdAt,
-  firstName,
-  lastName,
-  street,
-  zipcode,
-  email,
-  phoneNumber,
-  productName,
-  productPrice,
-  totalPrice,
-  quantity,
-}: Props) {
+export default function OrderCard({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
-  const formattedDate = createdAt.toLocaleString();
   const theme = useTheme();
 
   const handleCardClick = () => {
     setExpanded(!expanded);
   };
 
+  console.log(order);
+  const { id, userId, user, createdAt, shippingAddress, products, totalPrice } =
+    order;
+
+  const { firstName, lastName, email, phoneNumber, street, zipcode } =
+    shippingAddress;
+
+  const productName = products.map((product) => product.product.name).join(",");
+  const productPrice = products
+    .map((product) => product.product.price)
+    .join(",");
+  const quantity = products.reduce((acc, product) => acc + product.quantity, 0);
+
+  const formattedDate = createdAt.toLocaleString();
   return (
     <>
       <div
@@ -133,7 +117,7 @@ export default function OrderCard({
                     <Typography variant="subtitle1" fontWeight="700">
                       Username
                     </Typography>
-                    <Typography variant="subtitle1">{user}</Typography>
+                    <Typography variant="subtitle1">{user.name}</Typography>
                   </div>
                 </Grid>
                 <Grid item xs={12} sm={6} md={3}>
