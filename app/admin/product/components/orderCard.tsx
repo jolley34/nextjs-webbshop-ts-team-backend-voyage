@@ -235,7 +235,8 @@ export default function OrderCard({ order }: Props) {
                         Name
                       </Typography>
                       <Typography variant="subtitle1">
-                        {product.product.name}
+                        {product.product.name} á{" "}
+                        {product.product.price.toString()} kr
                       </Typography>
                     </div>
                   </Grid>
