@@ -97,7 +97,7 @@ export default function Header({ name }: HeaderProps) {
       pathname === "/contact" ||
       pathname === "/sign-in" ||
       pathname === "/sign-up" ||
-      pathname === "/my-page/order" ||
+      pathname === "/my-page/" ||
       pathname.startsWith("/admin/product/")
     );
   };
@@ -479,7 +479,7 @@ const menuItems = [
 ];
 
 const subItems = [
-  { label: "Mina sidor", href: "/my-page/order" },
+  { label: "Mina sidor", href: "/my-page/" },
   { label: "Hållbarhet", href: "/" },
   { label: "Hitta din butik", href: "/" },
   { label: "Kan vi hjälpa dig?", href: "/contact" },

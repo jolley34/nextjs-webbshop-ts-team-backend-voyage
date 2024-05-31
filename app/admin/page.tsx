@@ -165,10 +165,10 @@ export default async function AdminPage() {
                         src={product.image}
                         alt={product.name}
                         style={{
-                          objectPosition: "top",
-                          objectFit: "cover",
+                          objectFit: "contain",
                           aspectRatio: 1,
                           width: "100%",
+                          height: "100%",
                         }}
                       />
                       <CardContent>

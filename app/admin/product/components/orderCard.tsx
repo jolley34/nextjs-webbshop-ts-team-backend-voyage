@@ -1,8 +1,20 @@
 "use client";
-import { OrderWithUserProductsAddress } from "@/app/server-actions/orders/handler";
-import { Card, Grid, Typography, useTheme } from "@mui/material";
+import {
+  OrderWithUserProductsAddress,
+  handleIsShipped,
+  handleNotShipped,
+} from "@/app/server-actions/orders/handler";
+import {
+  Card,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { styled } from "@mui/system";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Props {
   order: OrderWithUserProductsAddress;
@@ -28,10 +40,46 @@ const AnimatedCard = styled(Card)(
 
 export default function OrderCard({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
+  const [isShipped, setIsShipped] = useState(false);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const savedStatus = localStorage.getItem(`order_${order.id}_isShipped`);
+    if (savedStatus !== null) {
+      setIsShipped(savedStatus === "true");
+    } else {
+      setIsShipped(order.products.every((product) => product.isShipped));
+    }
+  }, [order.products, order.id]);
+
   const theme = useTheme();
 
-  const handleCardClick = () => {
+  const handleCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const isCheckboxClicked = (event.target as HTMLElement).closest(
+      'input[type="checkbox"]'
+    );
+    if (isCheckboxClicked) {
+      return;
+    }
     setExpanded(!expanded);
+  };
+
+  const handleCheckboxClick = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    event.stopPropagation();
+    if (isShipped) {
+      await handleNotShipped(order.id);
+    } else {
+      await handleIsShipped(order.id);
+    }
+    const newIsShipped = !isShipped;
+    setIsShipped(newIsShipped);
+    localStorage.setItem(
+      `order_${order.id}_isShipped`,
+      newIsShipped.toString()
+    );
   };
 
   console.log(order);
@@ -41,13 +89,10 @@ export default function OrderCard({ order }: Props) {
   const { firstName, lastName, email, phoneNumber, street, zipcode } =
     shippingAddress;
 
-  const productName = products.map((product) => product.product.name).join(",");
-  const productPrice = products
-    .map((product) => product.product.price)
-    .join(",");
   const quantity = products.reduce((acc, product) => acc + product.quantity, 0);
 
   const formattedDate = createdAt.toLocaleString();
+
   return (
     <>
       <div
@@ -150,6 +195,19 @@ export default function OrderCard({ order }: Props) {
                     </Typography>
                   </div>
                 </Grid>
+                {!pathname.startsWith("/my-page") && (
+                  <Grid item xs={12} sm={6} md={3}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isShipped}
+                          onChange={handleCheckboxClick}
+                        />
+                      }
+                      label="Is Shipped"
+                    />
+                  </Grid>
+                )}
               </Grid>
             </Card>
             {/* Address */}
@@ -220,41 +278,55 @@ export default function OrderCard({ order }: Props) {
               </Grid>
             </Card>
             {/* Produkt */}
+
             <Typography
               variant="subtitle1"
               style={{ margin: 0, fontSize: "1.5rem" }}
             >
               Product
             </Typography>
-            <Card sx={{ padding: "1rem", background: "#f6f6f6" }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="700">
-                      Name
-                    </Typography>
-                    <Typography variant="subtitle1">{productName}</Typography>
-                  </div>
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                sx={{ padding: "1rem", background: "#f6f6f6" }}
+              >
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Name
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        {product.product.name} á{" "}
+                        {product.product.price.toString()} kr
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Price
+                      </Typography>
+                      <Typography variant="subtitle1" sx={{ color: "#00D100" }}>
+                        {product.subTotalPrice.toString()}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Quantity
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        {product.quantity}
+                      </Typography>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="700">
-                      Price
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ color: "#00D100" }}>
-                      {productPrice.toString()}
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
-            </Card>
+              </Card>
+            ))}
           </div>
         </AnimatedCard>
-        {/*   {expanded ? (
-          <KeyboardDoubleArrowUpIcon />
-        ) : (
-          <KeyboardDoubleArrowDownIcon />
-        )} */}
       </div>
     </>
   );

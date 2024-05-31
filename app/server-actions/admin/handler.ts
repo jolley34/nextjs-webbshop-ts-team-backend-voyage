@@ -27,7 +27,6 @@ export async function AddNewProductAdmin(data: ProductFormData) {
   redirect("/admin");
 }
 
-
 export async function EditProduct(productId: string, data: ProductFormData) {
   const selectedCategoryIds = data.categories;
   data.stock = Number(data.stock);

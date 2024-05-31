@@ -1,8 +1,7 @@
-"use client";
-
 import { Facebook, Instagram } from "@mui/icons-material";
 import XIcon from "@mui/icons-material/X";
 
+import { auth } from "@/auth";
 import AddIcon from "@mui/icons-material/Add";
 import {
   Accordion,
@@ -15,7 +14,6 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import { usePathname } from "next/navigation";
 
 function StyledLink({
   text,
@@ -26,12 +24,11 @@ function StyledLink({
   href: string;
   datacy?: string;
 }) {
-  const pathname = usePathname();
   return (
     <Link
       sx={{
         textDecoration: "none",
-        color: pathname === "/about" ? "#ffffff" : "black",
+        color: "black",
         letterSpacing: "-0.05em",
         fontFamily: "sans-serif, 'Futura', 'Trebuchet MS', 'Arial'",
         fontSize: "0.8rem",
@@ -48,17 +45,16 @@ function StyledLink({
   );
 }
 
-export default function Footer() {
-  const pathname = usePathname();
+export default async function Footer() {
+  const session = await auth();
+
   return (
     <Box
       component="footer"
       sx={{
-        backgroundColor: pathname === "/about" ? "#1b1b1b" : "white",
+        backgroundColor: "white",
         width: "100%",
-        borderTop:
-          pathname === "/about" ? "1px solid #1b1b1b" : "1px solid #e0e0e0",
-
+        borderTop: "1px solid #e0e0e0",
         padding: "1rem 0",
       }}
     >
@@ -76,7 +72,7 @@ export default function Footer() {
 
             marginBottom: "2rem",
 
-            color: pathname === "/about" ? "#ffffff" : "black",
+            color: "black",
           }}
         >
           <Grid item xs={12} sm={12} md={3}>
@@ -98,7 +94,13 @@ export default function Footer() {
                     OM ananas
                   </Typography>
                   <StyledLink text="Nyheter" href="/about" />
-                  <StyledLink text="Admin" href="/admin" datacy="admin-link" />
+                  {session?.user?.isAdmin && (
+                    <StyledLink
+                      text="Admin"
+                      href="/admin"
+                      datacy="admin-link"
+                    />
+                  )}
                   <StyledLink text="Hjälp med att handla" href="/about" />
                 </Box>
               </Hidden>
@@ -110,8 +112,7 @@ export default function Footer() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                   sx={{
-                    backgroundColor:
-                      pathname === "/about" ? "#2d2d2d" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <Typography
@@ -121,7 +122,7 @@ export default function Footer() {
 
                       fontSize: "0.7rem",
 
-                      color: pathname === "/about" ? "#ffffff" : "black",
+                      color: "black",
                     }}
                   >
                     OM ananas
@@ -132,12 +133,19 @@ export default function Footer() {
                     display: "flex",
                     flexDirection: "column",
 
-                    backgroundColor:
-                      pathname === "/about" ? "#202020" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <StyledLink text="Nyheter" href="/about" />
-                  <StyledLink text="Admin" href="/admin" datacy="admin-link" />
+
+                  {session?.user?.isAdmin && (
+                    <StyledLink
+                      text="Admin"
+                      href="/admin"
+                      datacy="admin-link"
+                    />
+                  )}
+
                   <StyledLink text="Hjölp med att handla" href="/about" />
                 </AccordionDetails>
               </Accordion>
@@ -174,8 +182,7 @@ export default function Footer() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                   sx={{
-                    backgroundColor:
-                      pathname === "/about" ? "#2d2d2d" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <Typography
@@ -185,7 +192,7 @@ export default function Footer() {
 
                       fontSize: "0.7rem",
 
-                      color: pathname === "/about" ? "#ffffff" : "black",
+                      color: "black",
                     }}
                   >
                     KONTO
@@ -196,8 +203,7 @@ export default function Footer() {
                     display: "flex",
                     flexDirection: "column",
 
-                    backgroundColor:
-                      pathname === "/about" ? "#202020" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <StyledLink text="Hantera ditt Ananas-ID" href="/about" />
@@ -237,8 +243,7 @@ export default function Footer() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                   sx={{
-                    backgroundColor:
-                      pathname === "/about" ? "#2d2d2d" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <Typography
@@ -246,7 +251,7 @@ export default function Footer() {
                       fontWeight: "100",
                       letterSpacing: "-0.05em",
                       fontSize: "0.7rem",
-                      color: pathname === "/about" ? "#ffffff" : "black",
+                      color: "black",
                     }}
                   >
                     KUNDTJÄNST
@@ -256,8 +261,7 @@ export default function Footer() {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    backgroundColor:
-                      pathname === "/about" ? "#202020" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <StyledLink text="Kontakta oss" href="/contact" />
@@ -297,9 +301,8 @@ export default function Footer() {
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                   sx={{
-                    color: pathname === "/about" ? "#ffffff" : "black",
-                    backgroundColor:
-                      pathname === "/about" ? "#2d2d2d" : "white",
+                    color: "black",
+                    backgroundColor: "white",
                   }}
                 >
                   <Typography
@@ -317,8 +320,7 @@ export default function Footer() {
                     display: "flex",
                     flexDirection: "column",
 
-                    backgroundColor:
-                      pathname === "/about" ? "#202020" : "white",
+                    backgroundColor: "white",
                   }}
                 >
                   <StyledLink text="Presentkort" href="/faq" />
@@ -341,9 +343,8 @@ export default function Footer() {
             fontSize: "1rem",
 
             paddingTop: "1rem",
-            borderTop:
-              pathname === "/about" ? "1px solid #2a2a2a" : "1px solid #e0e0e0",
-            color: pathname === "/about" ? "#ffffff" : "black",
+            borderTop: "1px solid #e0e0e0",
+            color: "black",
           }}
         >
           Följ oss
@@ -355,8 +356,7 @@ export default function Footer() {
           sx={{
             marginTop: "1rem",
             paddingBottom: "1rem",
-            borderBottom:
-              pathname === "/about" ? "1px solid #2a2a2a" : "1px solid #e0e0e0",
+            borderBottom: "1px solid #e0e0e0",
           }}
         >
           <Facebook
@@ -364,7 +364,7 @@ export default function Footer() {
               cursor: "pointer",
               fontSize: "1.8rem",
               margin: "0 0.5rem",
-              color: pathname === "/about" ? "white" : "black",
+              color: "black",
             }}
           />
           <XIcon
@@ -372,7 +372,7 @@ export default function Footer() {
               cursor: "pointer",
               fontSize: "1.6rem",
               margin: "0 0.5rem",
-              color: pathname === "/about" ? "white" : "black",
+              color: "black",
             }}
           />
           <Instagram
@@ -380,7 +380,7 @@ export default function Footer() {
               cursor: "pointer",
               fontSize: "1.8rem",
               margin: "0 0.5rem",
-              color: pathname === "/about" ? "white" : "black",
+              color: "black",
             }}
           />
         </Box>
@@ -393,7 +393,7 @@ export default function Footer() {
             fontSize: "0.9rem",
             padding: "1.5rem 0",
 
-            color: pathname === "/about" ? "#ffffff" : "black",
+            color: "black",
           }}
           variant="body1"
           align="center"
