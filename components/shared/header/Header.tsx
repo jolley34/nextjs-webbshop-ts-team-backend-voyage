@@ -411,6 +411,22 @@ export default function Header({ name }: HeaderProps) {
                     padding: "2rem",
                   }}
                 >
+                  {session?.data?.user && (
+                    <Link style={{ textDecoration: "none" }} href="/my-page/">
+                      <ListItemButton>
+                        <Typography
+                          sx={{
+                            fontSize: "0.8rem",
+                            fontFamily:
+                              "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                            position: "relative",
+                          }}
+                        >
+                          Mina sidor
+                        </Typography>
+                      </ListItemButton>
+                    </Link>
+                  )}
                   {subItems.map((item, index) => (
                     <Link
                       key={`menu-item-${index}`}
@@ -479,7 +495,6 @@ const menuItems = [
 ];
 
 const subItems = [
-  { label: "Mina sidor", href: "/my-page/" },
   { label: "Hållbarhet", href: "/" },
   { label: "Hitta din butik", href: "/" },
   { label: "Kan vi hjälpa dig?", href: "/contact" },
