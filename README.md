@@ -59,16 +59,16 @@ Elin Vahlberg ([mypinkworld](https://github.com/mypinkworld))
 
 - [ ] **Validering på endpoints**: Backenden ska ha validering på samtliga endpoints (även Server Actions).
 
-- [ ] **Registrering och inloggning**: En besökare som gör en beställning ska få möjligheten att registrera sig samt logga in och måste vara inloggad som kund innan beställningen skapas.
+- [x] **Registrering och inloggning**: En besökare som gör en beställning ska få möjligheten att registrera sig samt logga in och måste vara inloggad som kund innan beställningen skapas.
 
-- [ ] **Produktbeställning**: En besökare ska kunna beställa produkter från sidan, detta ska uppdatera lagersaldot i databasen.
+- [x] **Produktbeställning**: En besökare ska kunna beställa produkter från sidan, detta ska uppdatera lagersaldot i databasen.
 
-- [ ] **Administratörsinloggning**: Man ska kunna logga in som administratör i systemet.
+- [x] **Administratörsinloggning**: Man ska kunna logga in som administratör i systemet.
 
-- [ ] **Beställningshistorik**: Administratörer ska kunna se en lista på alla gjorda beställningar.
+- [x] **Beställningshistorik**: Administratörer ska kunna se en lista på alla gjorda beställningar.
 
-- [ ] **Lagerhantering**: Administratörer ska kunna uppdatera antalet produkter i lager från admin-delen av sidan.
+- [x] **Lagerhantering**: Administratörer ska kunna uppdatera antalet produkter i lager från admin-delen av sidan.
 
 - [ ] **Orderhistorik**: När man är inloggad som kund ska man kunna se sina gjorda beställningar och om de är skickade eller inte.
 
-- [ ] **Produktadministration**: Administratörer ska kunna redigera, lägga till och ta bort produkter.
+- [x] **Produktadministration**: Administratörer ska kunna redigera, lägga till och ta bort produkter.

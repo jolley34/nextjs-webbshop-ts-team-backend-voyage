@@ -1,6 +1,16 @@
 "use client";
-import { OrderWithUserProductsAddress } from "@/app/server-actions/orders/handler";
-import { Card, Grid, Typography, useTheme } from "@mui/material";
+import {
+  OrderWithUserProductsAddress,
+  handleIsShipped,
+} from "@/app/server-actions/orders/handler";
+import {
+  Card,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import { useState } from "react";
 
@@ -28,10 +38,18 @@ const AnimatedCard = styled(Card)(
 
 export default function OrderCard({ order }: Props) {
   const [expanded, setExpanded] = useState(false);
+
   const theme = useTheme();
 
   const handleCardClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleCheckboxClick = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    event.stopPropagation();
+    await handleIsShipped(order.id);
   };
 
   console.log(order);
@@ -44,6 +62,7 @@ export default function OrderCard({ order }: Props) {
   const quantity = products.reduce((acc, product) => acc + product.quantity, 0);
 
   const formattedDate = createdAt.toLocaleString();
+
   return (
     <>
       <div
@@ -145,6 +164,12 @@ export default function OrderCard({ order }: Props) {
                       {totalPrice.toString()}
                     </Typography>
                   </div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <FormControlLabel
+                    control={<Checkbox onChange={handleCheckboxClick} />}
+                    label="Is Shipped"
+                  />
                 </Grid>
               </Grid>
             </Card>
@@ -265,11 +290,6 @@ export default function OrderCard({ order }: Props) {
             ))}
           </div>
         </AnimatedCard>
-        {/*   {expanded ? (
-          <KeyboardDoubleArrowUpIcon />
-        ) : (
-          <KeyboardDoubleArrowDownIcon />
-        )} */}
       </div>
     </>
   );

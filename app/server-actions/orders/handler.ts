@@ -85,3 +85,21 @@ export async function getUserOrders() {
 export type OrderWithUserProductsAddress = Prisma.PromiseReturnType<
   typeof getUserOrders
 >[0];
+
+export async function handleIsShipped(orderId: string) {
+  await db.order.update({
+    where: { id: orderId },
+    data: {
+      products: {
+        updateMany: [
+          {
+            where: { orderId: orderId },
+            data: {
+              isShipped: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+}
