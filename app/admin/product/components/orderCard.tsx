@@ -41,10 +41,6 @@ export default function OrderCard({ order }: Props) {
   const { firstName, lastName, email, phoneNumber, street, zipcode } =
     shippingAddress;
 
-  const productName = products.map((product) => product.product.name).join(",");
-  const productPrice = products
-    .map((product) => product.product.price)
-    .join(",");
   const quantity = products.reduce((acc, product) => acc + product.quantity, 0);
 
   const formattedDate = createdAt.toLocaleString();
@@ -220,34 +216,52 @@ export default function OrderCard({ order }: Props) {
               </Grid>
             </Card>
             {/* Produkt */}
+
             <Typography
               variant="subtitle1"
               style={{ margin: 0, fontSize: "1.5rem" }}
             >
               Product
             </Typography>
-            <Card sx={{ padding: "1rem", background: "#f6f6f6" }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="700">
-                      Name
-                    </Typography>
-                    <Typography variant="subtitle1">{productName}</Typography>
-                  </div>
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                sx={{ padding: "1rem", background: "#f6f6f6" }}
+              >
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Name
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        {product.product.name}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Price
+                      </Typography>
+                      <Typography variant="subtitle1" sx={{ color: "#00D100" }}>
+                        {product.subTotalPrice.toString()}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <div>
+                      <Typography variant="subtitle1" fontWeight="700">
+                        Quantity
+                      </Typography>
+                      <Typography variant="subtitle1">
+                        {product.quantity}
+                      </Typography>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div>
-                    <Typography variant="subtitle1" fontWeight="700">
-                      Price
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ color: "#00D100" }}>
-                      {productPrice.toString()}
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
-            </Card>
+              </Card>
+            ))}
           </div>
         </AnimatedCard>
         {/*   {expanded ? (
