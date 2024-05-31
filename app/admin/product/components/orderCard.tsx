@@ -52,7 +52,13 @@ export default function OrderCard({ order }: Props) {
 
   const theme = useTheme();
 
-  const handleCardClick = () => {
+  const handleCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const isCheckboxClicked = (event.target as HTMLElement).closest(
+      'input[type="checkbox"]'
+    );
+    if (isCheckboxClicked) {
+      return;
+    }
     setExpanded(!expanded);
   };
 
