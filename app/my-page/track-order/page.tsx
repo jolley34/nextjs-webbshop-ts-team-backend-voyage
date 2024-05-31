@@ -1,5 +1,6 @@
 import OrderCard from "@/app/admin/product/components/orderCard";
 import { db } from "@/prisma/db";
+import { Box } from "@mui/material";
 
 export default async function TrackOrderPage() {
   const orders = await db.order.findMany({
@@ -50,9 +51,11 @@ export default async function TrackOrderPage() {
 
   return (
     <>
-      {orders.map((order) => (
-        <OrderCard key={order.id} order={order} />
-      ))}
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {orders.map((order) => (
+          <OrderCard key={order.id} order={order} />
+        ))}
+      </Box>
     </>
   );
 }
