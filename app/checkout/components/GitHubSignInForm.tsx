@@ -13,7 +13,7 @@ export default function GitHubSignInForm() {
           fontSize: { xs: "1.5rem", md: "2rem" },
         }}
       >
-        Logga in för att slutföra din order...
+        Sign in to complete your order..
       </Typography>
       <Button
         type="submit"
@@ -40,7 +40,7 @@ export default function GitHubSignInForm() {
             fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
           }}
         >
-          Logga in med GitHub
+          Sign in with GitHub
         </Typography>{" "}
       </Button>
     </Box>
