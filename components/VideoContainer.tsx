@@ -139,7 +139,7 @@ export default function VideoContainer() {
               fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
             }}
           >
-            Utforska kraften med ananas
+            Explore the power of ananas.
           </Typography>
         </Box>
       </Box>

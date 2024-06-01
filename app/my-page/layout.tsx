@@ -110,12 +110,12 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
               }}
             >
               {[
-                "Mina beställningar",
-                "Mina returer",
-                "Mina uppgifter",
-                "Ändra lösenord",
-                "Betalningsmetoder",
-                "Kontoinställningar",
+                "My Orders",
+                "My Returns",
+                "My Details",
+                "Change Password",
+                "Payment Methods",
+                "Account Settings",
               ].map((text) => (
                 <Box
                   key={text}
@@ -134,10 +134,10 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
               ))}
               <Divider sx={{ marginY: "1rem" }} />
               {[
-                "Sekretessalternativ",
-                "Sociala konton",
-                "Presentkort",
-                "Hjälp och support",
+                "Privacy Options",
+                "Social Accounts",
+                "Gift Cards",
+                "Help and Support",
               ].map((text) => (
                 <Box
                   key={text}

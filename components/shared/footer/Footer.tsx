@@ -91,9 +91,9 @@ export default async function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    OM ananas
+                    ABOUT ananas
                   </Typography>
-                  <StyledLink text="Nyheter" href="/about" />
+                  <StyledLink text="Newsletter" href="/about" />
                   {session?.user?.isAdmin && (
                     <StyledLink
                       text="Admin"
@@ -101,7 +101,7 @@ export default async function Footer() {
                       datacy="admin-link"
                     />
                   )}
-                  <StyledLink text="Hjälp med att handla" href="/about" />
+                  <StyledLink text="Shopping help" href="/about" />
                 </Box>
               </Hidden>
             </Box>
@@ -125,7 +125,7 @@ export default async function Footer() {
                       color: "black",
                     }}
                   >
-                    OM ananas
+                    ABOUT ananas
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -136,7 +136,7 @@ export default async function Footer() {
                     backgroundColor: "white",
                   }}
                 >
-                  <StyledLink text="Nyheter" href="/about" />
+                  <StyledLink text="Newsletter" href="/about" />
 
                   {session?.user?.isAdmin && (
                     <StyledLink
@@ -146,7 +146,7 @@ export default async function Footer() {
                     />
                   )}
 
-                  <StyledLink text="Hjölp med att handla" href="/about" />
+                  <StyledLink text="Shopping help" href="/about" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -167,10 +167,10 @@ export default async function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    KONTO
+                    ACCOUNT
                   </Typography>
-                  <StyledLink text="Hantera ditt Ananas-ID" href="/about" />
-                  <StyledLink text="Ananas Store-konto" href="/about" />
+                  <StyledLink text="Manage your ananas ID" href="/about" />
+                  <StyledLink text="Ananas Store Account" href="/about" />
                   <StyledLink text="iCloud.com" href="/about" />
                 </Box>
               </Hidden>
@@ -195,7 +195,7 @@ export default async function Footer() {
                       color: "black",
                     }}
                   >
-                    KONTO
+                    ACCOUNT
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -206,8 +206,8 @@ export default async function Footer() {
                     backgroundColor: "white",
                   }}
                 >
-                  <StyledLink text="Hantera ditt Ananas-ID" href="/about" />
-                  <StyledLink text="Ananas Store-konto" href="/about" />
+                  <StyledLink text="Manage your ananas ID" href="/about" />
+                  <StyledLink text="Ananas Store Account" href="/about" />
                   <StyledLink text="iCloud.com" href="/about" />
                 </AccordionDetails>
               </Accordion>
@@ -229,10 +229,10 @@ export default async function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    KUNDTJÄNST
+                    CUSTOMER SERVICE
                   </Typography>
-                  <StyledLink text="Kontakta oss" href="/contact" />
-                  <StyledLink text="Garanti" href="/contact" />
+                  <StyledLink text="Contact Us" href="/contact" />
+                  <StyledLink text="Warranty" href="/contact" />
                 </Box>
               </Hidden>
             </Box>
@@ -254,7 +254,7 @@ export default async function Footer() {
                       color: "black",
                     }}
                   >
-                    KUNDTJÄNST
+                    CUSTOMER SERVICE
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -264,8 +264,8 @@ export default async function Footer() {
                     backgroundColor: "white",
                   }}
                 >
-                  <StyledLink text="Kontakta oss" href="/contact" />
-                  <StyledLink text="Garanti" href="/contact" />
+                  <StyledLink text="Contact Us" href="/contact" />
+                  <StyledLink text="Warranty" href="/contact" />
                 </AccordionDetails>
               </Accordion>
             </Hidden>
@@ -286,10 +286,10 @@ export default async function Footer() {
                       paddingBottom: "0.8rem",
                     }}
                   >
-                    TJÄNSTER
+                    SERVICES
                   </Typography>
-                  <StyledLink text="Presentkort" href="/services" />
-                  <StyledLink text="Tillbehör" href="/services" />
+                  <StyledLink text="Gift Cards" href="/services" />
+                  <StyledLink text="Accessories" href="/services" />
                   <StyledLink text="Ananas Pay" href="/services" />
                 </Box>
               </Hidden>
@@ -312,7 +312,7 @@ export default async function Footer() {
                       fontSize: "0.7rem",
                     }}
                   >
-                    TJÄNSTER
+                    SERVICES
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails
@@ -323,8 +323,8 @@ export default async function Footer() {
                     backgroundColor: "white",
                   }}
                 >
-                  <StyledLink text="Presentkort" href="/faq" />
-                  <StyledLink text="Tillbehör" href="/services" />
+                  <StyledLink text="Gift Cards" href="/faq" />
+                  <StyledLink text="Accessories" href="/services" />
                   <StyledLink text="Ananas Pay" href="/services" />
                 </AccordionDetails>
               </Accordion>
@@ -347,7 +347,7 @@ export default async function Footer() {
             color: "black",
           }}
         >
-          Följ oss
+          Follow Us
         </Typography>
         <Box
           display="flex"

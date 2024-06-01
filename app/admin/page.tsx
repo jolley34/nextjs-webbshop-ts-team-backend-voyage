@@ -120,7 +120,7 @@ export default async function AdminPage() {
                         "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                     }}
                   >
-                    Lägg till
+                    Add new
                   </Typography>
                 </Button>
               </Link>
@@ -180,7 +180,7 @@ export default async function AdminPage() {
                               "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                           }}
                         >
-                          Titel:
+                          Title:
                         </Typography>
                         <Typography
                           sx={{
@@ -222,7 +222,7 @@ export default async function AdminPage() {
                               "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                           }}
                         >
-                          Beskrivning:
+                          Description:
                         </Typography>
                         <Typography
                           sx={{
@@ -241,7 +241,7 @@ export default async function AdminPage() {
                               "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                           }}
                         >
-                          Pris:
+                          Price:
                         </Typography>
                         <Typography
                           sx={{
@@ -261,7 +261,7 @@ export default async function AdminPage() {
                               "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                           }}
                         >
-                          Lagersaldo:
+                          Inventory:
                         </Typography>
                         <Typography
                           sx={{

@@ -41,7 +41,7 @@ export default function CustomerForm() {
           fontSize: "1.5rem",
         }}
       >
-        Leveransuppgifter
+        Delivery information
       </h1>
       <div
         style={{
@@ -57,7 +57,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="Förnamn"
+          placeholder="Firstname"
           {...form.register("firstName")}
         />
         <input
@@ -66,16 +66,7 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="Epost"
-          {...form.register("email")}
-        ></input>
-        <input
-          style={{
-            padding: "1rem",
-            border: "none",
-            borderBottom: "1px solid gray",
-          }}
-          placeholder="Efternamn"
+          placeholder="Lastname"
           {...form.register("lastName")}
         />
         <input
@@ -84,8 +75,8 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="Stad"
-          {...form.register("city")}
+          placeholder="Phonenumber"
+          {...form.register("phoneNumber")}
         />
         <input
           style={{
@@ -93,7 +84,26 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="Postnummer"
+          placeholder="Email"
+          {...form.register("email")}
+        ></input>
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="Street"
+          {...form.register("street")}
+        />
+
+        <input
+          style={{
+            padding: "1rem",
+            border: "none",
+            borderBottom: "1px solid gray",
+          }}
+          placeholder="Zipcode"
           {...form.register("zipcode")}
         />
         <input
@@ -102,17 +112,8 @@ export default function CustomerForm() {
             border: "none",
             borderBottom: "1px solid gray",
           }}
-          placeholder="Adress"
-          {...form.register("street")}
-        />
-        <input
-          style={{
-            padding: "1rem",
-            border: "none",
-            borderBottom: "1px solid gray",
-          }}
-          placeholder="Telefonnummer"
-          {...form.register("phoneNumber")}
+          placeholder="City"
+          {...form.register("city")}
         />
       </div>
       <button
@@ -126,7 +127,7 @@ export default function CustomerForm() {
           borderRadius: "20px",
         }}
       >
-        BESTÄLL
+        SUBMIT ORDER
       </button>
     </form>
   );

@@ -230,7 +230,7 @@ export default function CheckoutLayout() {
                     fontSize: { xs: "1.5rem", md: "2rem" },
                   }}
                 >
-                  Din varukorg ({totalItems})
+                  Your Shopping Cart ({totalItems})
                 </Typography>
 
                 {/* Summary with Left and Right Aligned Text */}
@@ -243,7 +243,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Summa:
+                      Subtotal:
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -268,7 +268,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Frakt:
+                      Shipping:
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -292,7 +292,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Att betala:
+                      Total:
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -335,7 +335,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Gratis och snabb leverans
+                      Free and Fast Delivery
                     </Typography>
                     <Typography
                       sx={{
@@ -343,9 +343,9 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Få din beställning levererad hem eller hämta den i någon
-                      av våra butiker. I brådska? Vi erbjuder även gratis
-                      expressleverans hem.
+                      Get your order delivered to your home or pick it up at any
+                      of our stores. In a hurry? We also offer free express home
+                      delivery.
                     </Typography>
                   </Grid>
                 </Grid>
@@ -374,7 +374,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Enkelt att returnera
+                      Easy Returns
                     </Typography>
                     <Typography
                       sx={{
@@ -382,8 +382,8 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Vi accepterar returer av alla varor inom 30 dagar från
-                      mottagandet med rätt till full återbetalning.
+                      We accept returns of all items within 30 days of receipt
+                      for a full refund.
                     </Typography>
                   </Grid>
                 </Grid>
@@ -412,7 +412,7 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Säker betalning
+                      Secure Payment
                     </Typography>
                     <Typography
                       sx={{
@@ -420,9 +420,9 @@ export default function CheckoutLayout() {
                           "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                       }}
                     >
-                      Kredit- och betalkort, Paypal, Apple Pay, Ideal
-                      (tillgängligt i Nederländerna) och Bancontact
-                      (tillgängligt i Belgien)
+                      Credit and debit cards, PayPal, Apple Pay, iDEAL
+                      (available in the Netherlands), and Bancontact (available
+                      in Belgium).
                     </Typography>
                   </Grid>
                 </Grid>

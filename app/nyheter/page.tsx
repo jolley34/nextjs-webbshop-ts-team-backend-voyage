@@ -97,7 +97,7 @@ export default function NewsPage() {
             fontSize={"2rem"}
             gutterBottom
           >
-            Hämta höjdpunkterna.
+            Get the highlights
           </Typography>
           <Box>
             <Grid container spacing={2}>

@@ -422,7 +422,7 @@ export default function Header({ name }: HeaderProps) {
                             position: "relative",
                           }}
                         >
-                          Mina sidor
+                          My ananas account
                         </Typography>
                       </ListItemButton>
                     </Link>
@@ -485,18 +485,18 @@ export default function Header({ name }: HeaderProps) {
 }
 
 const menuItems = [
-  { label: "Hem", href: "/" },
-  { label: "Nyheter", href: "/" },
+  { label: "Home", href: "/" },
+  { label: "News", href: "/" },
   { label: "iPhone", href: "/" },
   { label: "Watch", href: "/" },
   { label: "iPad", href: "/about" },
   { label: "Mac", href: "/about" },
-  { label: "Vår story", href: "/" },
+  { label: "Our story", href: "/" },
 ];
 
 const subItems = [
-  { label: "Hållbarhet", href: "/" },
-  { label: "Hitta din butik", href: "/" },
-  { label: "Kan vi hjälpa dig?", href: "/contact" },
+  { label: "Sustainability", href: "/" },
+  { label: "Find store", href: "/" },
+  { label: "Can we help you?", href: "/contact" },
   { label: "+46 7 519 928 37", href: "/" },
 ];

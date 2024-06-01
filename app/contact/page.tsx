@@ -49,10 +49,10 @@ export default function ContactPage() {
             }}
           >
             <Typography sx={{ fontSize: "2.25rem", fontWeight: "400" }}>
-              Kontakta oss
+              Contact us
             </Typography>
             <Typography sx={{ fontSize: "0.9rem", fontWeight: "200" }}>
-              Använd en av följande metoder för att kontakta oss
+              Use one of the following methods to contact us
             </Typography>
           </Grid>
           <Grid
@@ -76,14 +76,14 @@ export default function ContactPage() {
               }}
             >
               <Typography sx={{ fontSize: "1.5rem", fontWeight: "400" }}>
-                Ring vår kundtjänst
+                Call our customer service
               </Typography>
               <Typography
                 sx={{ fontSize: "0.75rem", fontWeight: "200", width: "50%" }}
               >
-                För att kontakta vår kundtjänst kan du ringa 1-833-833-833 från
-                måndag till lördag 9:00 - 22:00, eller söndag 9:00 - 20:00,
-                eller fylla i formuläret nedan.
+                To contact our customer service, you can call 1-833-833-833 from
+                Monday to Saturday, 9:00 AM - 10:00 PM, or Sunday, 9:00 AM -
+                8:00 PM, or fill out the form below.
               </Typography>
             </Box>
           </Grid>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               }}
             >
               <Typography sx={{ fontSize: "1.5rem", fontWeight: "400" }}>
-                Skicka oss ett meddelande
+                Send us a message
               </Typography>
               <Box
                 sx={{
@@ -120,8 +120,8 @@ export default function ContactPage() {
               >
                 {" "}
                 <Typography sx={{ fontSize: "0.75rem", fontWeight: "200" }}>
-                  Anslut med vår kundtjänst via WhatsApp från måndag till lördag
-                  9:00 - 22:00, eller söndag 9:00 - 20:00.
+                  Connect with our customer service via WhatsApp from Monday to
+                  Saturday, 9:00 AM - 10:00 PM, or Sunday, 9:00 AM - 8:00 PM.
                 </Typography>
                 <Button variant="outlined" onClick={handleWhatsAppClick}>
                   WHATSAPP

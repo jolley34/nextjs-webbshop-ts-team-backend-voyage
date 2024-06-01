@@ -7,13 +7,13 @@ export default function indexPage() {
       <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <Link style={{ textDecoration: "none" }} href="/my-page/track-order">
           <Card sx={{ padding: "2rem", cursor: "pointer" }}>
-            <Typography>Spåra din Order</Typography>
+            <Typography>Track your order</Typography>
           </Card>
         </Link>
 
         <Link style={{ textDecoration: "none" }} href="/my-page/order">
           <Card sx={{ padding: "2rem", cursor: "pointer" }}>
-            <Typography>Mina Beställningar</Typography>
+            <Typography>My orders</Typography>
           </Card>
         </Link>
       </Box>
