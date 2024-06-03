@@ -1,6 +1,7 @@
 import { signOutUser } from "@/app/server-actions/user/userActions";
 import SignInButton from "@/app/sign-in/components/SignInButton";
 import { auth } from "@/auth";
+import HeaderV3 from "@/components/shared/header/HeaderV3";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   Avatar,
@@ -20,6 +21,7 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Box>
+        <HeaderV3 />
         <Grid
           container
           justifyContent="center"
@@ -29,7 +31,6 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
             padding: "1rem",
             bgcolor: "#f6f5f3",
             minHeight: "100vh",
-            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
           }}
         >
           {/* Header Column */}

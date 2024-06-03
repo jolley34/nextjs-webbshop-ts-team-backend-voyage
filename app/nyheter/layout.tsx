@@ -1,33 +1,35 @@
 import VideoContainer from "@/components/VideoContainer";
-import ShowMoreComponent from "@/components/showMore";
+import HeaderV2 from "@/components/shared/header/HeaderV2";
 import { Box, Grid } from "@mui/material";
 import { PropsWithChildren } from "react";
-import CategoryBar from "../../components/categorybar/CategoryBar";
-import { showAllCategories } from "../server-actions/categories/handler";
 
-export default async function NewsLayout(props: PropsWithChildren) {
-  const categories = await showAllCategories();
-
+export default function NewsLayout(props: PropsWithChildren) {
   return (
-    <Box>
-      <VideoContainer />
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          borderBottom: "1px solid lightgray",
-        }}
-      >
-        {categories.map((category, index) => (
-          <CategoryBar key={index} name={category.name} />
-        ))}
+    <>
+      <Box>
+        <HeaderV2 />
+        <div
+          style={{
+            padding: "1.5rem",
+            position: "absolute",
+            top: 0,
+            background: "black",
+            width: "100%",
+          }}
+        ></div>
+        <VideoContainer />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderBottom: "1px solid lightgray",
+          }}
+        ></Box>
+        <Grid container spacing={0}>
+          {props.children}
+        </Grid>
       </Box>
-
-      <Grid container spacing={0}>
-        {props.children}
-      </Grid>
-      <ShowMoreComponent />
-    </Box>
+    </>
   );
 }

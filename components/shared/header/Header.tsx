@@ -7,7 +7,6 @@ import {
   AppBar,
   Box,
   Drawer,
-  IconButton,
   Link,
   List,
   ListItem,
@@ -102,155 +101,63 @@ export default function Header({ name }: HeaderProps) {
     );
   };
 
-  const getAppBarSettings = () => {
-    const borderThickness = 1;
-
-    if (pathname === "/about") {
-      return {
-        padding: "0rem 0rem 0rem 0rem",
-        paddingInline: "2rem",
-        top: 0,
-        bgcolor: open
-          ? "transparent"
-          : scrolling || hovering
-          ? "#111111"
-          : "#1b1b1b",
-        boxShadow: "none",
-        transition: `background-color ${open ? "0.5s" : "0.7s"} ease`,
-        overflow: "hidden",
-        "::after": {
-          content: "''",
-          position: "absolute",
-          bottom: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: open || scrolling || hovering ? "100%" : 0,
-          height: open ? "0px" : `${borderThickness}px`,
-          backgroundColor: "#ffffff",
-          transition: "width 0.7s ease",
-          zIndex: -1,
-        },
-      };
-    } else {
-      return {
-        padding: "0.75rem 0rem 0.75rem 0rem",
-        paddingInline: "2rem",
-        top: 0,
-        bgcolor: open
-          ? "rgba(0, 0, 0, 0.0)"
-          : pathnames() || scrolling || hovering
-          ? "white"
-          : "transparent",
-        boxShadow: "none",
-        transition: `background-color ${open ? "0.5s" : "0.7s"} ease`,
-        "::after": {
-          content: "''",
-          position: "absolute",
-          bottom: 0,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: pathnames() || open || scrolling || hovering ? "100%" : 0,
-          height: open ? "0px" : `${borderThickness}px`,
-          backgroundColor: "#e0e0e0",
-          transition: "width 0.3s ease",
-          zIndex: -1,
-        },
-      };
-    }
-  };
-
   return (
     <>
       <ThemeProvider theme={theme}>
         <AppBar
-          sx={getAppBarSettings()}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          sx={{
+            top: 0,
+            margin: 0,
+            padding: 0,
+            bgcolor: "rgba(24, 24, 24, 0.9)",
+            position: "sticky",
+            boxShadow: "none",
+            backdropFilter: "blur(2px)",
+            transition: "background-color 0.3s ease",
+          }}
         >
           <Toolbar
             sx={{
-              justifyContent: "space-between",
               display: "flex",
+              justifyContent: "center",
               alignItems: "center",
+              gap: "1.5rem",
+              margin: 0,
+              padding: 0,
             }}
           >
-            <IconButton
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerOpen}
+            <Link
+              sx={{
+                textDecoration: "none",
+                cursor: open ? "default" : "pointer",
+                pointerEvents: open ? "none" : "auto",
+              }}
+              href="/"
             >
-              <MenuIcon
-                onClick={handleDrawerOpen}
-                sx={{
-                  color: pathname === "/about" ? "white" : "black",
-                  opacity: open ? 0 : loaded ? 1 : 0,
-                  transition: "opacity 0.5s ease",
-                }}
+              <img
+                style={{ width: "20px", height: "20px" }}
+                src="https://b.kisscc0.com/20180813/bre/kisscc0-logo-asian-pear-apple-fruit-computer-icons-pear-logo-5b714c651d9a73.0672339315341517811213.png"
               />
-            </IconButton>
+            </Link>
 
-            <Box sx={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-              <Link
-                sx={{
-                  textDecoration: "none",
-                  cursor: open ? "default" : "pointer",
-                  pointerEvents: open ? "none" : "auto",
-                }}
-                href="/"
-              >
-                <Typography
-                  sx={{
-                    color: pathname === "/about" ? "white" : "black",
-                    fontSize:
-                      pathname === "/about"
-                        ? { xs: "1rem", sm: "1.25rem", md: "1.25rem" }
-                        : { xs: "1.7rem", sm: "1.95rem", md: "1.95rem" },
-                    fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                    fontWeight: "400",
-                    letterSpacing: "-0.04em",
-                    opacity: open ? 0 : loaded ? 1 : 0,
-                    transition: "opacity 0.5s ease",
-                  }}
-                >
-                  {name}
-                </Typography>
-              </Link>
+            <MenuIcon
+              onClick={handleDrawerOpen}
+              sx={{
+                width: "20px",
+                height: "20px",
+                color: "white",
+                cursor: "pointer",
+                opacity: open ? 0 : loaded ? 1 : 0,
+                transition: "opacity 0.5s ease",
+              }}
+            />
 
-              <Typography
-                sx={{
-                  display: pathname === "/about" ? "block" : "none",
-                  opacity: open ? 0 : loaded ? 1 : 0,
-                  transition: "opacity 0.5s ease",
-                }}
-              >
-                X showcase
-              </Typography>
-            </Box>
-
-            <Box>
-              <Box>
-                <IconButton
-                  size="small"
-                  sx={{
-                    color: "black",
-                    opacity: open ? 0 : loaded ? 1 : 0,
-                    transition: "opacity 0.5s ease",
-                    cursor: open ? "default" : "pointer",
-                    pointerEvents: open ? "none" : "auto",
-                  }}
-                ></IconButton>
-                <IconButton
-                  size="small"
-                  sx={{
-                    opacity: open ? 0 : loaded ? 1 : 0,
-                    transition: "opacity 0.5s ease",
-                    cursor: open ? "default" : "pointer",
-                    pointerEvents: open ? "none" : "auto",
-                  }}
-                >
-                  <ShopCartWithBadge />
-                </IconButton>
-              </Box>
+            <Box
+              sx={{
+                opacity: open ? 0 : loaded ? 1 : 0,
+              }}
+            >
+              <ShopCartWithBadge />
             </Box>
           </Toolbar>
         </AppBar>

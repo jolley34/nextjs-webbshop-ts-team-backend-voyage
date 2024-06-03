@@ -12,11 +12,27 @@ export default function ShopCartWithBadge() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Link href="/checkout" data-cy="cart-link">
+      <Link href="/checkout" data-cy="cart-link" underline="none">
         <Badge
           badgeContent={totalItems}
-          color="secondary"
+          color={"secondary"}
           data-cy="cart-items-count-badge"
+          sx={{
+            marginBottom: "1px",
+            "& .MuiBadge-badge": {
+              minWidth: "14px",
+              height: "14px",
+              fontSize: "10px",
+            },
+            "& .MuiSvgIcon-root": {
+              color:
+                pathname.startsWith("/products") ||
+                pathname.startsWith("/my-page")
+                  ? "black"
+                  : "white",
+              fontSize: "18px",
+            },
+          }}
         >
           <ShoppingBagOutlinedIcon
             sx={{ color: pathname === "/about" ? "white" : "black" }}
