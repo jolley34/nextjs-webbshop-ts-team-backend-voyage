@@ -23,7 +23,10 @@ const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
               sx={{
                 color:
                   pathname.startsWith("/products") ||
-                  pathname.startsWith("/my-page")
+                  pathname.startsWith("/my-page") ||
+                  pathname.startsWith("/admin") ||
+                  pathname.startsWith("/checkout") ||
+                  pathname.startsWith("/confirmation")
                     ? "black"
                     : "white",
                 cursor: "pointer",

@@ -71,7 +71,6 @@ export default function CheckoutLayout() {
             padding: "1rem",
             bgcolor: "#f6f5f3",
             minHeight: "100vh",
-            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
           }}
         >
           {/* Products Column */}

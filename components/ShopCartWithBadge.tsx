@@ -27,7 +27,10 @@ export default function ShopCartWithBadge() {
             "& .MuiSvgIcon-root": {
               color:
                 pathname.startsWith("/products") ||
-                pathname.startsWith("/my-page")
+                pathname.startsWith("/my-page") ||
+                pathname.startsWith("/admin") ||
+                pathname.startsWith("/checkout") ||
+                pathname.startsWith("/confirmation")
                   ? "black"
                   : "white",
               fontSize: "18px",

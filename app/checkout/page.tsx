@@ -1,11 +1,10 @@
-"use client";
-import { useSession } from "next-auth/react";
+import HeaderV3 from "@/components/shared/header/HeaderV3";
 import CheckoutLayout from "./components/layout";
 
 export default function CheckoutPage() {
-  const session = useSession();
   return (
     <>
+      <HeaderV3 />
       <CheckoutLayout />
     </>
   );
