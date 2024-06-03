@@ -14,7 +14,7 @@
     "generate": "prisma generate",
     "studio": "prisma studio",
     "seed": "prisma db seed",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --no-engine"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
