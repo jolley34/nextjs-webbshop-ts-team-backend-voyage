@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercel-build": "prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "migrate": "prisma migrate dev",
     "generate": "prisma generate",
     "studio": "prisma studio",
-    "seed": "prisma db seed"
+    "seed": "prisma db seed",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -30,6 +32,7 @@
     "@neondatabase/serverless": "^0.9.3",
     "@prisma/adapter-neon": "^5.14.0",
     "@prisma/client": "^5.14.0",
+    "@prisma/extension-accelerate": "^1.1.0",
     "argon2": "^0.40.1",
     "dotenv": "^16.4.5",
     "next": "14.1.1",
