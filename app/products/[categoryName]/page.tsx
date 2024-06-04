@@ -13,7 +13,7 @@ export default async function ProductsByCategoryPage({ params }: Props) {
 
   return (
     <Box sx={{ width: "100%", background: "#f6f5f3" }}>
-      <Box sx={{ padding: "4rem 4rem 4rem 6rem" }}>
+      <Box sx={{ padding: "4rem 6rem 4rem 6rem" }}>
         <Box
           sx={{
             display: "flex",

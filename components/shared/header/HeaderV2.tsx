@@ -87,22 +87,22 @@ export default async function HeaderV2() {
                       {session.user.name}
                     </p>
                   </Link>
-                </div>
 
-                <form action={signOutUser}>
-                  <button
-                    style={{
-                      cursor: "pointer",
-                      background: "#0072e4",
-                      border: "none",
-                      padding: "0.25rem 0.5rem",
-                      borderRadius: "20px",
-                      color: "white",
-                    }}
-                  >
-                    Sign out
-                  </button>
-                </form>
+                  <form action={signOutUser}>
+                    <button
+                      style={{
+                        cursor: "pointer",
+                        background: "#0072e4",
+                        border: "none",
+                        padding: "0.25rem 0.5rem",
+                        borderRadius: "20px",
+                        color: "white",
+                      }}
+                    >
+                      Sign out
+                    </button>
+                  </form>
+                </div>
               </>
             ) : (
               <SignInButton />
