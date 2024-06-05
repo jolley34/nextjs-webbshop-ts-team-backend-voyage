@@ -61,7 +61,7 @@ export default async function AdminPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box>
+        <Box sx={{ padding: "2rem" }}>
           <Grid
             container
             justifyContent="center"
@@ -69,19 +69,19 @@ export default async function AdminPage() {
               bgcolor: "#f6f5f3",
               minHeight: "100vh",
               flexDirection: "column",
-              padding: "20px",
+              boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+              borderRadius: "20px",
             }}
           >
             <Box
               sx={{
                 backgroundColor: "#fff",
-                marginBottom: "20px",
                 paddingBottom: "2rem",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 padding: "20px",
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                borderRadius: "20px 20px 0px 0px",
               }}
             >
               <Typography
@@ -122,16 +122,7 @@ export default async function AdminPage() {
                 </Button>
               </Link>
             </Box>
-            <Grid
-              container
-              sx={{
-                paddingInline: "1rem",
-                flexDirection: "row",
-                flexWrap: "wrap",
-              }}
-              rowSpacing={1}
-              columnSpacing={{ xs: 1, sm: 2, md: 1 }}
-            >
+            <Grid container spacing={0}>
               {products
                 .filter((product) => !product.isArchived)
                 .map((product) => (
@@ -143,7 +134,7 @@ export default async function AdminPage() {
                     md={4}
                     lg={3}
                     data-cy="product"
-                    sx={{ marginTop: "20px", width: "100%" }}
+                    sx={{ width: "100%" }}
                   >
                     <Box
                       sx={{
