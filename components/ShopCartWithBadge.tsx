@@ -16,9 +16,10 @@ export default function ShopCartWithBadge() {
       pathname === "/admin" ||
       pathname === "/confirmation" ||
       pathname === "/contact" ||
-      pathname === "/my-page" ||
+      pathname.startsWith("/my-page") ||
       pathname.startsWith("/admin") ||
-      pathname.startsWith("/products")
+      pathname.startsWith("/products") ||
+      pathname.startsWith("/product")
     );
   };
 

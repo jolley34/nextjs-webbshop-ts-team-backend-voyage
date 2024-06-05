@@ -1,6 +1,5 @@
 "use client";
 
-import { signOutUser } from "@/app/server-actions/user/userActions";
 import SignInButton from "@/app/sign-in/components/SignInButton";
 import ShopCartWithBadge from "@/components/ShopCartWithBadge";
 import CategoryBar from "@/components/categorybar/CategoryBar";
@@ -12,10 +11,13 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {
   Box,
   Drawer,
+  Hidden,
   List,
   ListItem,
   ListItemButton,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -70,16 +72,22 @@ export default function HeaderLayout({ session, categories }: PageProps) {
       pathname === "/admin" ||
       pathname === "/confirmation" ||
       pathname === "/contact" ||
-      pathname === "/my-page" ||
+      pathname.startsWith("/my-page") ||
       pathname.startsWith("/admin") ||
-      pathname.startsWith("/products")
+      pathname.startsWith("/products") ||
+      pathname.startsWith("/product")
     );
   };
+
+  const theme = useTheme();
+
+  const isMdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   return (
     <>
       <div
         style={{
+          display: open ? "none" : "block",
           padding: 0,
           margin: 0,
           background: pathnames()
@@ -96,7 +104,8 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           style={{
             display: "flex",
             listStyle: "none",
-            justifyContent: "center",
+            justifyContent: isMdDown ? "space-between" : "center",
+            paddingInline: isMdDown ? "2rem" : "0rem",
             alignItems: "center",
             padding: "0.5rem",
             color: "white",
@@ -104,97 +113,101 @@ export default function HeaderLayout({ session, categories }: PageProps) {
             fontSize: "0.75rem",
           }}
         >
-          <Link href="/">
-            <img
-              src="/vegetable-food-broccoli-svgrepo-com.svg"
+          <Hidden mdDown>
+            <Link href="/">
+              <img
+                src="/vegetable-food-broccoli-svgrepo-com.svg"
+                style={{
+                  height: "18px",
+                  cursor: "pointer",
+                  marginTop: "5px",
+                  filter: pathnames()
+                    ? "brightness(0) saturate(100%) invert(0%)"
+                    : "brightness(0) saturate(100%) invert(100%)",
+                }}
+                alt="Category Icon"
+              />
+            </Link>
+          </Hidden>
+
+          <Hidden mdDown>
+            <li
               style={{
-                height: "18px",
                 cursor: "pointer",
-                marginTop: "5px",
-                filter: pathnames()
-                  ? "brightness(0) saturate(100%) invert(0%)"
-                  : "brightness(0) saturate(100%) invert(100%)",
+                color: pathnames() ? "black" : "white",
               }}
-              alt="Category Icon"
-            />
-          </Link>
-
-          <li
-            style={{
-              cursor: "pointer",
-              color: pathnames() ? "black" : "white",
-            }}
-          >
-            Store
-          </li>
-          {categories.map((category, index) => (
-            <CategoryBar key={index} name={category.name} />
-          ))}
-
-          <MenuIcon
-            onClick={handleDrawerOpen}
-            sx={{
-              cursor: "pointer",
-              color: pathnames() ? "black" : "white",
-              height: "18px",
-              width: "18px",
-            }}
-          />
-
-          <ShopCartWithBadge />
-          <div style={{ display: "flex", alignItems: "center", gap: "3rem" }}>
-            {session?.user ? (
-              <>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    alignItems: "center",
-                  }}
-                >
-                  <p
+            >
+              Store
+            </li>
+            {categories.map((category) => (
+              <CategoryBar name={category.name} />
+            ))}
+          </Hidden>
+          <Hidden mdDown>
+            <div style={{ display: "flex", alignItems: "center", gap: "3rem" }}>
+              {session?.user ? (
+                <>
+                  <div
                     style={{
-                      margin: 0,
-                      color: pathnames() ? "black" : "white",
-                      fontWeight: "900",
-                      fontSize: "0.75rem",
+                      display: "flex",
+                      gap: "0.5rem",
+                      alignItems: "center",
                     }}
                   >
-                    Welcome back
-                  </p>
-                  <Link href="/my-page" style={{ textDecoration: "none" }}>
                     <p
                       style={{
                         margin: 0,
                         color: pathnames() ? "black" : "white",
+                        fontWeight: "900",
                         fontSize: "0.75rem",
-                        cursor: "pointer",
-                        transition: "color 0.3s, background-color 0.3s",
                       }}
                     >
-                      {session.user.name}
+                      Welcome back
                     </p>
-                  </Link>
-                </div>
-                <form action={signOutUser}>
-                  <button
-                    style={{
-                      cursor: "pointer",
-                      background: "#0072e4",
-                      border: "none",
-                      padding: "0.25rem 0.5rem",
-                      borderRadius: "20px",
-                      color: "white",
-                    }}
-                  >
-                    Sign out
-                  </button>
-                </form>
-              </>
-            ) : (
-              <SignInButton />
-            )}
-          </div>
+                    <Link href="/my-page" style={{ textDecoration: "none" }}>
+                      <p
+                        style={{
+                          margin: 0,
+                          color: pathnames() ? "black" : "white",
+                          fontSize: "0.75rem",
+                          cursor: "pointer",
+                          transition: "color 0.3s, background-color 0.3s",
+                        }}
+                      >
+                        {session.user.name}
+                      </p>
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <SignInButton />
+              )}
+            </div>
+          </Hidden>
+
+          <Hidden mdUp>
+            <MenuIcon
+              onClick={handleDrawerOpen}
+              sx={{
+                cursor: "pointer",
+                color: pathnames() ? "black" : "white",
+                height: "18px",
+                width: "18px",
+              }}
+            />
+          </Hidden>
+          <Hidden mdUp>
+            <Typography
+              sx={{
+                color: pathnames() ? "black" : "white",
+                fontSize: "0.75rem",
+              }}
+            >
+              Brocalli
+            </Typography>
+          </Hidden>
+
+          <ShopCartWithBadge />
         </nav>
       </div>
       <Box>
@@ -243,38 +256,59 @@ export default function HeaderLayout({ session, categories }: PageProps) {
                       width: "100%",
                     }}
                   >
-                    {categories.map((category, index) => (
+                    {categories.map((category) => (
                       <ListItemButton
-                        onMouseEnter={() => handleItemHoverEnter(index)}
-                        onMouseLeave={handleItemHoverLeave}
                         sx={{
                           transition: "color 0.3s ease",
 
-                          color:
-                            hoverItem === null
-                              ? pathname === "/about"
-                                ? "white"
-                                : "black"
-                              : hoverItem === index
-                              ? pathname === "/about"
-                                ? "white"
-                                : "black"
-                              : "gray",
+                          color: "black",
+
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
                         }}
                       >
-                        <CategoryBarMenu key={index} name={category.name} />
+                        <CategoryBarMenu name={category.name} />
+
                         <NavigateNextIcon
                           sx={{
                             position: "relative",
-                            width: hoverItem === index ? "-100%" : 0,
+                            color: "black",
                             transition: "width 0.5s ease",
                           }}
                         />
                       </ListItemButton>
                     ))}
+                    <Link href="/my-page" style={{ textDecoration: "none" }}>
+                      <ListItemButton
+                        sx={{
+                          transition: "color 0.3s ease",
+
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <ListItem
+                          sx={{
+                            color: "black",
+                            cursor: "pointer",
+                            fontSize: "1.25rem",
+                            padding: 0,
+                            margin: 0,
+                          }}
+                        >
+                          Profile
+                        </ListItem>
+                        <NavigateNextIcon
+                          sx={{
+                            position: "relative",
+                            color: "black",
+                            transition: "width 0.5s ease",
+                          }}
+                        />
+                      </ListItemButton>
+                    </Link>
                   </Box>
                 </ListItem>
               </Box>
@@ -294,53 +328,27 @@ export default function HeaderLayout({ session, categories }: PageProps) {
                   padding: "2rem",
                 }}
               >
-                {session?.data?.user && (
-                  <Link style={{ textDecoration: "none" }} href="/my-page/">
-                    <ListItemButton>
-                      <Typography
-                        sx={{
-                          fontSize: "0.8rem",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                          position: "relative",
-                        }}
-                      >
-                        My ananas account
-                      </Typography>
-                    </ListItemButton>
-                  </Link>
-                )}
                 {subItems.map((item, index) => (
-                  <Link
-                    style={{
-                      textDecoration: "none",
-
-                      width: "100%",
+                  <ListItemButton
+                    sx={{
+                      transition: "color 0.3s ease",
+                      color: pathname === "/about" && open ? "white" : "black",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
                     }}
-                    href={item.href}
                   >
-                    <ListItemButton
+                    <Typography
                       sx={{
-                        transition: "color 0.3s ease",
-                        color:
-                          pathname === "/about" && open ? "white" : "black",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        fontSize: "0.8rem",
+                        fontFamily:
+                          "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                        position: "relative",
                       }}
                     >
-                      <Typography
-                        sx={{
-                          fontSize: "0.8rem",
-                          fontFamily:
-                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                          position: "relative",
-                        }}
-                      >
-                        {item.label}
-                      </Typography>
-                    </ListItemButton>
-                  </Link>
+                      {item.label}
+                    </Typography>
+                  </ListItemButton>
                 ))}
               </Box>
             </ListItem>
