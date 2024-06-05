@@ -27,7 +27,7 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
           spacing={2}
           sx={{
             padding: "1rem",
-            bgcolor: "#f6f5f3",
+            bgcolor: "rgba(241, 241, 241, 0.806)",
             minHeight: "100vh",
           }}
         >

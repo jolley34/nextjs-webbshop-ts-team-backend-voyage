@@ -91,7 +91,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           padding: 0,
           margin: 0,
           background: pathnames()
-            ? "rgba(219, 214, 214, 0.59)"
+            ? "rgba(241, 241, 241, 0.806)"
             : "rgba(15, 15, 15, 0.59)",
           top: 0,
           position: "sticky",

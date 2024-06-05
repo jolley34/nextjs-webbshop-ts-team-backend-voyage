@@ -12,7 +12,7 @@ export default async function ProductsByCategoryPage({ params }: Props) {
   const { products } = await getProductsByCategoryName(params.categoryName!);
 
   return (
-    <Box sx={{ width: "100%", background: "#f6f5f3" }}>
+    <Box sx={{ width: "100%", bgcolor: "rgba(241, 241, 241, 0.806)" }}>
       <Box sx={{ padding: "4rem 6rem 4rem 6rem" }}>
         <Box
           sx={{
