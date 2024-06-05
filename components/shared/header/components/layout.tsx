@@ -117,7 +117,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           <Hidden mdDown>
             <Link href="/">
               <img
-                src="/vegetable-food-broccoli-svgrepo-com.svg"
+                src="/pineapple-svgrepo-com-svgsvg.svg"
                 style={{
                   height: "18px",
                   cursor: "pointer",
@@ -204,7 +204,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
                 fontSize: "0.75rem",
               }}
             >
-              Brocalli
+              ananas
             </Typography>
           </Hidden>
 
