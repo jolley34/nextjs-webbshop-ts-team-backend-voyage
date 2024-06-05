@@ -96,7 +96,6 @@ export default function CheckoutLayout() {
                         style={{
                           width: "100%",
                           height: "auto",
-                          marginBottom: "1rem",
                         }}
                       />
                     </Grid>
