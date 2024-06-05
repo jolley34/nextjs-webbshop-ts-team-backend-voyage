@@ -183,7 +183,7 @@ export default function CheckoutConfirmation() {
                         variant="contained"
                         size="small"
                         sx={{
-                          padding: "0.3rem 2rem",
+                          padding: "0.3rem 3rem",
                           width: "100%",
                           border: "none",
                           bgcolor: "#0072e4",
@@ -193,7 +193,7 @@ export default function CheckoutConfirmation() {
                           },
                         }}
                       >
-                        Tillbaka till startsidan
+                        BACK TO START
                       </Button>
                     </Link>
                   </Box>
