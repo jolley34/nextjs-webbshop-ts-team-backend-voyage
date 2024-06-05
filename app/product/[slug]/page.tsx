@@ -60,7 +60,7 @@ export default async function ProductPage({
               key={productId}
               sx={{
                 height: {
-                  xs: "calc(50dvh)",
+                  xs: "calc(100dvh)",
                   sm: "calc(100dvh)",
                   md: "calc(100dvh)",
                 },
