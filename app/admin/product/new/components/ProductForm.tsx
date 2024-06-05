@@ -133,7 +133,7 @@ export default function ProductForm({ product, categories }: Props) {
                       <TextField
                         variant="outlined"
                         label="Stock"
-                        {...register("stock", { valueAsNumber: true })} 
+                        {...register("stock", { valueAsNumber: true })}
                         defaultValue={product?.stock || 0}
                         error={Boolean(errors.stock)}
                         helperText={errors.stock?.message}
@@ -160,7 +160,21 @@ export default function ProductForm({ product, categories }: Props) {
                       </FormControl>
                     </Grid>
                   </Grid>
-                  <button type="submit">SPARA PRODUKT</button>
+                  <button
+                    type="submit"
+                    style={{
+                      background: "#0072e4",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "20px",
+                      color: "white",
+                      cursor: "pointer",
+                      width: "100%",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    SAVE
+                  </button>
                 </FormControl>
               </Box>
             </Grid>

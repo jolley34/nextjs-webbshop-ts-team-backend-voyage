@@ -23,18 +23,18 @@ export default function DeleteAdminButton({
       variant="outlined"
       onClick={handleClick}
       sx={{
-        bgcolor: "#000",
-        borderColor: "#000",
+        bgcolor: "#fff",
+        borderColor: "#0072e4",
         marginTop: "2px",
+        borderRadius: "20px",
         "&:hover": {
-          bgcolor: "#333",
-          borderColor: "#000",
+          borderColor: "#0264C5",
         },
       }}
     >
       <Typography
         sx={{
-          color: "white",
+          color: "#0072e4",
           fontWeight: "400",
           fontFamily: "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
         }}
