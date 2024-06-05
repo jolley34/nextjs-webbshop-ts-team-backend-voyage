@@ -7,6 +7,7 @@ import CategoryBarMenu from "@/components/categorybar/CategoryBarMenu";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { useTheme } from "@mui/material/styles";
 
 import {
   Box,
@@ -17,7 +18,6 @@ import {
   ListItemButton,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
