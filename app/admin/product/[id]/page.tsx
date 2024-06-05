@@ -54,6 +54,7 @@ export default async function AdminEditProductPage(props: Props) {
         description={product.description}
         image={product.image}
         video={product.video}
+        stock={product.stock}
       />
     </Box>
   );

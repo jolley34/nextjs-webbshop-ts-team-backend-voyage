@@ -53,7 +53,7 @@ export default async function TrackOrderPage() {
     <>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {orders.map((order) => (
-          <OrderCard key={order.id} order={order} />
+          <OrderCard key={order.id} order={order as any} />
         ))}
       </Box>
     </>
