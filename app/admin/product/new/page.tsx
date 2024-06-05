@@ -8,7 +8,6 @@ export default async function AdminNewProductPage() {
   return (
     <Box
       sx={{
-        paddingTop: { xs: "90px", sm: "90px", md: "90px" },
         paddingBottom: "55px",
         backgroundImage:
           "linear-gradient(to bottom, rgb(246 245 243), #ffffff)",
