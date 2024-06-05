@@ -290,7 +290,7 @@ export default async function AdminPage() {
           <Grid container spacing={2}>
             {orders.map((order) => (
               <Grid item xs={12} sm={12} md={12} key={order.id}>
-                <OrderCard order={order} />
+                <OrderCard order={order as any} />
               </Grid>
             ))}
           </Grid>

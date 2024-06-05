@@ -6,10 +6,9 @@ import { usePathname } from "next/navigation";
 
 interface BarProps {
   name: string;
-  onClick: () => void;
 }
 
-const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
+const CategoryBar: React.FC<BarProps> = ({ name }) => {
   const pathname = usePathname();
   const pathnames = () => {
     return (

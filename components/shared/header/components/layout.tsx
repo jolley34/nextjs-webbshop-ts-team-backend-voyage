@@ -81,20 +81,21 @@ export default function HeaderLayout({ session, categories }: PageProps) {
 
   const theme = useTheme();
 
-  const isMdDown = useMediaQuery((theme) => theme.breakpoints.down("md"));
+  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
       <div
         style={{
           display: open ? "none" : "block",
+          width: "100%",
           padding: 0,
           margin: 0,
           background: pathnames()
             ? "rgba(241, 241, 241, 0.806)"
             : "rgba(15, 15, 15, 0.59)",
           top: 0,
-          position: "sticky",
+          position: pathname.startsWith("/product") ? "fixed" : "sticky",
           backdropFilter: "blur(10px)",
           transition: "background-color 0.3s ease",
           zIndex: 1000,
@@ -139,7 +140,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
             >
               Store
             </li>
-            {categories.map((category) => (
+            {categories.map((category: any) => (
               <CategoryBar name={category.name} />
             ))}
           </Hidden>
@@ -256,7 +257,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
                       width: "100%",
                     }}
                   >
-                    {categories.map((category) => (
+                    {categories.map((category: any) => (
                       <ListItemButton
                         sx={{
                           transition: "color 0.3s ease",

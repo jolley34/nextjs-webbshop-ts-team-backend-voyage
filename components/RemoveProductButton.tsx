@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useProducts } from "../app/context/ProductContext";
+
 import theme from "../app/themes/themes";
 
 interface Props {
@@ -17,7 +17,6 @@ interface Props {
 }
 
 function RemoveProductButton({ productId }: Props) {
-  const { removeProduct } = useProducts();
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -25,7 +24,6 @@ function RemoveProductButton({ productId }: Props) {
   };
 
   const handleConfirm = () => {
-    removeProduct(productId); // Skicka med produktens ID
     setOpen(false);
   };
 

@@ -13,7 +13,7 @@ export default function NewsPage() {
   const bottomVideoRef = useRef<HTMLVideoElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = (index: any) => {
     setHoveredCard(index);
   };
 

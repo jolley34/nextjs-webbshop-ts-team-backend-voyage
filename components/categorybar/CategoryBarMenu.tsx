@@ -5,10 +5,9 @@ import Link from "next/link";
 
 interface BarProps {
   name: string;
-  onClick: () => void;
 }
 
-const CategoryBarMenu: React.FC<BarProps> = ({ name, onClick }) => {
+const CategoryBarMenu: React.FC<BarProps> = ({ name }) => {
   return (
     <>
       <List sx={{ padding: 0, margin: 0, zIndex: 1000 }}>
