@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import HeaderV3 from "@/components/shared/header/HeaderV3";
 import { db } from "@/prisma/db";
 import {
   Box,
@@ -63,7 +62,6 @@ export default async function AdminPage() {
     <>
       <ThemeProvider theme={theme}>
         <Box>
-          <HeaderV3 />
           <Grid
             container
             justifyContent="center"

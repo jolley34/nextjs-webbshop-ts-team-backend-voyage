@@ -1,5 +1,4 @@
 import VideoContainer from "@/components/VideoContainer";
-import HeaderV2 from "@/components/shared/header/HeaderV2";
 import { Box, Grid } from "@mui/material";
 import { PropsWithChildren } from "react";
 
@@ -7,7 +6,6 @@ export default function NewsLayout(props: PropsWithChildren) {
   return (
     <>
       <Box>
-        <HeaderV2 />
         <div
           style={{
             padding: "1.5rem",

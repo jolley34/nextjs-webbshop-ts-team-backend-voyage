@@ -11,6 +11,18 @@ interface BarProps {
 
 const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
   const pathname = usePathname();
+  const pathnames = () => {
+    return (
+      pathname === "/checkout" ||
+      pathname === "/admin" ||
+      pathname === "/confirmation" ||
+      pathname === "/contact" ||
+      pathname === "/my-page" ||
+      pathname.startsWith("/admin") ||
+      pathname.startsWith("/products")
+    );
+  };
+
   return (
     <>
       <List sx={{ padding: 0, margin: 0, zIndex: 1000 }}>
@@ -21,14 +33,7 @@ const CategoryBar: React.FC<BarProps> = ({ name, onClick }) => {
           >
             <ListItem
               sx={{
-                color:
-                  pathname.startsWith("/products") ||
-                  pathname.startsWith("/my-page") ||
-                  pathname.startsWith("/admin") ||
-                  pathname.startsWith("/checkout") ||
-                  pathname.startsWith("/confirmation")
-                    ? "black"
-                    : "white",
+                color: pathnames() ? "black" : "white",
                 cursor: "pointer",
                 fontSize: "0.75rem",
                 padding: 0,
