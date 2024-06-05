@@ -167,7 +167,7 @@ export default function VideoContainer() {
                   },
                 }}
               >
-                Läs mer
+                Read more
               </Button>
               <Button
                 sx={{
@@ -179,7 +179,7 @@ export default function VideoContainer() {
                   fontSize: "1rem",
                 }}
               >
-                Köp
+                Buy
               </Button>
             </Box>
           </Box>
@@ -270,7 +270,7 @@ export default function VideoContainer() {
                   },
                 }}
               >
-                Läs mer
+                Read more
               </Button>
 
               <Button
@@ -283,7 +283,7 @@ export default function VideoContainer() {
                   fontSize: "1rem",
                 }}
               >
-                Köp
+                Buy
               </Button>
             </Box>
           </Box>
