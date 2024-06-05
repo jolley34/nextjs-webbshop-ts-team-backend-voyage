@@ -87,7 +87,6 @@ export default async function HeaderV2() {
                       {session.user.name}
                     </p>
                   </Link>
-
                   <form action={signOutUser}>
                     <button
                       style={{

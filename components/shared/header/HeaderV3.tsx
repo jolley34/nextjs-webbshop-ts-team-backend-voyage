@@ -17,7 +17,7 @@ export default async function HeaderV3() {
         style={{
           padding: 0,
           margin: 0,
-          background: "#e2e0db5d",
+          background: "#f6f5f3cc",
           borderBottom: "1px solid lightgray",
           top: 0,
           position: "sticky",
