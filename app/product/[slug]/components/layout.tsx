@@ -92,8 +92,6 @@ export default function ProductLayout({
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    backgroundImage:
-                      "linear-gradient(to bottom, #e2e0df, #ffffff)",
                   }}
                 />
               </Box>

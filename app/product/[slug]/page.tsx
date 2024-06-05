@@ -73,8 +73,6 @@ export default async function ProductPage({
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
-                  backgroundImage:
-                    "linear-gradient(to bottom, #e2e0df, #ffffff)",
                 }}
               />
             </Box>
