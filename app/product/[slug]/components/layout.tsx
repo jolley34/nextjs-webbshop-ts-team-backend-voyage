@@ -114,12 +114,8 @@ export default function ProductLayout({
                 height: {
                   xs: "calc(50dvh)",
                   sm: "calc(50dvh)",
-                  md: `calc(100dvh + ${Math.min(scrollPosition, 88)}px)`,
                 },
                 overflowY: "auto",
-                ...(isXsScreen && {
-                  flexDirection: "column",
-                }),
                 transition: "height 0.7s ease",
               }}
             >
@@ -154,7 +150,7 @@ export default function ProductLayout({
                     data-cy="product-price"
                     sx={{ fontSize: "1rem", fontWeight: "200" }}
                   >
-                    Från {price} kr
+                    Från {price.toString()} kr
                   </Typography>
                 </Box>
 
