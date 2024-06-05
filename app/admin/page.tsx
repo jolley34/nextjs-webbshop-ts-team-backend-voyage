@@ -61,11 +61,7 @@ export default async function AdminPage() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
-          }}
-        >
+        <Box>
           <Grid
             container
             justifyContent="center"

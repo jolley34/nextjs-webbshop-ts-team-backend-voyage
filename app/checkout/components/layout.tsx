@@ -69,9 +69,8 @@ export default function CheckoutLayout() {
           spacing={2}
           sx={{
             padding: "1rem",
-            bgcolor: "#f6f5f3",
+            bgcolor: "rgba(241, 241, 241, 0.806)",
             minHeight: "100vh",
-            paddingTop: { xs: "105px", sm: "105px", md: "105px" },
           }}
         >
           {/* Products Column */}
@@ -85,6 +84,7 @@ export default function CheckoutLayout() {
                     padding: "1rem",
                     backgroundColor: "#fff",
                     borderBottom: "1px solid #e9e9e9",
+                    borderRadius: "20px",
                   }}
                   data-cy="cart-item"
                 >
@@ -97,8 +97,6 @@ export default function CheckoutLayout() {
                           width: "100%",
                           height: "auto",
                           marginBottom: "1rem",
-                          backgroundImage:
-                            "linear-gradient(to bottom, #e2e0df, #ffffff)",
                         }}
                       />
                     </Grid>
@@ -216,8 +214,9 @@ export default function CheckoutLayout() {
             <Box
               sx={{
                 width: "100%",
-                backgroundColor: "#fff",
+                backgroundColor: "#ffffff",
                 padding: "1rem",
+                borderRadius: "20px",
               }}
             >
               <CardContent>

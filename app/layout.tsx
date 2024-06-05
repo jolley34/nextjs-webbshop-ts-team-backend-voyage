@@ -15,8 +15,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <SessionProvider>
             <CartProvider>
               <ThemeProvider theme={theme}>
-                <Header name="ananas" />
-
+                <Header />
                 <Grid container direction="column">
                   <Grid item xs>
                     <Box component={"main"}>{children}</Box>
