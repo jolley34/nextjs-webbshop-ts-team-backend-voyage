@@ -64,14 +64,17 @@ export default async function ProductPage({
                   sm: "calc(100dvh)",
                   md: "calc(100dvh)",
                 },
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <img
                 src={image}
                 alt={name}
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: "500px",
+                  height: "500px",
                   objectFit: "contain",
                 }}
               />
