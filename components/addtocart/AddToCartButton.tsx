@@ -30,7 +30,7 @@ function AddToCartButton({ product }: { product: Product }) {
           variant="outlined"
           data-cy="product-buy-button"
           sx={{
-            padding: "0.5rem",
+            padding: "0.5rem 4rem 0.5rem 4rem",
             width: "100%",
             border: "none",
             bgcolor: "#0072e4",
@@ -41,7 +41,7 @@ function AddToCartButton({ product }: { product: Product }) {
           }}
         >
           <Typography sx={{ color: "white", fontWeight: "400" }}>
-            Lägg till i kundvagn
+            Buy
           </Typography>
         </Button>
         <Toast open={toastOpen} onClose={handleToastClose} />
