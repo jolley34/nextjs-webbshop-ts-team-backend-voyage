@@ -37,6 +37,8 @@ export default async function ProductPage({
             md={6}
             sx={{
               height: "100%",
+              padding: "2rem",
+              paddingTop: "4rem",
             }}
           >
             <CardMedia
@@ -53,6 +55,7 @@ export default async function ProductPage({
                   md: "100dvh",
                 },
                 objectFit: "cover",
+                borderRadius: "50px",
               }}
             />
 
@@ -73,7 +76,7 @@ export default async function ProductPage({
                 src={image}
                 alt={name}
                 style={{
-                  width: "500px",
+                  width: "300px",
                   height: "500px",
                   objectFit: "contain",
                 }}
