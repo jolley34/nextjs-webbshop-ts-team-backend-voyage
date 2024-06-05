@@ -52,7 +52,7 @@ export default async function ProductPage({
                 height: {
                   xs: "50dvh",
                   sm: "50dvh",
-                  md: "100dvh",
+                  md: "90dvh",
                 },
                 objectFit: "cover",
                 borderRadius: "50px",
