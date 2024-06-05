@@ -146,12 +146,12 @@ export default function EditForm({
                         helperText={errors.video?.message}
                       />
                     </Grid>
-                    
+
                     <Grid item xs={12}>
                       <TextField
                         variant="outlined"
                         label="Stock"
-                        {...register("stock", { valueAsNumber: true })} 
+                        {...register("stock", { valueAsNumber: true })}
                         defaultValue={stock}
                         error={Boolean(errors.stock)}
                         helperText={errors.stock?.message}
@@ -179,7 +179,21 @@ export default function EditForm({
                       </FormControl>
                     </Grid>
                   </Grid>
-                  <button type="submit">UPPDATERA PRODUKT</button>
+                  <button
+                    type="submit"
+                    style={{
+                      background: "#0072e4",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "20px",
+                      color: "white",
+                      cursor: "pointer",
+                      width: "100%",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    UPDATE
+                  </button>
                 </FormControl>
               </Box>
             </Grid>

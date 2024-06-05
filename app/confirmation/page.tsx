@@ -179,7 +179,20 @@ export default function CheckoutConfirmation() {
                 <React.Fragment>
                   <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
                     <Link href="/">
-                      <Button variant="contained" size="small">
+                      <Button
+                        variant="contained"
+                        size="small"
+                        sx={{
+                          padding: "0.3rem 2rem",
+                          width: "100%",
+                          border: "none",
+                          bgcolor: "#0072e4",
+                          borderRadius: "20px",
+                          "&:hover": {
+                            bgcolor: "#0264C5",
+                          },
+                        }}
+                      >
                         Tillbaka till startsidan
                       </Button>
                     </Link>

@@ -100,23 +100,24 @@ export default async function AdminPage() {
                   variant="outlined"
                   size="large"
                   sx={{
-                    bgcolor: "#000",
-                    borderColor: "#000",
+                    padding: "0.3rem 1.5rem",
+                    border: "none",
+                    bgcolor: "#0072e4",
+                    borderRadius: "20px",
                     "&:hover": {
-                      bgcolor: "#333",
-                      borderColor: "#000",
+                      bgcolor: "#0264C5",
                     },
                   }}
                 >
                   <Typography
                     sx={{
                       color: "white",
-                      fontWeight: "400",
+                      fontWeight: "300",
                       fontFamily:
                         "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
                     }}
                   >
-                    Add new
+                    ADD NEW
                   </Typography>
                 </Button>
               </Link>
@@ -274,7 +275,19 @@ export default async function AdminPage() {
                           product.id
                         )}`}
                       >
-                        <button>Edit Product</button>
+                        <button
+                          style={{
+                            background: "#0072e4",
+                            border: "none",
+                            padding: "0.5rem",
+                            borderRadius: "20px",
+                            color: "white",
+                            cursor: "pointer",
+                            width: "100%",
+                          }}
+                        >
+                          EDIT
+                        </button>
                       </Link>
                       <DeleteAdminButton productId={product.id} />
                     </Box>
