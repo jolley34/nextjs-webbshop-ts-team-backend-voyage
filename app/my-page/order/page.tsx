@@ -20,7 +20,7 @@ export default async function MyPageOrdersPage() {
           marginBottom: "1rem",
         }}
       >
-        Mina beställningar:
+        My Orders:
       </Typography>
       <Grid container spacing={2}>
         {orders.map((order) => (
