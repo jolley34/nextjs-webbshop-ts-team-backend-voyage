@@ -97,7 +97,7 @@ export default function CheckoutConfirmation() {
       >
         <React.Fragment>
           <CssBaseline />
-          <Box sx={{ paddingTop: { xs: "91px", sm: "88px", md: "88px" } }}>
+          <Box>
             <AppBar
               position="absolute"
               color="default"
@@ -193,7 +193,7 @@ export default function CheckoutConfirmation() {
                           },
                         }}
                       >
-                        BACK TO START
+                        BACK TO HOMEPAGE
                       </Button>
                     </Link>
                   </Box>
