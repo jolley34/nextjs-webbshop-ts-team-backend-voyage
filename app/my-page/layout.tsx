@@ -8,6 +8,7 @@ import {
   CardContent,
   Divider,
   Grid,
+  Link,
   ListItem,
   ListItemAvatar,
   Typography,
@@ -108,8 +109,42 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
                 minHeight: "50vh",
               }}
             >
+              <Link href="/my-page/order" style={{ textDecoration: "none" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: "1rem",
+                    padding: "0.5rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Typography>My Orders</Typography>
+                  <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+                </Box>
+              </Link>
+
+              <Link
+                href="/my-page/track-order"
+                style={{ textDecoration: "none" }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: "1rem",
+                    padding: "0.5rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Typography>Orders on the way</Typography>
+                  <KeyboardArrowRightIcon sx={{ fontSize: "1rem" }} />
+                </Box>
+              </Link>
+
               {[
-                "My Orders",
                 "My Returns",
                 "My Details",
                 "Change Password",

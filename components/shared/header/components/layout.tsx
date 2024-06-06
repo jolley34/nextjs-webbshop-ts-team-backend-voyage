@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface PageProps {
   session: any;
@@ -66,6 +66,10 @@ export default function HeaderLayout({ session, categories }: PageProps) {
     }
   };
 
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   const pathnames = () => {
     return (
       pathname === "/checkout" ||
@@ -78,6 +82,13 @@ export default function HeaderLayout({ session, categories }: PageProps) {
       pathname.startsWith("/product")
     );
   };
+
+  const subItems = [
+    { label: "Sustainability", href: "/" },
+    { label: "Find store", href: "/" },
+    { label: "Can we help you?", href: "/contact" },
+    { label: "+46 7 519 928 37", href: "/" },
+  ];
 
   const theme = useTheme();
 
@@ -211,172 +222,167 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           <ShopCartWithBadge />
         </nav>
       </div>
-      <Box>
-        <Drawer
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          sx={{
-            position: "relative",
-            color: hoverItem === null ? "black" : "gray",
-            width: { xs: "100%", sm: "50%", md: "40%" },
-            "& .MuiDrawer-paper": {
-              width: { xs: "100vw", sm: "50vw", md: "28vw" },
-              backgroundColor:
-                pathname === "/about" && open ? "#1b1b1b" : "white",
-            },
-          }}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          onClose={handleDrawerClose}
-        >
-          <List
+      {loaded && (
+        <Box>
+          <Drawer
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             sx={{
-              overflowY: "auto",
-              height: "100%",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              display: "flex",
+              position: "relative",
+              color: hoverItem === null ? "black" : "gray",
+              width: { xs: "100%", sm: "50%", md: "40%" },
+              "& .MuiDrawer-paper": {
+                width: { xs: "100vw", sm: "50vw", md: "28vw" },
+                backgroundColor:
+                  pathname === "/about" && open ? "#1b1b1b" : "white",
+              },
             }}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            onClose={handleDrawerClose}
           >
-            <Box sx={{ padding: "2rem" }}>
-              <Box>
-                <ListItem>
-                  <ListItemButton
-                    sx={{
-                      color: pathname === "/about" && open ? "white" : "black",
-                    }}
-                    onClick={handleDrawerClose}
-                  >
-                    <CloseIcon />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem>
-                  <Box
-                    sx={{
-                      width: "100%",
-                    }}
-                  >
-                    {categories.map((category: any) => (
-                      <ListItemButton
-                        sx={{
-                          transition: "color 0.3s ease",
-
-                          color: "black",
-
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <CategoryBarMenu name={category.name} />
-
-                        <NavigateNextIcon
-                          sx={{
-                            position: "relative",
-                            color: "black",
-                            transition: "width 0.5s ease",
-                          }}
-                        />
-                      </ListItemButton>
-                    ))}
-                    <Link href="/my-page" style={{ textDecoration: "none" }}>
-                      <ListItemButton
-                        sx={{
-                          transition: "color 0.3s ease",
-
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <ListItem
-                          sx={{
-                            color: "black",
-                            cursor: "pointer",
-                            fontSize: "1.25rem",
-                            padding: 0,
-                            margin: 0,
-                          }}
-                        >
-                          Profile
-                        </ListItem>
-                        <NavigateNextIcon
-                          sx={{
-                            position: "relative",
-                            color: "black",
-                            transition: "width 0.5s ease",
-                          }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </Box>
-                </ListItem>
-              </Box>
-            </Box>
-
-            <ListItem
+            <List
               sx={{
-                borderTop:
-                  pathname === "/about" && open
-                    ? "1px solid #2a2a2a"
-                    : "1px solid #e0e0e0",
+                overflowY: "auto",
+                height: "100%",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                display: "flex",
               }}
             >
-              <Box
-                sx={{
-                  width: "100%",
-                  padding: "2rem",
-                }}
-              >
-                {subItems.map((item, index) => (
-                  <ListItemButton
-                    sx={{
-                      transition: "color 0.3s ease",
-                      color: pathname === "/about" && open ? "white" : "black",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
+              <Box sx={{ padding: "2rem" }}>
+                <Box>
+                  <ListItem>
+                    <ListItemButton
                       sx={{
-                        fontSize: "0.8rem",
-                        fontFamily:
-                          "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
-                        position: "relative",
+                        color:
+                          pathname === "/about" && open ? "white" : "black",
+                      }}
+                      onClick={handleDrawerClose}
+                    >
+                      <CloseIcon />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem>
+                    <Box
+                      sx={{
+                        width: "100%",
                       }}
                     >
-                      {item.label}
-                    </Typography>
-                  </ListItemButton>
-                ))}
+                      {categories.map((category: any) => (
+                        <ListItemButton
+                          sx={{
+                            transition: "color 0.3s ease",
+                            color: "black",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                          }}
+                          key={category.name}
+                        >
+                          <CategoryBarMenu name={category.name} />
+                          <NavigateNextIcon
+                            sx={{
+                              position: "relative",
+                              color: "black",
+                              transition: "width 0.5s ease",
+                            }}
+                          />
+                        </ListItemButton>
+                      ))}
+                      <Link href="/my-page" style={{ textDecoration: "none" }}>
+                        <ListItemButton
+                          sx={{
+                            transition: "color 0.3s ease",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                          }}
+                        >
+                          <ListItem
+                            sx={{
+                              color: "black",
+                              cursor: "pointer",
+                              fontSize: "1.25rem",
+                              padding: 0,
+                              margin: 0,
+                            }}
+                          >
+                            Profile
+                          </ListItem>
+                          <NavigateNextIcon
+                            sx={{
+                              position: "relative",
+                              color: "black",
+                              transition: "width 0.5s ease",
+                            }}
+                          />
+                        </ListItemButton>
+                      </Link>
+                    </Box>
+                  </ListItem>
+                </Box>
               </Box>
-            </ListItem>
-          </List>
-        </Drawer>
-        {open && (
-          <Box
-            sx={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100vw",
-              height: "100vh",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 400,
-            }}
-            onClick={handleDrawerClose}
-          />
-        )}
-      </Box>
+
+              <ListItem
+                sx={{
+                  borderTop:
+                    pathname === "/about" && open
+                      ? "1px solid #2a2a2a"
+                      : "1px solid #e0e0e0",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    padding: "2rem",
+                  }}
+                >
+                  {subItems.map((item, index) => (
+                    <ListItemButton
+                      sx={{
+                        transition: "color 0.3s ease",
+                        color:
+                          pathname === "/about" && open ? "white" : "black",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                      key={index}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: "0.8rem",
+                          fontFamily:
+                            "'Futura', 'Trebuchet MS', 'Arial', sans-serif",
+                          position: "relative",
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    </ListItemButton>
+                  ))}
+                </Box>
+              </ListItem>
+            </List>
+          </Drawer>
+          {open && (
+            <Box
+              sx={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100vw",
+                height: "100vh",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                zIndex: 400,
+              }}
+              onClick={handleDrawerClose}
+            />
+          )}
+        </Box>
+      )}
     </>
   );
 }
-
-const subItems = [
-  { label: "Sustainability", href: "/" },
-  { label: "Find store", href: "/" },
-  { label: "Can we help you?", href: "/contact" },
-  { label: "+46 7 519 928 37", href: "/" },
-];
