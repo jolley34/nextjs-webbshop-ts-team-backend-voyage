@@ -118,6 +118,11 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
                     fontSize: "1rem",
                     padding: "0.5rem",
                     cursor: "pointer",
+                    transition: "background 0.5s ease",
+                    "&:hover": {
+                      background: "rgba(241, 241, 241, 0.806)",
+                    },
+                    borderRadius: "10px",
                   }}
                 >
                   <Typography>My Orders</Typography>
@@ -131,12 +136,17 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
               >
                 <Box
                   sx={{
+                    transition: "background 0.5s ease",
+                    "&:hover": {
+                      background: "rgba(241, 241, 241, 0.806)",
+                    },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     fontSize: "1rem",
                     padding: "0.5rem",
                     cursor: "pointer",
+                    borderRadius: "10px",
                   }}
                 >
                   <Typography>Orders on the way</Typography>
@@ -154,12 +164,17 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
                 <Box
                   key={text}
                   sx={{
+                    transition: "background 0.5s ease",
+                    "&:hover": {
+                      background: "rgba(241, 241, 241, 0.806)",
+                    },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     fontSize: "1rem",
                     padding: "0.5rem",
                     cursor: "pointer",
+                    borderRadius: "10px",
                   }}
                 >
                   <Typography>{text}</Typography>
@@ -176,12 +191,17 @@ export default async function MyPageLayout({ children }: PropsWithChildren) {
                 <Box
                   key={text}
                   sx={{
+                    transition: "background 0.5s ease",
+                    "&:hover": {
+                      background: "rgba(241, 241, 241, 0.806)",
+                    },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     fontSize: "1rem",
                     padding: "0.5rem",
                     cursor: "pointer",
+                    borderRadius: "10px",
                   }}
                 >
                   <Typography>{text}</Typography>

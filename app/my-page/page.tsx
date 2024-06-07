@@ -6,13 +6,31 @@ export default function indexPage() {
     <>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <Link style={{ textDecoration: "none" }} href="/my-page/track-order">
-          <Card sx={{ padding: "2rem", cursor: "pointer" }}>
+          <Card
+            sx={{
+              padding: "2rem",
+              cursor: "pointer",
+              transition: "background 0.5s ease",
+              "&:hover": {
+                background: "rgba(241, 241, 241, 0.806)",
+              },
+            }}
+          >
             <Typography>Track your order</Typography>
           </Card>
         </Link>
 
         <Link style={{ textDecoration: "none" }} href="/my-page/order">
-          <Card sx={{ padding: "2rem", cursor: "pointer" }}>
+          <Card
+            sx={{
+              padding: "2rem",
+              cursor: "pointer",
+              transition: "background 0.5s ease",
+              "&:hover": {
+                background: "rgba(241, 241, 241, 0.806)",
+              },
+            }}
+          >
             <Typography>My orders</Typography>
           </Card>
         </Link>
