@@ -82,6 +82,34 @@ export async function getUserOrders() {
   });
 }
 
+export async function getUserOrdersByShipping() {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    throw new Error("User not authenticated");
+  }
+
+  return await db.order.findMany({
+    where: {
+      userId: session.user.id,
+      products: {
+        some: {
+          isShipped: true,
+        },
+      },
+    },
+    include: {
+      user: true,
+      shippingAddress: true,
+      products: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+}
+
 export type OrderWithUserProductsAddress = Prisma.PromiseReturnType<
   typeof getUserOrders
 >[0];
