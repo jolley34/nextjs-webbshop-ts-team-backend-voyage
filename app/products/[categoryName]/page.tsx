@@ -41,17 +41,19 @@ export default async function ProductsByCategoryPage({ params }: Props) {
         </Box>
       </Box>
       <Grid container spacing={2}>
-        {products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-            <ProductGrid
-              slug={product.id}
-              name={product.name}
-              image={product.image}
-              description={product.description}
-              price={product.price}
-            />
-          </Grid>
-        ))}
+        {products
+          .filter((product) => !product.isArchived)
+          .map((product, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <ProductGrid
+                slug={product.id}
+                name={product.name}
+                image={product.image}
+                description={product.description}
+                price={product.price}
+              />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );
