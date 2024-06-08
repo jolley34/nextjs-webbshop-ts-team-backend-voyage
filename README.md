@@ -1,45 +1,54 @@
-# Webbshop Projekt 
+# Webshop Project
 
-## Beskrivning
+## Description
 
-Det här projektet är en gruppuppgift där vi har skapat en webbshop med React, NextJS, Typescript, och ett designsystem som MUI. Webbshopen innehåller fyra huvudsidor: en startsida, en produktsida, en kassasida och en bekräftelsesida.
+This project is a group assignment where we have developed an online store using React, Next.js, TypeScript, and the MUI design system. The webshop includes four main pages: a homepage, a product page, a checkout page, and a confirmation page.
 
-### Funktionalitet
+### Features
 
-- **Startsida**: Visar olika produkter som användare kan klicka på för att läsa mer på produktsidan.
-- **Produktsida**: Detaljerad information om produkten samt möjlighet att lägga till produkten i kundvagnen.
-- **Kassasida**: Hanterar kundvagnen, visar antal, pris, och totalpris för produkterna. Användare kan ändra antalet produkter eller ta bort dem.
-- **Bekräftelsesida**: Visar en summering av köpet samt ett unikt ordernummer efter köpet är genomfört.
+- **Homepage**: Displays various products that users can click on to read more details on the product page.
+- **Product Page**: Provides detailed information about each product and the option to add it to the shopping cart.
+- **Checkout Page**: Manages the shopping cart, showing the quantity, price, and total cost of the products. Users can adjust the quantity or remove products.
+- **Confirmation Page**: Summarizes the purchase and provides a unique order number after the purchase is completed.
 
-### Adminsidan
+### Admin Page
 
-- Administratörer kan hantera (lägga till, ta bort, redigera) produkter genom adminsidan.
+- Administrators can manage (add, remove, edit) products through the admin page.
 
-## Tekniska Detaljer
+## Technical Details
 
-- **React.js**: Frontend bibliotek.
-- **Next.js**: React ramverk för server-renderade applikationer.
-- **Typescript**: Används för att skriva JavaScript med typer.
-- **Designsystem**: MUI för att hantera UI komponenter och stil.
+- **React.js**: A JavaScript library for building user interfaces.
+- **Next.js**: A React framework for building server-rendered and static web applications.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Design System**: MUI (Material-UI) for handling UI components and styling.
 
-## Hur man kör projektet
+## How to Run the Project
 
-1. Klona repot till din lokala maskin.
-2. Kör `npm install` för att installera beroenden.
-3. Använd `npm run dev` för att starta en utvecklingsserver.
-4. Öppna `localhost:3000` i din webbläsare för att se applikationen.
+1. **Clone the repository** to your local machine:
+   ```bash
+   git clone https://github.com/your-repo/webshop-project.git
+   ```
 
-## Dokumentation
+Navigate to the project directory:
 
-- [MUI Dokumentation](https://mui.com/)
+bash
+Copy code
+cd webshop-project
 
-## Presentation
+Install dependencies:
 
-Under projektets presentation kommer vi att:
-- Demonstrera funktionaliteten i webbshopen.
-- Diskutera koden, dess struktur och flöde.
-- Reflektera över genomförandet av projektet och val av teknologier.
+bash
+Copy code
+npm install
 
+Start the development server:
 
+bash
+Copy code
+npm run dev
 
-Projektet är utvecklat som en del av kursen [API-Utveckling] vid [Medieinstitutet].
+Open the application in your browser at:
+
+arduino
+Copy code
+http://localhost:3000
