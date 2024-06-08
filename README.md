@@ -32,23 +32,17 @@ This project is a group assignment where we have developed an online store using
 Navigate to the project directory:
 
 bash
-Copy code
 cd webshop-project
 
 Install dependencies:
 
 bash
-Copy code
 npm install
 
 Start the development server:
 
 bash
-Copy code
 npm run dev
 
 Open the application in your browser at:
-
-arduino
-Copy code
 http://localhost:3000
