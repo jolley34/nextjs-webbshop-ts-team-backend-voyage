@@ -25,24 +25,28 @@ This project is a group assignment where we have developed an online store using
 ## How to Run the Project
 
 1. **Clone the repository** to your local machine:
+
    ```bash
    git clone https://github.com/your-repo/webshop-project.git
    ```
 
-Navigate to the project directory:
+2. **Navigate to the project directory:**
 
-bash
+```bash
 cd webshop-project
+```
 
-Install dependencies:
+3. **Install dependencies**
 
-bash
+```bash
 npm install
+```
 
-Start the development server:
+4. **Start the development server**
 
-bash
+```bash
 npm run dev
+```
 
 Open the application in your browser at:
 http://localhost:3000
