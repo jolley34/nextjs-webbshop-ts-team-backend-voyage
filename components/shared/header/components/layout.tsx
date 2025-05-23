@@ -152,7 +152,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
             >
               Store
             </li>
-            {categories.map((category: any) => (
+            {categories?.data?.map((category: any) => (
               <CategoryBar key={category.name} name={category.name} />
             ))}
           </Hidden>
