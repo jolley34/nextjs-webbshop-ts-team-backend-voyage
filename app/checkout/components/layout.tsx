@@ -9,6 +9,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 import {
   Box,
@@ -90,7 +91,7 @@ export default function CheckoutLayout() {
                 >
                   <Grid container alignItems="center" spacing={2}>
                     <Grid item xs={12} sm={3}>
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.name}
                         style={{

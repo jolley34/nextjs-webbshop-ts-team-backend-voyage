@@ -1,6 +1,9 @@
+"use client";
+
 import { showOneProduct } from "@/app/server-actions/products/handler";
 import AddToCartButton from "@/components/addtocart/AddToCartButton";
 import { Box, CardMedia, Grid, Typography } from "@mui/material";
+import Image from "next/image"; // Import Next.js Image component
 import Link from "next/link";
 
 export default async function ProductPage({
@@ -25,7 +28,20 @@ export default async function ProductPage({
     );
   }
 
-  const { video, image, name, description, price } = product;
+  const { video, image, name, description, price, id, stock, isArchived } =
+    product;
+
+  // Convert Decimal price to number for AddToCartButton
+  const productForCart = {
+    id,
+    name,
+    description,
+    image,
+    video,
+    price: price.toNumber(), // Convert Decimal to number (assuming decimal.js)
+    stock,
+    isArchived,
+  };
 
   return (
     <>
@@ -72,9 +88,11 @@ export default async function ProductPage({
                 alignItems: "center",
               }}
             >
-              <img
+              <Image
                 src={image}
-                alt={name}
+                alt={name} // Already had alt prop, kept it
+                width={300}
+                height={500}
                 style={{
                   width: "300px",
                   height: "500px",
@@ -146,7 +164,7 @@ export default async function ProductPage({
               </Box>
 
               <Box>
-                <AddToCartButton product={product} />
+                <AddToCartButton product={productForCart} />
               </Box>
             </Box>
           </Grid>

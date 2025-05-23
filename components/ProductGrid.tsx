@@ -2,6 +2,7 @@
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Box, Button, Card, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -40,7 +41,7 @@ export default function ProductGrid({
             href={`/product/${encodeURIComponent(slug)}`}
             style={{ textDecoration: "none" }}
           >
-            <img
+            <Image
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               src={image}

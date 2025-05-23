@@ -1,19 +1,32 @@
 "use client";
 
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image"; // Import Next.js Image component
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 export default function NewsPage() {
-  const videoRefs = [
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null),
-    useRef<HTMLVideoElement>(null),
-  ];
+  // Stable refs for videos
+  const videoRefs = useRef([
+    React.createRef<HTMLVideoElement>(),
+    React.createRef<HTMLVideoElement>(),
+    React.createRef<HTMLVideoElement>(),
+  ]);
 
   const bottomVideoRef = useRef<HTMLVideoElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  const handleMouseEnter = (index: any) => {
+  // Define videoArray inside component and memoize to ensure stability
+  const videoArray = useMemo(
+    () => [
+      "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/experience-photos-videos/large.mp4",
+      "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/experience-connection/large.mp4",
+      "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/visionos/large.mp4",
+    ],
+    []
+  );
+
+  const handleMouseEnter = (index: number) => {
     setHoveredCard(index);
   };
 
@@ -21,8 +34,7 @@ export default function NewsPage() {
     setHoveredCard(null);
   };
 
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
+  // Scroll effect for dynamic width
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
@@ -33,16 +45,16 @@ export default function NewsPage() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Video initialization effect
   useEffect(() => {
-    videoRefs.forEach((videoRef, index) => {
+    videoRefs.current.forEach((videoRef, index) => {
       const video = videoRef.current;
-      if (video) {
+      if (video && videoArray[index]) {
         video.src = videoArray[index];
         video.autoplay = true;
         video.loop = true;
@@ -62,13 +74,7 @@ export default function NewsPage() {
         .play()
         .catch((error) => console.error("Playback error:", error));
     }
-  }, []);
-
-  const videoArray = [
-    "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/experience-photos-videos/large.mp4",
-    "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/experience-connection/large.mp4",
-    "https://www.apple.com/105/media/us/apple-vision-pro/2024/6e1432b2-fe09-4113-a1af-f20987bcfeee/anim/visionos/large.mp4",
-  ];
+  }, [videoArray]); // Add videoArray to dependency array
 
   const boxStyle: React.CSSProperties = {
     position: "relative",
@@ -101,7 +107,7 @@ export default function NewsPage() {
           </Typography>
           <Box>
             <Grid container spacing={2}>
-              {videoRefs.map((videoRef, index) => (
+              {videoRefs.current.map((videoRef, index) => (
                 <Grid key={index} item xs={12} sm={12} md={4}>
                   <Card
                     sx={{
@@ -142,7 +148,7 @@ export default function NewsPage() {
               width: "100%",
               objectFit: "cover",
             }}
-          ></CardMedia>
+          />
           <Typography
             sx={{
               position: "absolute",
@@ -173,46 +179,38 @@ export default function NewsPage() {
         >
           <Typography sx={{ fontSize: "3rem" }}>Explore the lineup.</Typography>
           <Grid container spacing={4} sx={{ width: "100%" }}>
-            <Grid item xs={12} sm={6} md={3}>
-              <img
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "contain",
-                }}
-                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_pro__6bgrkek0jnm2_xlarge_2x.png"
-              ></img>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <img
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "contain",
-                }}
-                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_air__cr381zljqdiu_xlarge_2x.png"
-              ></img>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <img
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "contain",
-                }}
-                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_10th_gen__ej5p5x6yf2gm_xlarge_2x.png"
-              ></img>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <img
-                style={{
-                  width: "100%",
-                  height: "300px",
-                  objectFit: "contain",
-                }}
-                src="https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_mini__f3iy3qb50gia_xlarge_2x.png"
-              ></img>
-            </Grid>
+            {[
+              {
+                src: "https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_pro__6bgrkek0jnm2_xlarge_2x.png",
+                alt: "iPad Pro",
+              },
+              {
+                src: "https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_air__cr381zljqdiu_xlarge_2x.png",
+                alt: "iPad Air",
+              },
+              {
+                src: "https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_10th_gen__ej5p5x6yf2gm_xlarge_2x.png",
+                alt: "iPad 10th Gen",
+              },
+              {
+                src: "https://www.apple.com/v/ipad/home/cj/images/overview/select/product-tile/pt_ipad_mini__f3iy3qb50gia_xlarge_2x.png",
+                alt: "iPad Mini",
+              },
+            ].map((item, index) => (
+              <Grid key={index} item xs={12} sm={6} md={3}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={300}
+                  height={300}
+                  style={{
+                    width: "100%",
+                    height: "300px",
+                    objectFit: "contain",
+                  }}
+                />
+              </Grid>
+            ))}
           </Grid>
         </Box>
       </Box>
@@ -221,21 +219,25 @@ export default function NewsPage() {
           {[
             {
               src: "https://www.apple.com/v/education/college-students/a/images/overview/lifestyle_ipad__cd0szs4f2fte_xlarge_2x.jpg",
+              alt: "iPad used for learning",
               title: "Learning",
               description: "Your classroom can be anywhere.",
             },
             {
               src: "https://support.apple.com/content/dam/edam/applecare/images/en_US/psp_content/tile-feature-taa-fundamentals.image.large_2x.png",
+              alt: "iPad used for entertainment",
               title: "Entertainment",
               description: "Kick back. Tune in. Game on.",
             },
             {
               src: "https://www.apple.com/v/mac/home/bz/images/overview/consider/boc_performance_02__b1m37qedkb6q_large_2x.jpg",
+              alt: "iPad used for productivity",
               title: "Productivity",
               description: "Your workplace can be any place.",
             },
             {
               src: "https://www.apple.com/v/ipad/home/cj/images/overview/consider/modal/fc_creativity_supplies__fan9ceoh20i2_large_2x.jpg",
+              alt: "iPad used for creativity",
               title: "Creativity",
               description: "Take your inner artist out and about.",
             },
@@ -251,7 +253,11 @@ export default function NewsPage() {
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                <img
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={400}
+                  height={600}
                   style={{
                     objectFit: "cover",
                     transition:
@@ -261,8 +267,7 @@ export default function NewsPage() {
                     transform:
                       hoveredCard === index ? "scale(1.1)" : "scale(1)",
                   }}
-                  src={item.src}
-                ></img>
+                />
                 <Box
                   sx={{ display: "flex", gap: "1rem", flexDirection: "column" }}
                 >

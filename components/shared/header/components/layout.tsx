@@ -8,6 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useTheme } from "@mui/material/styles";
+import Image from "next/image";
 
 import {
   Box,
@@ -127,7 +128,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
         >
           <Hidden mdDown>
             <Link href="/">
-              <img
+              <Image
                 src="/pineapple-svgrepo-com-svgsvg.svg"
                 style={{
                   height: "18px",
@@ -152,7 +153,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
               Store
             </li>
             {categories.map((category: any) => (
-              <CategoryBar name={category.name} />
+              <CategoryBar key={category.name} name={category.name} />
             ))}
           </Hidden>
           <Hidden mdDown>

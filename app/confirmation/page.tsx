@@ -58,7 +58,7 @@ export default function CheckoutConfirmation() {
 
   React.useEffect(() => {
     clearLocalStorage();
-  }, []);
+  }, [clearLocalStorage]);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);

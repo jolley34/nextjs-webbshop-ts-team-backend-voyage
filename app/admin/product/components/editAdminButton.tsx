@@ -1,19 +1,30 @@
 "use client";
+"use client";
 
 import { EditProduct } from "@/app/server-actions/admin/handler";
+import { ProductFormData } from "@/app/server-actions/validation/validation";
 import { Button, Typography } from "@mui/material";
 
 interface EditAdminButtonProps {
   productId: string;
+  productData: ProductFormData; // Now properly typed from Zod schema
 }
 
-export default function EditAdminButton({ productId }: EditAdminButtonProps) {
+export default function EditAdminButton({
+  productId,
+  productData,
+}: EditAdminButtonProps) {
   const handleClick = async () => {
-    await EditProduct(productId);
+    // Create a complete product data object that matches ProductFormData
+    const completeProductData: ProductFormData = {
+      ...productData,
+      id: productId, // Ensure the id is included
+      categories: productData.categories || [], // Ensure categories is always an array
+    };
+
+    await EditProduct(productId, completeProductData);
     window.location.reload();
   };
-
-  console.log(productId);
 
   return (
     <Button

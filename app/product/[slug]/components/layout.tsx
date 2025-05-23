@@ -153,7 +153,16 @@ export default function ProductLayout({
                 </Box>
 
                 <Box>
-                  <AddToCartButton product={product} />
+                  <AddToCartButton
+                    product={{
+                      id: productId,
+                      name: name,
+                      description: description,
+                      image: image,
+                      video: video,
+                      price: price.toNumber(),
+                    }}
+                  />
                 </Box>
               </Box>
             </Grid>
