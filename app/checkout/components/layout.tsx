@@ -92,6 +92,8 @@ export default function CheckoutLayout() {
                   <Grid container alignItems="center" spacing={2}>
                     <Grid item xs={12} sm={3}>
                       <Image
+                        width={100}
+                        height={100}
                         src={item.image}
                         alt={item.name}
                         style={{

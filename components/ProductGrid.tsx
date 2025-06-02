@@ -44,6 +44,8 @@ export default function ProductGrid({
             <Image
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
+              width={500}
+              height={250}
               src={image}
               alt={name}
               style={{

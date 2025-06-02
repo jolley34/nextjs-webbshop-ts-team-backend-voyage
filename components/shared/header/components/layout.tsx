@@ -129,9 +129,10 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           <Hidden mdDown>
             <Link href="/">
               <Image
+                width={18}
+                height={18}
                 src="/pineapple-svgrepo-com-svgsvg.svg"
                 style={{
-                  height: "18px",
                   cursor: "pointer",
                   marginTop: "5px",
                   filter: pathnames()
@@ -144,15 +145,7 @@ export default function HeaderLayout({ session, categories }: PageProps) {
           </Hidden>
 
           <Hidden mdDown>
-            <li
-              style={{
-                cursor: "pointer",
-                color: pathnames() ? "black" : "white",
-              }}
-            >
-              Store
-            </li>
-            {categories?.data?.map((category: any) => (
+            {categories?.map((category: any) => (
               <CategoryBar key={category.name} name={category.name} />
             ))}
           </Hidden>

@@ -38,7 +38,7 @@ export default async function ProductPage({
     description,
     image,
     video,
-    price: price.toNumber(), // Convert Decimal to number (assuming decimal.js)
+    price: Number(price), // Convert Decimal to number (assuming decimal.js)
     stock,
     isArchived,
   };
